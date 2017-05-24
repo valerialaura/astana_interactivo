@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ElDiaQueMeQuieras>
+	<tiempo_min_entre_frases__seg_>2</tiempo_min_entre_frases__seg_>
+	<Pistas_Loopeables>
+		<Eldia1>0</Eldia1>
+		<Eldia2>0</Eldia2>
+		<Eldia3>0</Eldia3>
+		<Eldia4>0</Eldia4>
+		<Eldia5>0</Eldia5>
+	</Pistas_Loopeables>
+	<Volumen_Pistas>
+		<Eldia1>1</Eldia1>
+		<Eldia2>1</Eldia2>
+		<Eldia3>1</Eldia3>
+		<Eldia4>1</Eldia4>
+		<Eldia5>1</Eldia5>
+	</Volumen_Pistas>
+	<Pan_Pistas>
+		<Eldia1>0</Eldia1>
+		<Eldia2>0</Eldia2>
+		<Eldia3>0</Eldia3>
+		<Eldia4>0</Eldia4>
+		<Eldia5>0</Eldia5>
+	</Pan_Pistas>
+	<Texturas_Validas>
+		<Tetura1>0</Tetura1>
+		<Textura2a>0</Textura2a>
+		<Textura2b>0</Textura2b>
+		<Textura3>1</Textura3>
+		<Textura4>1</Textura4>
+		<Textura5>1</Textura5>
+		<Textura6>1</Textura6>
+	</Texturas_Validas>
+</ElDiaQueMeQuieras>

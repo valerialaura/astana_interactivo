@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<CumparsitaCOmbo>
+	<Pistas_Loopeables>
+		<CumpaIntervencion1>0</CumpaIntervencion1>
+		<CumpaIntervencion2>0</CumpaIntervencion2>
+		<CumpaIntervencion3>0</CumpaIntervencion3>
+		<CumpaLoop>1</CumpaLoop>
+	</Pistas_Loopeables>
+	<Volumen_Pistas>
+		<CumpaIntervencion1>1</CumpaIntervencion1>
+		<CumpaIntervencion2>1</CumpaIntervencion2>
+		<CumpaIntervencion3>1</CumpaIntervencion3>
+		<CumpaLoop>1</CumpaLoop>
+	</Volumen_Pistas>
+	<Pan_Pistas>
+		<CumpaIntervencion1>0</CumpaIntervencion1>
+		<CumpaIntervencion2>0</CumpaIntervencion2>
+		<CumpaIntervencion3>0</CumpaIntervencion3>
+		<CumpaLoop>0</CumpaLoop>
+	</Pan_Pistas>
+	<Texturas_Validas>
+		<Tetura1>1</Tetura1>
+		<Textura2a>0</Textura2a>
+		<Textura2b>0</Textura2b>
+		<Textura3>0</Textura3>
+		<Textura4>0</Textura4>
+		<Textura5>0</Textura5>
+		<Textura6>0</Textura6>
+	</Texturas_Validas>
+</CumparsitaCOmbo>

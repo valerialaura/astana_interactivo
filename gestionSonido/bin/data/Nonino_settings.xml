@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Nonino>
+	<tiempo_min_entre_frases__seg_>0</tiempo_min_entre_frases__seg_>
+	<Pistas_Loopeables>
+		<Nonino1>0</Nonino1>
+		<Nonino2Loop>1</Nonino2Loop>
+		<Nonino3Loop>1</Nonino3Loop>
+		<Nonino4Loop>1</Nonino4Loop>
+	</Pistas_Loopeables>
+	<Volumen_Pistas>
+		<Nonino1>1</Nonino1>
+		<Nonino2Loop>1</Nonino2Loop>
+		<Nonino3Loop>1</Nonino3Loop>
+		<Nonino4Loop>1</Nonino4Loop>
+	</Volumen_Pistas>
+	<Pan_Pistas>
+		<Nonino1>0</Nonino1>
+		<Nonino2Loop>0</Nonino2Loop>
+		<Nonino3Loop>0</Nonino3Loop>
+		<Nonino4Loop>0</Nonino4Loop>
+	</Pan_Pistas>
+	<Texturas_Validas>
+		<Tetura1>0</Tetura1>
+		<Textura2a>0</Textura2a>
+		<Textura2b>0</Textura2b>
+		<Textura3>1</Textura3>
+		<Textura4>1</Textura4>
+		<Textura5>1</Textura5>
+		<Textura6>1</Textura6>
+	</Texturas_Validas>
+</Nonino>

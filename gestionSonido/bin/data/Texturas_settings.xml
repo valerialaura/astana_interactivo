@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Texturas>
+	<Pistas_Loopeables>
+		<Tetura1>1</Tetura1>
+		<Textura2a>1</Textura2a>
+		<Textura2b>1</Textura2b>
+		<Textura3>1</Textura3>
+		<Textura4>1</Textura4>
+		<Textura5>1</Textura5>
+		<Textura6>1</Textura6>
+	</Pistas_Loopeables>
+	<Volumen_Pistas>
+		<Tetura1>1</Tetura1>
+		<Textura2a>1</Textura2a>
+		<Textura2b>1</Textura2b>
+		<Textura3>1</Textura3>
+		<Textura4>1</Textura4>
+		<Textura5>1</Textura5>
+		<Textura6>1</Textura6>
+	</Volumen_Pistas>
+	<Pan_Pistas>
+		<Tetura1>0</Tetura1>
+		<Textura2a>0</Textura2a>
+		<Textura2b>0</Textura2b>
+		<Textura3>0</Textura3>
+		<Textura4>0</Textura4>
+		<Textura5>0</Textura5>
+		<Textura6>0</Textura6>
+	</Pan_Pistas>
+</Texturas>
