@@ -8,28 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
-		3BB5196CADF7BC9A7777C5D9 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC8BB4888D53830E1BCB1732 /* audiodecoderbase.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
-		4DD72C78DA1A5EE122BFFECE /* ofxBasicSoundPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9267A2BD7AEA483C804AA0 /* ofxBasicSoundPlayer.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
-		7840F332D7330DAAD11D2250 /* ofxSoundMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F768214F9048463922BAE31 /* ofxSoundMixer.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
 		852E0891794923EE7583C621 /* ofxInputField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44B351490B620D04E1E7C52D /* ofxInputField.cpp */; };
 		853E0BA2F448076739446874 /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181D363B6DD54D1FA6309C43 /* ofxColorPicker.cpp */; };
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
-		878C0EFF16E187226B0148FA /* ofxSoundObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2DBFF6E0A9F7007105C9541 /* ofxSoundObject.cpp */; };
 		A7936996C1DBDACFDC89B3A1 /* % in Sources */ = {isa = PBXBuildFile; fileRef = B2E1EB0F30B9F14A9B7FA4D6 /* % */; };
-		B097C1781ED383FD00371051 /* ofxTween2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B097C1761ED383FD00371051 /* ofxTween2.cpp */; };
 		B0B0C2911ED5B5F700912E64 /* AstanaSoundGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C2851ED5B5F700912E64 /* AstanaSoundGroup.cpp */; };
 		B0B0C2921ED5B5F700912E64 /* AstanaSoundIntervencion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C2871ED5B5F700912E64 /* AstanaSoundIntervencion.cpp */; };
 		B0B0C2931ED5B5F700912E64 /* AstanaSoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C2891ED5B5F700912E64 /* AstanaSoundManager.cpp */; };
 		B0B0C2941ED5B5F700912E64 /* AstanaSoundPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C28B1ED5B5F700912E64 /* AstanaSoundPlayer.cpp */; };
 		B0B0C2951ED5B5F700912E64 /* AstanaSoundSecuencia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C28D1ED5B5F700912E64 /* AstanaSoundSecuencia.cpp */; };
 		B0B0C2961ED5B5F700912E64 /* AstanaSoundTextura.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C28F1ED5B5F700912E64 /* AstanaSoundTextura.cpp */; };
+		B0B0C3BD1ED5B8CD00912E64 /* audiodecoderbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C3561ED5B8CD00912E64 /* audiodecoderbase.cpp */; };
+		B0B0C3BE1ED5B8CD00912E64 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C3571ED5B8CD00912E64 /* audiodecodercoreaudio.cpp */; };
+		B0B0C3C21ED5B8CD00912E64 /* ofxBasicSoundPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C3791ED5B8CD00912E64 /* ofxBasicSoundPlayer.cpp */; };
+		B0B0C3C31ED5B8CD00912E64 /* ofxSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C37B1ED5B8CD00912E64 /* ofxSoundFile.cpp */; };
+		B0B0C3C41ED5B8CD00912E64 /* ofxSoundMixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C37D1ED5B8CD00912E64 /* ofxSoundMixer.cpp */; };
+		B0B0C3C51ED5B8CD00912E64 /* ofxSoundObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C37F1ED5B8CD00912E64 /* ofxSoundObject.cpp */; };
+		B0B0C3CA1ED5B8CD00912E64 /* ofxTween2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B0C3A31ED5B8CD00912E64 /* ofxTween2.cpp */; };
 		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
-		BBD9844681A294B282AAB320 /* ofxSoundFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1517C892632CE73885FA803C /* ofxSoundFile.cpp */; };
-		BE536BA5791C07A98B8365B0 /* audiodecodercoreaudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 132DE600BC2D5A7FF190F13D /* audiodecodercoreaudio.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -66,41 +66,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		08102CADCDFED739CB531D60 /* DigitalDelay.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DigitalDelay.h; path = ../../../addons/ofxSoundObjects/src/SoundObjects/DigitalDelay.h; sourceTree = SOURCE_ROOT; };
 		0A1DAC09F322AE313A40706D /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxToggle.h; path = ../../../addons/ofxGui/src/ofxToggle.h; sourceTree = SOURCE_ROOT; };
-		0E08C3779A6B40C22BD6ADEC /* ofxSoundFile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSoundFile.h; path = ../../../addons/ofxSoundObjects/src/ofxSoundFile.h; sourceTree = SOURCE_ROOT; };
-		132DE600BC2D5A7FF190F13D /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = audiodecodercoreaudio.cpp; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/src/audiodecodercoreaudio.cpp; sourceTree = SOURCE_ROOT; };
-		1517C892632CE73885FA803C /* ofxSoundFile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSoundFile.cpp; path = ../../../addons/ofxSoundObjects/src/ofxSoundFile.cpp; sourceTree = SOURCE_ROOT; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
-		1602920CA9506139A0D594F8 /* ofxSoundObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSoundObject.h; path = ../../../addons/ofxSoundObjects/src/ofxSoundObject.h; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		181D363B6DD54D1FA6309C43 /* ofxColorPicker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxColorPicker.cpp; path = ../../../addons/ofxGui/src/ofxColorPicker.cpp; sourceTree = SOURCE_ROOT; };
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
-		1CBC36432FB26826AFDBB241 /* audiodecoderbase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = audiodecoderbase.h; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/include/audiodecoderbase.h; sourceTree = SOURCE_ROOT; };
-		1D7E7C28922E7C507DD56160 /* audiodecoder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = audiodecoder.h; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/include/audiodecoder.h; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
 		44B351490B620D04E1E7C52D /* ofxInputField.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxInputField.cpp; path = ../../../addons/ofxGui/src/ofxInputField.cpp; sourceTree = SOURCE_ROOT; };
-		486582E0863B80FABE19AA90 /* waveformDraw.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = waveformDraw.h; path = ../../../addons/ofxSoundObjects/src/SoundObjects/waveformDraw.h; sourceTree = SOURCE_ROOT; };
 		489B196944B06ADC2A071076 /* ofxColorPicker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxColorPicker.h; path = ../../../addons/ofxGui/src/ofxColorPicker.h; sourceTree = SOURCE_ROOT; };
-		4DDD5A51152F1581BDF9CCCF /* NoiseGenerator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NoiseGenerator.h; path = ../../../addons/ofxSoundObjects/src/SoundObjects/NoiseGenerator.h; sourceTree = SOURCE_ROOT; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
-		5AD5C0C0E99DAF876B40FFA9 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CAStreamBasicDescription.h; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/include/apple/CAStreamBasicDescription.h; sourceTree = SOURCE_ROOT; };
-		70F5DA63DD8360DE10639BF0 /* ofxSoundMixer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSoundMixer.h; path = ../../../addons/ofxSoundObjects/src/ofxSoundMixer.h; sourceTree = SOURCE_ROOT; };
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
-		7E5FAD2B1CAA506583AF8584 /* SineWaveGenerator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SineWaveGenerator.h; path = ../../../addons/ofxSoundObjects/src/SoundObjects/SineWaveGenerator.h; sourceTree = SOURCE_ROOT; };
 		802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSliderGroup.cpp; path = ../../../addons/ofxGui/src/ofxSliderGroup.cpp; sourceTree = SOURCE_ROOT; };
 		87F26B4B24CBD428AD9EEBAA /* ofxBaseGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBaseGui.h; path = ../../../addons/ofxGui/src/ofxBaseGui.h; sourceTree = SOURCE_ROOT; };
 		89449E3044D456F7DE7BEA14 /* ofxPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPanel.h; path = ../../../addons/ofxGui/src/ofxPanel.h; sourceTree = SOURCE_ROOT; };
-		8E9267A2BD7AEA483C804AA0 /* ofxBasicSoundPlayer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBasicSoundPlayer.cpp; path = ../../../addons/ofxSoundObjects/src/ofxBasicSoundPlayer.cpp; sourceTree = SOURCE_ROOT; };
 		907C5B5E104864A2D3A25745 /* ofxToggle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxToggle.cpp; path = ../../../addons/ofxGui/src/ofxToggle.cpp; sourceTree = SOURCE_ROOT; };
 		9604B925D32EE39065747725 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBaseGui.cpp; path = ../../../addons/ofxGui/src/ofxBaseGui.cpp; sourceTree = SOURCE_ROOT; };
-		9C10C5DAD721456271310627 /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = audiodecodercoreaudio.h; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/include/audiodecodercoreaudio.h; sourceTree = SOURCE_ROOT; };
-		9F768214F9048463922BAE31 /* ofxSoundMixer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSoundMixer.cpp; path = ../../../addons/ofxSoundObjects/src/ofxSoundMixer.cpp; sourceTree = SOURCE_ROOT; };
 		AE68B54581BE4A1DAE853180 /* ofxInputField.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxInputField.h; path = ../../../addons/ofxGui/src/ofxInputField.h; sourceTree = SOURCE_ROOT; };
-		B097C1721ED383F400371051 /* easing_terms_of_use.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
-		B097C1731ED383F400371051 /* ofxEasing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasing.h; sourceTree = "<group>"; };
-		B097C1761ED383FD00371051 /* ofxTween2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween2.cpp; sourceTree = "<group>"; };
-		B097C1771ED383FD00371051 /* ofxTween2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTween2.h; sourceTree = "<group>"; };
 		B0B0C2841ED5B5F700912E64 /* AstanaDigitalDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstanaDigitalDelay.h; sourceTree = "<group>"; };
 		B0B0C2851ED5B5F700912E64 /* AstanaSoundGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AstanaSoundGroup.cpp; sourceTree = "<group>"; };
 		B0B0C2861ED5B5F700912E64 /* AstanaSoundGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstanaSoundGroup.h; sourceTree = "<group>"; };
@@ -114,15 +95,34 @@
 		B0B0C28E1ED5B5F700912E64 /* AstanaSoundSecuencia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstanaSoundSecuencia.h; sourceTree = "<group>"; };
 		B0B0C28F1ED5B5F700912E64 /* AstanaSoundTextura.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AstanaSoundTextura.cpp; sourceTree = "<group>"; };
 		B0B0C2901ED5B5F700912E64 /* AstanaSoundTextura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstanaSoundTextura.h; sourceTree = "<group>"; };
-		B14AC0DEB6082D5B5B722764 /* CADebugMacros.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CADebugMacros.h; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/include/apple/CADebugMacros.h; sourceTree = SOURCE_ROOT; };
+		B0B0C2B31ED5B8CD00912E64 /* ofxEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasing.h; sourceTree = "<group>"; };
+		B0B0C34F1ED5B8CD00912E64 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		B0B0C3501ED5B8CD00912E64 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		B0B0C3511ED5B8CD00912E64 /* audiodecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoder.h; sourceTree = "<group>"; };
+		B0B0C3521ED5B8CD00912E64 /* audiodecoderbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecoderbase.h; sourceTree = "<group>"; };
+		B0B0C3531ED5B8CD00912E64 /* audiodecodercoreaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audiodecodercoreaudio.h; sourceTree = "<group>"; };
+		B0B0C3561ED5B8CD00912E64 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecoderbase.cpp; sourceTree = "<group>"; };
+		B0B0C3571ED5B8CD00912E64 /* audiodecodercoreaudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audiodecodercoreaudio.cpp; sourceTree = "<group>"; };
+		B0B0C3791ED5B8CD00912E64 /* ofxBasicSoundPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBasicSoundPlayer.cpp; sourceTree = "<group>"; };
+		B0B0C37A1ED5B8CD00912E64 /* ofxBasicSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBasicSoundPlayer.h; sourceTree = "<group>"; };
+		B0B0C37B1ED5B8CD00912E64 /* ofxSoundFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSoundFile.cpp; sourceTree = "<group>"; };
+		B0B0C37C1ED5B8CD00912E64 /* ofxSoundFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundFile.h; sourceTree = "<group>"; };
+		B0B0C37D1ED5B8CD00912E64 /* ofxSoundMixer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSoundMixer.cpp; sourceTree = "<group>"; };
+		B0B0C37E1ED5B8CD00912E64 /* ofxSoundMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundMixer.h; sourceTree = "<group>"; };
+		B0B0C37F1ED5B8CD00912E64 /* ofxSoundObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSoundObject.cpp; sourceTree = "<group>"; };
+		B0B0C3801ED5B8CD00912E64 /* ofxSoundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundObject.h; sourceTree = "<group>"; };
+		B0B0C3811ED5B8CD00912E64 /* ofxSoundObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundObjects.h; sourceTree = "<group>"; };
+		B0B0C3831ED5B8CD00912E64 /* DigitalDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalDelay.h; sourceTree = "<group>"; };
+		B0B0C3841ED5B8CD00912E64 /* LowPassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowPassFilter.h; sourceTree = "<group>"; };
+		B0B0C3851ED5B8CD00912E64 /* NoiseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoiseGenerator.h; sourceTree = "<group>"; };
+		B0B0C3861ED5B8CD00912E64 /* SineWaveGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SineWaveGenerator.h; sourceTree = "<group>"; };
+		B0B0C3871ED5B8CD00912E64 /* waveformDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waveformDraw.h; sourceTree = "<group>"; };
+		B0B0C3A31ED5B8CD00912E64 /* ofxTween2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTween2.cpp; sourceTree = "<group>"; };
+		B0B0C3A41ED5B8CD00912E64 /* ofxTween2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTween2.h; sourceTree = "<group>"; };
 		B2E1EB0F30B9F14A9B7FA4D6 /* % */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = "%"; path = "../../../addons/ofxSoundObjects/libs/libaudiodecoder/include/apple/%"; sourceTree = SOURCE_ROOT; };
 		B87C60311EC1FE841C1ECD89 /* ofxLabel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLabel.h; path = ../../../addons/ofxGui/src/ofxLabel.h; sourceTree = SOURCE_ROOT; };
-		C2DBFF6E0A9F7007105C9541 /* ofxSoundObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSoundObject.cpp; path = ../../../addons/ofxSoundObjects/src/ofxSoundObject.cpp; sourceTree = SOURCE_ROOT; };
 		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
-		C75C272CFB94B54CABC5EE42 /* ofxBasicSoundPlayer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBasicSoundPlayer.h; path = ../../../addons/ofxSoundObjects/src/ofxBasicSoundPlayer.h; sourceTree = SOURCE_ROOT; };
 		C88333E71C9457E441C33474 /* ofxButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxButton.cpp; path = ../../../addons/ofxGui/src/ofxButton.cpp; sourceTree = SOURCE_ROOT; };
-		DBF555CF2E50BC6F8C44A805 /* LowPassFilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = LowPassFilter.h; path = ../../../addons/ofxSoundObjects/src/SoundObjects/LowPassFilter.h; sourceTree = SOURCE_ROOT; };
-		DC8BB4888D53830E1BCB1732 /* audiodecoderbase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = audiodecoderbase.cpp; path = ../../../addons/ofxSoundObjects/libs/libaudiodecoder/src/audiodecoderbase.cpp; sourceTree = SOURCE_ROOT; };
 		E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPanel.cpp; path = ../../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* gestionSonidoDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gestionSonidoDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +132,6 @@
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		EB0153789FDCEF9B5303141A /* ofxSoundObjects.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSoundObjects.h; path = ../../../addons/ofxSoundObjects/src/ofxSoundObjects.h; sourceTree = SOURCE_ROOT; };
 		ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGuiGroup.cpp; path = ../../../addons/ofxGui/src/ofxGuiGroup.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -148,41 +147,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DD23CBDBDA3CB59B15B7F48 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				8E9267A2BD7AEA483C804AA0 /* ofxBasicSoundPlayer.cpp */,
-				C75C272CFB94B54CABC5EE42 /* ofxBasicSoundPlayer.h */,
-				1517C892632CE73885FA803C /* ofxSoundFile.cpp */,
-				0E08C3779A6B40C22BD6ADEC /* ofxSoundFile.h */,
-				9F768214F9048463922BAE31 /* ofxSoundMixer.cpp */,
-				70F5DA63DD8360DE10639BF0 /* ofxSoundMixer.h */,
-				C2DBFF6E0A9F7007105C9541 /* ofxSoundObject.cpp */,
-				1602920CA9506139A0D594F8 /* ofxSoundObject.h */,
-				EB0153789FDCEF9B5303141A /* ofxSoundObjects.h */,
-				F458332A72530CBF5B51D7B7 /* SoundObjects */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
-		41B26342D97D99EEEB93B344 /* ofxSoundObjects */ = {
-			isa = PBXGroup;
-			children = (
-				1DD23CBDBDA3CB59B15B7F48 /* src */,
-				EE444319650A32985C5E8F71 /* libs */,
-			);
-			name = ofxSoundObjects;
-			sourceTree = "<group>";
-		};
-		4710833B233798A49949C87A /* apple */ = {
-			isa = PBXGroup;
-			children = (
-				B14AC0DEB6082D5B5B722764 /* CADebugMacros.h */,
-				5AD5C0C0E99DAF876B40FFA9 /* CAStreamBasicDescription.h */,
-			);
-			name = apple;
-			sourceTree = "<group>";
-		};
 		480A780D8D0308AE4A368801 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,17 +160,6 @@
 			children = (
 			);
 			name = local_addons;
-			sourceTree = "<group>";
-		};
-		87B08DF735299C35C5021EEA /* include */ = {
-			isa = PBXGroup;
-			children = (
-				4710833B233798A49949C87A /* apple */,
-				1D7E7C28922E7C507DD56160 /* audiodecoder.h */,
-				1CBC36432FB26826AFDBB241 /* audiodecoderbase.h */,
-				9C10C5DAD721456271310627 /* audiodecodercoreaudio.h */,
-			);
-			name = include;
 			sourceTree = "<group>";
 		};
 		A763ED608B35AE3310251DEE /* src */ = {
@@ -235,42 +188,6 @@
 				0A1DAC09F322AE313A40706D /* ofxToggle.h */,
 			);
 			name = src;
-			sourceTree = "<group>";
-		};
-		B097C1701ED383F400371051 /* ofxEasing */ = {
-			isa = PBXGroup;
-			children = (
-				B097C1711ED383F400371051 /* src */,
-			);
-			name = ofxEasing;
-			sourceTree = "<group>";
-		};
-		B097C1711ED383F400371051 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				B097C1721ED383F400371051 /* easing_terms_of_use.html */,
-				B097C1731ED383F400371051 /* ofxEasing.h */,
-			);
-			name = src;
-			path = ../../../addons/ofxEasing/src;
-			sourceTree = "<group>";
-		};
-		B097C1741ED383FD00371051 /* ofxTween2 */ = {
-			isa = PBXGroup;
-			children = (
-				B097C1751ED383FD00371051 /* src */,
-			);
-			name = ofxTween2;
-			sourceTree = "<group>";
-		};
-		B097C1751ED383FD00371051 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				B097C1761ED383FD00371051 /* ofxTween2.cpp */,
-				B097C1771ED383FD00371051 /* ofxTween2.h */,
-			);
-			name = src;
-			path = ../../../addons/ofxTween2/src;
 			sourceTree = "<group>";
 		};
 		B0B0C2821ED5B5F700912E64 /* SHARED_CODE */ = {
@@ -302,24 +219,140 @@
 			path = sound;
 			sourceTree = "<group>";
 		};
+		B0B0C2981ED5B8CD00912E64 /* LOCAL_ADDONS */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C2991ED5B8CD00912E64 /* ofxEasing */,
+				B0B0C2B41ED5B8CD00912E64 /* ofxSoundObjects */,
+				B0B0C38A1ED5B8CD00912E64 /* ofxTween2 */,
+			);
+			name = LOCAL_ADDONS;
+			path = ../LOCAL_ADDONS;
+			sourceTree = "<group>";
+		};
+		B0B0C2991ED5B8CD00912E64 /* ofxEasing */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C2B11ED5B8CD00912E64 /* src */,
+			);
+			path = ofxEasing;
+			sourceTree = "<group>";
+		};
+		B0B0C2B11ED5B8CD00912E64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C2B31ED5B8CD00912E64 /* ofxEasing.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B0B0C2B41ED5B8CD00912E64 /* ofxSoundObjects */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C34B1ED5B8CD00912E64 /* libs */,
+				B0B0C3781ED5B8CD00912E64 /* src */,
+			);
+			path = ofxSoundObjects;
+			sourceTree = "<group>";
+		};
+		B0B0C34B1ED5B8CD00912E64 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C34C1ED5B8CD00912E64 /* libaudiodecoder */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		B0B0C34C1ED5B8CD00912E64 /* libaudiodecoder */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C34D1ED5B8CD00912E64 /* include */,
+				B0B0C3551ED5B8CD00912E64 /* src */,
+			);
+			path = libaudiodecoder;
+			sourceTree = "<group>";
+		};
+		B0B0C34D1ED5B8CD00912E64 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C34E1ED5B8CD00912E64 /* apple */,
+				B0B0C3511ED5B8CD00912E64 /* audiodecoder.h */,
+				B0B0C3521ED5B8CD00912E64 /* audiodecoderbase.h */,
+				B0B0C3531ED5B8CD00912E64 /* audiodecodercoreaudio.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		B0B0C34E1ED5B8CD00912E64 /* apple */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C34F1ED5B8CD00912E64 /* CADebugMacros.h */,
+				B0B0C3501ED5B8CD00912E64 /* CAStreamBasicDescription.h */,
+			);
+			path = apple;
+			sourceTree = "<group>";
+		};
+		B0B0C3551ED5B8CD00912E64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C3561ED5B8CD00912E64 /* audiodecoderbase.cpp */,
+				B0B0C3571ED5B8CD00912E64 /* audiodecodercoreaudio.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B0B0C3781ED5B8CD00912E64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C3791ED5B8CD00912E64 /* ofxBasicSoundPlayer.cpp */,
+				B0B0C37A1ED5B8CD00912E64 /* ofxBasicSoundPlayer.h */,
+				B0B0C37B1ED5B8CD00912E64 /* ofxSoundFile.cpp */,
+				B0B0C37C1ED5B8CD00912E64 /* ofxSoundFile.h */,
+				B0B0C37D1ED5B8CD00912E64 /* ofxSoundMixer.cpp */,
+				B0B0C37E1ED5B8CD00912E64 /* ofxSoundMixer.h */,
+				B0B0C37F1ED5B8CD00912E64 /* ofxSoundObject.cpp */,
+				B0B0C3801ED5B8CD00912E64 /* ofxSoundObject.h */,
+				B0B0C3811ED5B8CD00912E64 /* ofxSoundObjects.h */,
+				B0B0C3821ED5B8CD00912E64 /* SoundObjects */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B0B0C3821ED5B8CD00912E64 /* SoundObjects */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C3831ED5B8CD00912E64 /* DigitalDelay.h */,
+				B0B0C3841ED5B8CD00912E64 /* LowPassFilter.h */,
+				B0B0C3851ED5B8CD00912E64 /* NoiseGenerator.h */,
+				B0B0C3861ED5B8CD00912E64 /* SineWaveGenerator.h */,
+				B0B0C3871ED5B8CD00912E64 /* waveformDraw.h */,
+			);
+			path = SoundObjects;
+			sourceTree = "<group>";
+		};
+		B0B0C38A1ED5B8CD00912E64 /* ofxTween2 */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C3A21ED5B8CD00912E64 /* src */,
+			);
+			path = ofxTween2;
+			sourceTree = "<group>";
+		};
+		B0B0C3A21ED5B8CD00912E64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0C3A31ED5B8CD00912E64 /* ofxTween2.cpp */,
+				B0B0C3A41ED5B8CD00912E64 /* ofxTween2.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
 				480A780D8D0308AE4A368801 /* ofxGui */,
-				41B26342D97D99EEEB93B344 /* ofxSoundObjects */,
-				B097C1701ED383F400371051 /* ofxEasing */,
-				B097C1741ED383FD00371051 /* ofxTween2 */,
 			);
 			name = addons;
-			sourceTree = "<group>";
-		};
-		DFFC7CFC295FB1816D40F88E /* src */ = {
-			isa = PBXGroup;
-			children = (
-				DC8BB4888D53830E1BCB1732 /* audiodecoderbase.cpp */,
-				132DE600BC2D5A7FF190F13D /* audiodecodercoreaudio.cpp */,
-			);
-			name = src;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -338,6 +371,7 @@
 				B0B0C2821ED5B5F700912E64 /* SHARED_CODE */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				B0B0C2981ED5B8CD00912E64 /* LOCAL_ADDONS */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
 				E4B69B5B0A3A1756003C02F2 /* gestionSonidoDebug.app */,
@@ -361,35 +395,6 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
-			sourceTree = "<group>";
-		};
-		EE444319650A32985C5E8F71 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				F26253624AC86260AFD80B56 /* libaudiodecoder */,
-			);
-			name = libs;
-			sourceTree = "<group>";
-		};
-		F26253624AC86260AFD80B56 /* libaudiodecoder */ = {
-			isa = PBXGroup;
-			children = (
-				87B08DF735299C35C5021EEA /* include */,
-				DFFC7CFC295FB1816D40F88E /* src */,
-			);
-			name = libaudiodecoder;
-			sourceTree = "<group>";
-		};
-		F458332A72530CBF5B51D7B7 /* SoundObjects */ = {
-			isa = PBXGroup;
-			children = (
-				08102CADCDFED739CB531D60 /* DigitalDelay.h */,
-				DBF555CF2E50BC6F8C44A805 /* LowPassFilter.h */,
-				4DDD5A51152F1581BDF9CCCF /* NoiseGenerator.h */,
-				7E5FAD2B1CAA506583AF8584 /* SineWaveGenerator.h */,
-				486582E0863B80FABE19AA90 /* waveformDraw.h */,
-			);
-			name = SoundObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,7 +501,10 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				B0B0C2951ED5B5F700912E64 /* AstanaSoundSecuencia.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				B0B0C3C41ED5B8CD00912E64 /* ofxSoundMixer.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
+				B0B0C3C51ED5B8CD00912E64 /* ofxSoundObject.cpp in Sources */,
+				B0B0C3BE1ED5B8CD00912E64 /* audiodecodercoreaudio.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				B0B0C2931ED5B5F700912E64 /* AstanaSoundManager.cpp in Sources */,
 				853E0BA2F448076739446874 /* ofxColorPicker.cpp in Sources */,
@@ -507,17 +515,14 @@
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				B0B0C2961ED5B5F700912E64 /* AstanaSoundTextura.cpp in Sources */,
+				B0B0C3CA1ED5B8CD00912E64 /* ofxTween2.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
-				4DD72C78DA1A5EE122BFFECE /* ofxBasicSoundPlayer.cpp in Sources */,
-				BBD9844681A294B282AAB320 /* ofxSoundFile.cpp in Sources */,
-				7840F332D7330DAAD11D2250 /* ofxSoundMixer.cpp in Sources */,
-				B097C1781ED383FD00371051 /* ofxTween2.cpp in Sources */,
-				878C0EFF16E187226B0148FA /* ofxSoundObject.cpp in Sources */,
 				B0B0C2921ED5B5F700912E64 /* AstanaSoundIntervencion.cpp in Sources */,
+				B0B0C3C21ED5B8CD00912E64 /* ofxBasicSoundPlayer.cpp in Sources */,
+				B0B0C3BD1ED5B8CD00912E64 /* audiodecoderbase.cpp in Sources */,
 				B0B0C2911ED5B5F700912E64 /* AstanaSoundGroup.cpp in Sources */,
 				B0B0C2941ED5B5F700912E64 /* AstanaSoundPlayer.cpp in Sources */,
-				3BB5196CADF7BC9A7777C5D9 /* audiodecoderbase.cpp in Sources */,
-				BE536BA5791C07A98B8365B0 /* audiodecodercoreaudio.cpp in Sources */,
+				B0B0C3C31ED5B8CD00912E64 /* ofxSoundFile.cpp in Sources */,
 				A7936996C1DBDACFDC89B3A1 /* % in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,12 +591,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					../../../addons/ofxGui/src,
-					../../../addons/ofxSoundObjects/libs,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder/include,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder/src,
-					../../../addons/ofxSoundObjects/src,
-					../../../addons/ofxSoundObjects/src/SoundObjects,
+					../LOCAL_ADDONS/ofxSoundObjects/libs,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder/include,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder/src,
+					../LOCAL_ADDONS/ofxSoundObjects/src,
+					../LOCAL_ADDONS/ofxSoundObjects/src/SoundObjects,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -696,12 +701,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					../../../addons/ofxGui/src,
-					../../../addons/ofxSoundObjects/libs,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder/include,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder/src,
-					../../../addons/ofxSoundObjects/src,
-					../../../addons/ofxSoundObjects/src/SoundObjects,
+					../LOCAL_ADDONS/ofxSoundObjects/libs,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder/include,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder/src,
+					../LOCAL_ADDONS/ofxSoundObjects/src,
+					../LOCAL_ADDONS/ofxSoundObjects/src/SoundObjects,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -726,12 +731,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					../../../addons/ofxGui/src,
-					../../../addons/ofxSoundObjects/libs,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder/include,
-					../../../addons/ofxSoundObjects/libs/libaudiodecoder/src,
-					../../../addons/ofxSoundObjects/src,
-					../../../addons/ofxSoundObjects/src/SoundObjects,
+					../LOCAL_ADDONS/ofxSoundObjects/libs,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder/include,
+					../LOCAL_ADDONS/ofxSoundObjects/libs/libaudiodecoder/src,
+					../LOCAL_ADDONS/ofxSoundObjects/src,
+					../LOCAL_ADDONS/ofxSoundObjects/src/SoundObjects,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
