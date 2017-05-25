@@ -20,7 +20,7 @@ bool AstanaSoundIntervencion::isIntervencionPlaying(){
     for (auto i: intervencionesIndices) {
         if (i < players.size()) {
             if (players[i].isPlaying()) {
-                cout << "intervencion " << players[i].getName() << " playing!" << endl;
+            //    cout << "intervencion " << players[i].getName() << " playing!" << endl;
                 return true;
             }
         }
@@ -62,11 +62,11 @@ void AstanaSoundIntervencion::setListeners(bool e){
                 if(ofStringTimesInString(ofToLower(players[i].getName()), "loop")){
                     loopIndex = i;
                     listeners.push_back(players[i].endEvent.newListener(this, &AstanaSoundIntervencion::onLoopEnd));
-                    cout << "AstanaSoundIntervencion loop: " << players[i].getName() << " index: " << loopIndex << endl;
+                //    cout << "AstanaSoundIntervencion loop: " << players[i].getName() << " index: " << loopIndex << endl;
                 }else{
                     listeners.push_back(players[i].endEvent.newListener(this, &AstanaSoundIntervencion::onIntervencionEnd));
                     intervencionesIndices.push_back(i);
-                    cout << "AstanaSoundIntervencion intervencion: " << players[i].getName() << " index: " << i << endl;
+                  //  cout << "AstanaSoundIntervencion intervencion: " << players[i].getName() << " index: " << i << endl;
                 }
             }
         }
@@ -75,7 +75,7 @@ void AstanaSoundIntervencion::setListeners(bool e){
 //---------------------------------------------------
 bool AstanaSoundIntervencion::isNextAllowed(){
     bool bIntPlay = isIntervencionPlaying();
-    cout << __PRETTY_FUNCTION__ << " intervencion playing: " << (bIntPlay?"TRUE":"FALSE") << " first loop: " << (bFirstLoop?"TRUE":"FALSE") << endl;
+    //cout << __PRETTY_FUNCTION__ << " intervencion playing: " << (bIntPlay?"TRUE":"FALSE") << " first loop: " << (bFirstLoop?"TRUE":"FALSE") << endl;
     if (bIntPlay) {
         return false;
     }
@@ -101,7 +101,7 @@ bool AstanaSoundIntervencion::playNext(){
             }
         }
     }else{
-        cout << __PRETTY_FUNCTION__ << " not ALLOWED"<< endl;
+        //cout << __PRETTY_FUNCTION__ << " not ALLOWED"<< endl;
     }
     return false;
 }

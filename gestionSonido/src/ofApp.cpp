@@ -5,7 +5,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     //*
-    ofFileDialogResult r = ofSystemLoadDialog("Cargar carpeta audios", true);
+	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofFileDialogResult r = ofSystemLoadDialog("Cargar carpeta audios", true);
     if (r.bSuccess) {
         cout << "path audios relative: " << ofFilePath::makeRelative(ofToDataPath("",true), r.getPath()) << endl;
         sndMngr.setup(r.getPath());

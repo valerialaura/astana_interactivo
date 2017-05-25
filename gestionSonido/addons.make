@@ -1,2 +1,4 @@
+ofxEasing
 ofxGui
 ofxSoundObjects
+ofxTween2

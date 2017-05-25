@@ -21,8 +21,8 @@ public:
         parameters.setName("Digital delay");
         parameters.add(bBypass.set("Bypass", true));
         parameters.add(delay.set("Delay Time (samples)", 4800, 0, 48000*MAX_DELAY_TIME));
-        parameters.add(feedback.set("Feedback", 0.5, 0,1));
-        parameters.add(mix.set("Mix", 0.5, 0,1));
+        parameters.add(feedback.set("Feedback", 0, 0,1));
+        parameters.add(mix.set("Mix", 0, 0,1));
         buffer.resize(48000*MAX_DELAY_TIME);
         buffer.assign(48000*MAX_DELAY_TIME, 0);
     }
@@ -36,7 +36,7 @@ public:
         return in + (out - in)*mix;
     };
     
-    void process(ofSoundBuffer &input, ofSoundBuffer &output) {
+    virtual void process(ofSoundBuffer &input, ofSoundBuffer &output) {
         if (bBypass) {
             input.copyTo(output);
         }else{

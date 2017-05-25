@@ -22,6 +22,14 @@ void AstanaSoundGroup::setup(string folderPath){
 //    for(auto& n: names){
 //        cout << "    " << n << endl;
 //    }
+	for (auto& p : players) {
+		p.connectTo(mixer);
+	}
+	//output = &mixer;
+	//if (mixer.getNumChannels()) {
+		//mixer.connectTo(delayFx);
+	//	output = &delayFx;
+	//}
     gui.getGroup("Pistas Loopeables").minimize();
     if(!bIsTextura){
         gui.getGroup("Texturas Validas").minimize();
@@ -43,7 +51,7 @@ void AstanaSoundGroup::loadFolder(string folderPath){
     players.clear();
     for (auto& f: dir.getFiles()) {
         players.push_back(AstanaSoundPlayer());
-        players.back().load(f.getAbsolutePath());
+		players.back().load(f.getAbsolutePath());
     }
     bFolderLoaded = true;
   //  this->setupParameters();
@@ -52,16 +60,18 @@ void AstanaSoundGroup::loadFolder(string folderPath){
 void AstanaSoundGroup::setupParameters(){
 //    cout << __PRETTY_FUNCTION__ << endl;
     if(bFolderLoaded){
+		mixer.masterVol.setName("Master Grupo");
+		parameters.add(mixer.masterVol);
         addParameterGroup(loopeablesGroup,"Pistas Loopeables");
         addParameterGroup(volumeGroup,"Volumen Pistas");
         addParameterGroup(panGroup,"Pan Pistas");
-        parameters.add(delayFx.parameters);
-        for(auto& p: players){
+        //parameters.add(delayFx.parameters);
+
+		for(auto& p: players){
             if(p.isLoaded()){
                 loopeablesGroup.add(p.loopeable);
                 volumeGroup.add(p.volume);
                 panGroup.add(p.pan);
-                p.connectTo(delayFx).connectTo(mixer);
             }
         }
         if(!isTextura() && manager != nullptr){

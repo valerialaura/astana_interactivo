@@ -24,13 +24,17 @@ void AstanaSoundManager::drawGui(){
 void AstanaSoundManager::setup(string folderPath){
     load(folderPath);
     setupGui();
+
+
+	mixer.print();
 }
 //---------------------------------------------------
 void AstanaSoundManager::setupGui(){
     string xmlName = "astana_sound_manager_settings.xml";
     gui.setup("OPCIONES GLOBALES", xmlName);
     gui.setHeaderBackgroundColor(ofColor::blue);
-    gui.add(fadeEscenaDuration.set("duracion fade escenas. segs.", 1, 0, 10));
+	gui.add(mixer.masterVol);
+	gui.add(fadeEscenaDuration.set("duracion fade escenas. segs.", 1, 0, 10));
     gui.add(new ofxButton(ofParameter<void>("STOP ALL")));
     gui.getButton("STOP ALL").addListener(this, &AstanaSoundManager::stopAll);
     gui.loadFromFile(xmlName);
@@ -128,8 +132,12 @@ void AstanaSoundManager::load(string folderPath){
     settings.sampleRate = 48000;
     settings.setOutListener(&mixer);
     soundStream.setup(settings);
-}
 
+}
+//---------------------------------------------------
+void AstanaSoundManager::close() {
+	soundStream.close();
+}
 //---------------------------------------------------
 template<typename T>
 shared_ptr<T> AstanaSoundManager::addGroup(string groupFolder){
@@ -141,8 +149,13 @@ shared_ptr<T> AstanaSoundManager::addGroup(string groupFolder){
         p->setName(groupName);
         p->setManager(this);
         p->setup(f.getAbsolutePath());
-        p->getMixer().connectTo(mixer);
-        return p;
+		p->getMixer().connectTo(mixer);
+		/*if (p->getOutput()) {
+			p->getOutput()->connectTo(mixer);
+		}else {
+			cout << groupName << "no se puede conectar a mixer. su output es null"<<endl;
+		}*/
+		return p;
     }else{
         cout << "ya existe el grupo " << groupName << endl;
     }

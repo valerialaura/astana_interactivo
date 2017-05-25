@@ -37,13 +37,15 @@ public:
     ofxPanel gui;
     bool isTextura(){return bIsTextura;}
     ofxSoundMixer& getMixer(){return mixer;}
+	//ofxSoundObject* getOutput() { return output; }
     virtual void setListeners(bool e = true);
     void highlightGui(bool hl);
     bool isPlaying();
     
-    AstanaDigitalDelay delayFx;
+    //AstanaDigitalDelay delayFx;
     
 protected:
+	//ofxSoundObject* output = nullptr;
     void updateGui();
     virtual void setupParameters();
     virtual void loadFolder(string folderPath);

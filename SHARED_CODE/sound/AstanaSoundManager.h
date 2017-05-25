@@ -19,7 +19,7 @@ public:
     virtual ~AstanaSoundManager();
     
     void setup(string folderPath);
-
+	void close();
     void drawGui();
     shared_ptr<AstanaSoundTextura> getTexturas(){return texturas;}
     void playNextInGroup(string groupName);
@@ -30,6 +30,7 @@ public:
     
     ofParameter<float>fadeEscenaDuration;
     ofxPanel gui;
+	
 protected:
     virtual void startActiveGroup();
     void setupGui();

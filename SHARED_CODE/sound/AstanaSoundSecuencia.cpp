@@ -13,7 +13,9 @@ AstanaSoundSecuencia::AstanaSoundSecuencia():AstanaSoundGroup(){}
 bool AstanaSoundSecuencia::play(){
     if (AstanaSoundGroup::play()) {
         currentListener = players[current].endEvent.newListener(this, &AstanaSoundSecuencia::onCurrentEnd);
+		return true;
     }
+	return false;
 }
 //---------------------------------------------------
 bool AstanaSoundSecuencia::isNextAllowed(){
