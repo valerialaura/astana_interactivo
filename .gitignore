@@ -11,7 +11,7 @@ ofxKinectBlobTrackerExample/
 ###########################
 /bin/*
 !/bin/data/
-
+*/.vs/
 #########
 # general
 #########
@@ -31,13 +31,6 @@ ofxKinectBlobTrackerExample/
 *.exp
 *.lib
 *.iobj
-*.ipdb*.iobj
-*.ipdb*.iobj
-*.ipdb*.iobj
-*.ipdb*.iobj
-*.ipdb*.iobj
-*.ipdb*.iobj
-*.ipdb*.iobj
 *.ipdb
 
 ########################
