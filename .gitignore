@@ -28,6 +28,17 @@ ofxKinectBlobTrackerExample/
 *.log
 *.exe
 *.dll
+*.exp
+*.lib
+*.iobj
+*.ipdb*.iobj
+*.ipdb*.iobj
+*.ipdb*.iobj
+*.ipdb*.iobj
+*.ipdb*.iobj
+*.ipdb*.iobj
+*.ipdb*.iobj
+*.ipdb
 
 ########################
 # IDE files which should
