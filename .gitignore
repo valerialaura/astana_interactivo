@@ -26,6 +26,8 @@ ofxKinectBlobTrackerExample/
 *.pyc
 .svn/
 *.log
+*.exe
+*.dll
 
 ########################
 # IDE files which should
