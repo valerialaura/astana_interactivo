@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Blob_Finder>
+	<Find_Blobs>0</Find_Blobs>
+	<Send_Holes>0</Send_Holes>
+	<invert_Blob_Finder>0</invert_Blob_Finder>
+	<maxArea>29427</maxArea>
+	<minArea>949</minArea>
+	<farThreshold>733</farThreshold>
+	<nearThreshold>0</nearThreshold>
+	<blurAmount>2</blurAmount>
+	<blurAmount1>2</blurAmount1>
+	<nErode0>1</nErode0>
+	<nDilate0>1</nDilate0>
+	<nErode1>1</nErode1>
+	<nDilate1>1</nDilate1>
+	<Tracker_Persistance>15</Tracker_Persistance>
+	<Tracker_Max_Dist>32</Tracker_Max_Dist>
+	<Draw_tracker_labels>1</Draw_tracker_labels>
+	<Blobs_Min_Vel>1</Blobs_Min_Vel>
+</Blob_Finder>
+<BlobFinder>
+	<Draw_Blob_Finder>1</Draw_Blob_Finder>
+	<Blob_Finder>
+		<Find_Blobs>1</Find_Blobs>
+		<Send_Holes>0</Send_Holes>
+		<invert_Blob_Finder>0</invert_Blob_Finder>
+		<maxArea>134387</maxArea>
+		<minArea>1984</minArea>
+		<farThreshold>986</farThreshold>
+		<nearThreshold>0</nearThreshold>
+		<blurAmount>2</blurAmount>
+		<blurAmount1>2</blurAmount1>
+		<nErode0>1</nErode0>
+		<nDilate0>1</nDilate0>
+		<nErode1>1</nErode1>
+		<nDilate1>1</nDilate1>
+		<Tracker_Persistance>15</Tracker_Persistance>
+		<Tracker_Max_Dist>32</Tracker_Max_Dist>
+		<Draw_tracker_labels>1</Draw_tracker_labels>
+		<Blobs_Min_Vel>1</Blobs_Min_Vel>
+	</Blob_Finder>
+</BlobFinder>
