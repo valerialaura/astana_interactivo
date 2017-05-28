@@ -225,7 +225,6 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 	}
 	// objetos con elementos recientemente muertos(killed) y que ya llevan un tiempo muertos(ghost)
 	for (int i = 0; i < deadLabels.size(); i++) {
-//		if (tracker.existsPrevious(deadLabels[i])) {
 		auto label = deadLabels[i];
 		if(prevLabelIndex.count(label)){
 			auto ind = prevLabelIndex[label];
@@ -241,7 +240,6 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			ghostBlobs.back()->label = label;
 			ghostBlobs.back()->age = tracker.getAge(label);
 		}
-//		ghostBlobs.push_back(allBlobs[labelIndex[deadLabels[i]]]);
 	}
 	// objetos que se han movido mas que el minimo determinado por blobMinVel
 	// o que su area ha cambiado mas que blobMinAreaDiff
@@ -276,14 +274,14 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			group.push_back(a);
 		}
 	};
-	
+	// objetos que se han fusionado (merged)
 	for (auto& k : killedBlobs) {
 		for (auto& a : allBlobs) {
 			if (a->boundingRect.inside(k->boundingRect)) {
 				a->mergedWith = k;
 				k->mergedWith = a;
 				addUnique(mergedBlobs, a);
-				addUnique(mergedBlobs, k);
+//				addUnique(mergedBlobs, k);
 				break;
 			}
 		}	
