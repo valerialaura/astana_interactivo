@@ -1,4 +1,4 @@
-#include "AstanaKinectBlobFinder.h"
+#include "AstanaKinectBlobFinder.h"	
 #include "ofxTimeMeasurements.h"
 
 #define DEPTH_WIDTH 512
@@ -87,9 +87,7 @@ void AstanaKinectBlobFinder::trackerMaxDistChanged(int& i) {
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::update() {
-	TS_START("Kinect Update");
 	kinect.update();
-	TS_STOP("Kinect Update");
 
 	if (kinect.isFrameNew()) {
 		auto p = kinect.getDepthSource()->getPixels();
@@ -109,39 +107,37 @@ void AstanaKinectBlobFinder::update() {
 	}
 	//*
 	if (bNewFrame) {
-	//	rawImage.update();
-		//grayImage.update();
 		mutex.lock();
 		if (!thresholdedTex.isAllocated()) {
 			thresholdedTex.allocate(thresholdedPix);
 		}
-		thresholdedTex.loadData(thresholdedPix);//  update();
+		thresholdedTex.loadData(thresholdedPix);
 		mutex.unlock();
 	}//*/
 #endif
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
-	TS_START("BLOB FINDER UPDATE");
+	
 	if (!bIsSetup)return;
 
 	if (p.getWidth() != thresholdedPix.getWidth() || p.getHeight() != thresholdedPix.getHeight()) {
 		cout << "Allocating imgs" << endl;
 		grayImage.allocate(p.getWidth(), p.getHeight(), OF_IMAGE_GRAYSCALE);
-		//thresholded.allocate(p.getWidth(), p.getHeight(), OF_IMAGE_GRAYSCALE);
+		
 		thresholdedPix.allocate(p.getWidth(), p.getHeight(), OF_IMAGE_GRAYSCALE);
 		rawImage.allocate(p.getWidth(), p.getHeight(), OF_IMAGE_GRAYSCALE);
 	}
-	TS_START("memcpy");
+	
 	memcpy(grayImage.getPixels().getData(), p.getData(), p.size() * sizeof(unsigned short));
 	memcpy(rawImage.getPixels().getData(), p.getData(), p.size() * sizeof(unsigned short));
-	TS_STOP("memcpy");
-	TS_START("blur");
+	
+	
 	if (bBlur) {
 		ofxCv::blur(grayImage, blurAmount);
 	}
-	TS_STOP("blur");
-	TS_START("thresholding");
+	
+	
 	int nPix = grayImage.getPixels().size();
 	auto d = grayImage.getPixels().getData();
 	auto t = thresholdedPix.getData();
@@ -153,35 +149,29 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			t[i] = 0;
 		}
 	}
-	TS_STOP("thresholding");
-	TS_START("erode/dilate");
-	TS_START("erode0");
+	
+	
+	
 	for (int i = 0; i < nErode0; i++) {
 		ofxCv::erode(thresholdedPix);
 	}
-	TS_STOP("erode0");
-	TS_START("dilate0");
+	
+	
 	for (int i = 0; i < nDilate0; i++) {
 		ofxCv::dilate(thresholdedPix);
 	}
-	TS_STOP("dilate0");
-	TS_START("erode1");
+	
+	
 	for (int i = 0; i < nErode1; i++) {
 		ofxCv::erode(thresholdedPix);
 	}
-	TS_STOP("erode1");
-	TS_START("dilate1");
+	
+	
 	for (int i = 0; i < nDilate1; i++) {
 		ofxCv::dilate(thresholdedPix);
 	}
-	TS_STOP("dilate1");
-	TS_STOP("erode/dilate");
-
-//	thresholded.getPixels() = thresholdedPix;
-	//memcpy(thresholdedPix.getData(), thresholdedPix.getData(), thresholdedPix.size() * sizeof(unsigned short));
-
-
-	TS_START("Find Blobs");
+	
+	
 	if (bFindBlobs) {
 		contourFinder.setInvert(invert);
 		contourFinder.setFindHoles(holes);
@@ -189,8 +179,8 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 		contourFinder.setMaxArea(maxArea);
 		contourFinder.findContours(ofxCv::toCv(thresholdedPix));
 	}
-	TS_STOP("Find Blobs");
-	TS_START("Blob Processing");
+	
+	
 	auto tracker = contourFinder.getTracker();
 	auto currentLabels = tracker.getCurrentLabels();
 	auto previousLabels = tracker.getPreviousLabels();
@@ -287,7 +277,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			group.push_back(a);
 		}
 	};
-	TS_START("merged blobs");
+	
 	for (auto& k : killedBlobs) {
 		for (auto& a : allBlobs) {
 			if (a->boundingRect.inside(k->boundingRect)) {
@@ -299,19 +289,15 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			}
 		}	
 	}
-	TS_STOP("merged blobs");
+	
 	mutex.unlock();
-	TS_START("Blobs notifications");
+	
 	if(newLabels.size()) ofNotifyEvent(newBlobEvent);
 	if(killedBlobs.size())  ofNotifyEvent(killedBlobEvent);
 	if(movedBlobs.size()) ofNotifyEvent(onMoveBlobEvent);
 	if (scaledBlobs.size()) ofNotifyEvent(onScaleBlobEvent);
 	if(mergedBlobs.size()) ofNotifyEvent(onMergeBlobEvent);
 
-	TS_STOP("Blob Processing");
-	TS_STOP("Blobs notifications");
-
-	TS_STOP("BLOB FINDER UPDATE");
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::threadedFunction() {
@@ -365,7 +351,7 @@ void AstanaKinectBlobFinder::draw() {
 		thresholdedTex.draw(0, DEPTH_HEIGHT);
 	}
 	if (bDrawGhosts) {
-		TS_START("ghosts");
+		
 		ofPushStyle();
 		ofSetColor(120);
 		ofSetLineWidth(1);
@@ -375,7 +361,7 @@ void AstanaKinectBlobFinder::draw() {
 				if (b)	ofDrawRectangle(b->boundingRect);
 			}
 		}
-		TS_STOP("rects");
+		
 		ofPopStyle();
 	}
 	drawTracker();
@@ -386,7 +372,7 @@ void AstanaKinectBlobFinder::draw() {
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::drawRects() {
 	if (bDrawRects) {
-		TS_START("rects");
+		
 		ofPushStyle();
 		ofSetColor(ofxCv::yellowPrint);
 		ofSetLineWidth(1);
@@ -396,15 +382,14 @@ void AstanaKinectBlobFinder::drawRects() {
 				if (b)	ofDrawRectangle(b->boundingRect);
 			}
 		}
-		TS_STOP("rects");
+		
 		ofPopStyle();
 	}
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::drawPolylines() {
 	if (bDrawPolylines) {
-		TS_START("polylines")
-			ofPushStyle();
+		ofPushStyle();
 		ofSetColor(ofxCv::magentaPrint);
 		ofSetLineWidth(3);
 		if (currentBlobsFront.count(ASTANA_ALL_BLOBS)) {
@@ -412,7 +397,6 @@ void AstanaKinectBlobFinder::drawPolylines() {
 				if (b)	b->polyline.draw();
 			}
 		}
-		TS_STOP("polylines");
 		ofPopStyle();
 	}
 }
