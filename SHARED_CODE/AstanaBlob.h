@@ -11,8 +11,11 @@ public:
 	ofRectangle boundingRect;
 	glm::vec2 center;
 	double area;
+	double areaDiff;
 	glm::vec2 vel;
 	unsigned int label;
+	shared_ptr<AstanaBlob> mergedWith = nullptr;
+	unsigned int age;
 	//AstanaBlob(ofPolyline* pl, cv::Rect* r, cv::Point2f* p, int l):polyline(pl), rect(r), center(p), label(l) {}
 	//ofPolyline* polyline = nullptr;
 	//cv::Rect* rect = nullptr;
