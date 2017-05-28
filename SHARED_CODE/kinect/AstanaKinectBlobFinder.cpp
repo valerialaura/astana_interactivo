@@ -1,5 +1,4 @@
 #include "AstanaKinectBlobFinder.h"	
-#include "ofxTimeMeasurements.h"
 
 #define DEPTH_WIDTH 512
 #define DEPTH_HEIGHT 424

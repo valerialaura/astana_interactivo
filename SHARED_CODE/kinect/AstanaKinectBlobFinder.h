@@ -26,7 +26,6 @@ public:
 	AstanaKinectBlobFinder();
 	virtual ~AstanaKinectBlobFinder();
 	void setup(int width, int height);
-	//void update(ofShortPixels& p);
 	void draw();
 	void drawDebug();
 	void drawTracker();
@@ -56,7 +55,6 @@ protected:
 	ofShortImage analyzedImg;
 #endif
 	ofShortImage grayImage, rawImage;
-	//ofImage thresholded;
 	ofPixels thresholdedPix;
 	ofTexture thresholdedTex;
 	ofxCv::ContourFinder contourFinder;
