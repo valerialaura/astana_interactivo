@@ -7,18 +7,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-	ofSetLogLevel(OF_LOG_VERBOSE);
-
-	TIME_SAMPLE_SET_FRAMERATE(60.0f); //set the app's target framerate (MANDATORY)
-									  //specify where the widget is to be drawn
-	TIME_SAMPLE_SET_DRAW_LOCATION(TIME_MEASUREMENTS_TOP_RIGHT); //specify a drawing location (OPTIONAL)
-	TIME_SAMPLE_SET_AVERAGE_RATE(0.1);	//averaging samples, (0..1],
-										//1.0 gets you no averaging at all
-										//use lower values to get steadier readings
-	TIME_SAMPLE_DISABLE_AVERAGE();	//disable averaging
-	TIME_SAMPLE_SET_REMOVE_EXPIRED_THREADS(true);
-
-
 
 	blobFinder.setup(DEPTH_WIDTH, DEPTH_HEIGHT);
 	string bfXml = "blobFinder_settings.xml";
@@ -52,9 +40,6 @@ void ofApp::onMergedBlobs() {}
 //--------------------------------------------------------------
 void ofApp::onNewBlobs() {
 	newBlobSound.play();
-	for (auto& b : blobFinder.getAllBlobs()) {
-		if (b)	cout << b->polyline.size() << endl;
-	}
 }
 //--------------------------------------------------------------
 void ofApp::onKillBlobs() {
@@ -66,23 +51,13 @@ void ofApp::onMovedBlobs() {
 }
 //--------------------------------------------------------------
 void ofApp::draw() {
-	TSGL_START("Draw");
 	if (bDrawBlobFinder) {
-		TS_START("blobfinder");
 		blobFinder.draw();
-		TS_STOP("blobfinder");
 	}
-	TS_START("bitmapstring");
 	stringstream ss;
 	ss << "fps : " << ofGetFrameRate() << endl;	
 	ofDrawBitmapStringHighlight(ss.str(), 20, 20);
-	TS_STOP("bitmapstring");
-	TS_START("GUI");
 	gui.draw();
-	TS_STOP("GUI");
-	TSGL_STOP("Draw");
-
-	TIME_SAMPLE_GET_INSTANCE()->setUiScale(2.0); //x2 the size for 4k screens
 }
 
 //--------------------------------------------------------------

@@ -6,7 +6,6 @@
 #include "ofxCv.h"
 
 #include "AstanaKinectBlobFinder.h"
-#include "ofxTimeMeasurements.h"
 
 
 class ofApp : public ofBaseApp {
