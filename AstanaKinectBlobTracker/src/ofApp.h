@@ -8,6 +8,11 @@
 #include "ofxKinectForWindows2.h"
 #include "AstanaKinectBlobFinder.h"
 
+#define USE_OFX_FONTSTASH
+
+#include "ofxTimeMeasurements.h"
+
+
 class ofApp : public ofBaseApp {
     
 public:

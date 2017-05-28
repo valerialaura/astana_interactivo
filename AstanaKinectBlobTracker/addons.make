@@ -3,4 +3,5 @@ ofxGui
 ofxKinectForWindows2
 ofxOpenCv
 ofxOsc
+ofxTimeMeasurements
 ofxXmlSettings
