@@ -1,5 +1,5 @@
 #include "AstanaKinectBlobFinder.h"	
-
+#include "AstanaDraw.h"
 #define DEPTH_WIDTH 512
 #define DEPTH_HEIGHT 424
 #define DEPTH_SIZE DEPTH_WIDTH * DEPTH_HEIGHT
@@ -309,40 +309,11 @@ void AstanaKinectBlobFinder::threadedFunction() {
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::drawTracker() {
-	if (bDrawTrackerLabels) {
-		ofSetColor(ofColor::red);
-		for (auto& a : getAllBlobs()) {
-			string msg = ofToString(a->label) + ":" + ofToString(a->age);
-			ofDrawBitmapString(msg, a->center);
-		}
-	}
-}
-string getBlobsAsString(string titulo, vector< shared_ptr<AstanaBlob> >& b) {
-	stringstream ss;
-	ss << titulo << " [" << b.size() << "] : ";
-	for (auto& a : b) {
-		ss << a->label << ", ";
-	}
-	ss << endl;
-	return ss.str();
+	if(bDrawTrackerLabels) AstanaDraw::drawLabels(currentBlobsFront);
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::drawDebug() {
-	if (bDrawDebug) {
-		string s;
-		s += getBlobsAsString("ALL   ", getAllBlobs());
-		s += getBlobsAsString("NEW   ", getNewBlobs());
-		s += getBlobsAsString("MOVED ", getMovedBlobs());
-		s += getBlobsAsString("SCALED", getScaledBlobs());
-		s += getBlobsAsString("MERGED", getMergedBlobs());
-		s += getBlobsAsString("KILLED", getKilledBlobs());
-		s += getBlobsAsString("GHOST ", getGhostBlobs());
-
-		ofBitmapFont f;
-		auto r = f.getBoundingBox(s, 0, 0);
-
-		ofDrawBitmapStringHighlight(s, ofGetWidth() - r .width - 20, ofGetHeight() - 20 - r.height);
-	}
+	if(bDrawDebug) AstanaDraw::drawDebug(currentBlobsFront);
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::draw() {
@@ -350,20 +321,7 @@ void AstanaKinectBlobFinder::draw() {
 	if (thresholdedTex.isAllocated()) {
 		thresholdedTex.draw(0, DEPTH_HEIGHT);
 	}
-	if (bDrawGhosts) {
-		
-		ofPushStyle();
-		ofSetColor(120);
-		ofSetLineWidth(1);
-		ofNoFill();
-		if (currentBlobsFront.count(ASTANA_GHOST_BLOBS)) {
-			for (auto& b : currentBlobsFront[ASTANA_GHOST_BLOBS]) {
-				if (b)	ofDrawRectangle(b->boundingRect);
-			}
-		}
-		
-		ofPopStyle();
-	}
+	if (bDrawGhosts) AstanaDraw::drawGhosts(currentBlobsFront);
 	drawTracker();
 	drawPolylines();
 	drawRects();
@@ -371,35 +329,13 @@ void AstanaKinectBlobFinder::draw() {
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::drawRects() {
-	if (bDrawRects) {
-		
-		ofPushStyle();
-		ofSetColor(ofxCv::yellowPrint);
-		ofSetLineWidth(1);
-		ofNoFill();
-		if (currentBlobsFront.count(ASTANA_ALL_BLOBS)) {
-			for (auto& b : currentBlobsFront[ASTANA_ALL_BLOBS]) {
-				if (b)	ofDrawRectangle(b->boundingRect);
-			}
-		}
-		
-		ofPopStyle();
-	}
+	if (bDrawRects) AstanaDraw::drawRects(currentBlobsFront);
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::drawPolylines() {
-	if (bDrawPolylines) {
-		ofPushStyle();
-		ofSetColor(ofxCv::magentaPrint);
-		ofSetLineWidth(3);
-		if (currentBlobsFront.count(ASTANA_ALL_BLOBS)) {
-			for (auto& b : currentBlobsFront[ASTANA_ALL_BLOBS]) {
-				if (b)	b->polyline.draw();
-			}
-		}
-		ofPopStyle();
-	}
+	if (bDrawPolylines) AstanaDraw::drawPolylines(currentBlobsFront);
 }
+
 //--------------------------------------------------------------
 vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getBlobs(AstanaBlobType type) {
 	if (currentBlobsFront.count(type)) {

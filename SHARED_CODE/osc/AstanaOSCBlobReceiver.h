@@ -12,26 +12,18 @@ class AstanaOSCBlobReceiver {
 public:
 
 	void setup();
-	void update(ofEventArgs& a);
 	void draw();
+	void drawGui();
 
 	ofxOscReceiver receiver;
-
-	/*int current_msg_string;
-	string msg_strings[NUM_MSG_STRINGS];
-	float timers[NUM_MSG_STRINGS];
-
-	float mouseXf, mouseYf;
-	int mouseButtonInt;
-	string mouseButtonState;
-
-	ofImage receivedImage;*/
-
+	AstanaBlobCollection current, previous;
+	
+private:
+	void update(ofEventArgs& a);
 	ofxPanel gui;
 	ofParameter<unsigned int> port;
+	ofParameter<bool> bDrawDebug, bDrawGhost, bDrawRects, bDrawPolylines, bDrawLabels, bEnableDraw;
 
-	AstanaBlobCollection current, previous;
-private:
 	bool bIsSetup = false;
 	ofEventListener updateListener;
 };

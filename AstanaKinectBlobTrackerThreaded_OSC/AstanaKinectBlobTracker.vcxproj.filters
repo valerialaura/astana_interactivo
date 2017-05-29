@@ -488,6 +488,9 @@
     <ClInclude Include="..\SHARED_CODE\osc\AstanaBlobsOSCConvert.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaDraw.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -23,6 +23,6 @@ protected:
 	ofxOscSender sender;
 
 private:
-	bool bIsSetup;
+	bool bIsSetup = false;
 	vector<ofEventListener> listeners;
 };
