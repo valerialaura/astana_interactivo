@@ -2,20 +2,8 @@
 //Kinect Blob Finder
 #include "ofMain.h"
 #include "ofxCv.h"
-#include "AstanaBlob.h"
 #include "ofxKinectForWindows2.h"
-enum AstanaBlobType {
-	ASTANA_ALL_BLOBS = 0,
-	ASTANA_NEW_BLOBS,
-	ASTANA_MOVED_BLOBS,
-	ASTANA_SCALED_BLOBS,
-	ASTANA_MERGED_BLOBS,
-	ASTANA_GHOST_BLOBS,
-	ASTANA_KILLED_BLOBS
-};
-typedef vector< shared_ptr<AstanaBlob> > AstanaBlobGroup;
-typedef std::map<AstanaBlobType, AstanaBlobGroup > AstanaBlobCollection;
-
+#include "AstanaBlobFinderTypes.h"
 #define ASTANA_USE_THREAD
 #ifdef ASTANA_USE_THREAD
 class AstanaKinectBlobFinder:public ofThread {
@@ -39,7 +27,8 @@ public:
 	ofEvent<void> onMoveBlobEvent;
 	ofEvent<void> onScaleBlobEvent;
 	ofEvent<void> onMergeBlobEvent;
-
+	ofEvent<void> anyBlobEvent;
+	AstanaBlobCollection& getBlobsCollection();
 	vector< shared_ptr<AstanaBlob> >& getAllBlobs();
 	vector< shared_ptr<AstanaBlob> >& getNewBlobs();
 	vector< shared_ptr<AstanaBlob> >& getMovedBlobs();

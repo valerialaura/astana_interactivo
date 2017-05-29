@@ -295,6 +295,9 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 	if (scaledBlobs.size()) ofNotifyEvent(onScaleBlobEvent);
 	if(mergedBlobs.size()) ofNotifyEvent(onMergeBlobEvent);
 
+	if (allBlobs.size() > 0 || killedBlobs.size() > 0 ) {
+		ofNotifyEvent(anyBlobEvent);
+	}
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::threadedFunction() {
@@ -338,7 +341,7 @@ void AstanaKinectBlobFinder::drawDebug() {
 		ofBitmapFont f;
 		auto r = f.getBoundingBox(s, 0, 0);
 
-		ofDrawBitmapStringHighlight(s, 20, ofGetHeight() - 20 - r.height);
+		ofDrawBitmapStringHighlight(s, ofGetWidth() - r .width - 20, ofGetHeight() - 20 - r.height);
 	}
 }
 //--------------------------------------------------------------
@@ -431,4 +434,8 @@ vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getKilledBlobs() {
 //--------------------------------------------------------------
 vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getGhostBlobs() {
 	return getBlobs(ASTANA_GHOST_BLOBS);
+}
+//--------------------------------------------------------------
+AstanaBlobCollection& AstanaKinectBlobFinder::getBlobsCollection() {
+	return currentBlobsFront;
 }

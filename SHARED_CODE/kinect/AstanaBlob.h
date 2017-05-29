@@ -1,12 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxCv.h"
 
 class AstanaBlob {
 public:
 	AstanaBlob() {}
-	AstanaBlob(ofPolyline pl, cv::Rect r, cv::Point2f p, double a):polyline(pl), boundingRect(r.x, r.y,r.width, r.height), center(p.x,p.y), area(a){}
 	ofPolyline polyline;
 	ofRectangle boundingRect;
 	glm::vec2 center;
@@ -14,7 +12,7 @@ public:
 	double areaDiff;
 	glm::vec2 vel;
 	unsigned int label;
-	shared_ptr<AstanaBlob> mergedWith = nullptr;
+	weak_ptr<AstanaBlob> mergedWith;// = nullptr;
 	unsigned int age;
 	//AstanaBlob(ofPolyline* pl, cv::Rect* r, cv::Point2f* p, int l):polyline(pl), rect(r), center(p), label(l) {}
 	//ofPolyline* polyline = nullptr;
