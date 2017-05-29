@@ -19,7 +19,6 @@ void AstanaOSCBlobReceiver::setup() {
 //--------------------------------------------------------------
 void AstanaOSCBlobReceiver::update(ofEventArgs& a) {
 	previous = current;
-	current.clear();
 	AstanaBlobsOSCConvert::toBlobs(receiver, current);
 }
 //--------------------------------------------------------------

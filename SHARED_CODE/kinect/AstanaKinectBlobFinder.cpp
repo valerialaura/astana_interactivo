@@ -46,6 +46,7 @@ void AstanaKinectBlobFinder::setup(int width, int height) {
 	preprocess.add(nDilate0.set("nDilate0", 1, 0, 5));
 	preprocess.add(nErode1.set("nErode1", 1, 0, 5));
 	preprocess.add(nDilate1.set("nDilate1", 1, 0, 5));
+	preprocess.add(polySimplify.set("Blob Simplify", 0.3, 0, 5));
 	parameters.add(preprocess);
 
 	ofParameterGroup trackerParams;
@@ -211,6 +212,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 		labelIndex[label] = i;
 		allBlobs.push_back(make_shared<AstanaBlob>());
 		allBlobs.back()->polyline = contourFinder.getPolyline(i);
+		allBlobs.back()->polyline.simplify(polySimplify);
 		allBlobs.back()->boundingRect = ofxCv::toOf(contourFinder.getBoundingRect(i));
 		allBlobs.back()->center = ofxCv::toOf(contourFinder.getCenter(i));
 		allBlobs.back()->area = contourFinder.getContourArea(i);

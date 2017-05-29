@@ -54,6 +54,7 @@
 			<nDilate0>1</nDilate0>
 			<nErode1>1</nErode1>
 			<nDilate1>1</nDilate1>
+			<Blob_Simplify>2.7787</Blob_Simplify>
 		</Pre_procesos>
 		<Blob_Tracker>
 			<Tracker_Persistance>15</Tracker_Persistance>

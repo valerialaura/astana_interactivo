@@ -66,13 +66,14 @@ protected:
 	ofParameter<float>  blobMinVel;
 	ofParameter<double>  blobMinAreaDiff;
 	ofParameter<bool>   bBlur;
-
+	
 	ofParameter<bool>   bDrawTrackerLabels;
 	ofParameter<bool>   bDrawPolylines;
 	ofParameter<bool>   bDrawRects;
 	ofParameter<bool>   bDrawGhosts;
 	ofParameter<bool>   bDrawDebug;
 
+	ofParameter<float> polySimplify;
 
 	void trackerPersistenceChanged(int& i);
 	void trackerMaxDistChanged(int& i);
