@@ -4,16 +4,17 @@
 #include "ofxCv.h"
 #include "ofxKinectForWindows2.h"
 #include "AstanaBlobFinderTypes.h"
+#include "AstanaBaseHasBlobs.h"
 #define ASTANA_USE_THREAD
 #ifdef ASTANA_USE_THREAD
-class AstanaKinectBlobFinder:public ofThread {
+class AstanaKinectBlobFinder:public ofThread, public AstanaBaseHasBlobs {
 #else
 class AstanaKinectBlobFinder {
 #endif
 public:
 	AstanaKinectBlobFinder();
 	virtual ~AstanaKinectBlobFinder();
-	void setup(int width, int height);
+	void setup();//int width, int height);
 	void draw();
 	void drawDebug();
 	void drawTracker();
@@ -29,13 +30,13 @@ public:
 	ofEvent<void> onMergeBlobEvent;
 	ofEvent<void> anyBlobEvent;
 	AstanaBlobCollection& getBlobsCollection();
-	vector< shared_ptr<AstanaBlob> >& getAllBlobs();
-	vector< shared_ptr<AstanaBlob> >& getNewBlobs();
-	vector< shared_ptr<AstanaBlob> >& getMovedBlobs();
-	vector< shared_ptr<AstanaBlob> >& getScaledBlobs();
-	vector< shared_ptr<AstanaBlob> >& getMergedBlobs();
-	vector< shared_ptr<AstanaBlob> >& getKilledBlobs();
-	vector< shared_ptr<AstanaBlob> >& getGhostBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getAllBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getNewBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getMovedBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getScaledBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getMergedBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getKilledBlobs();
+	//vector< shared_ptr<AstanaBlob> >& getGhostBlobs();
 
 protected:
 	ofxKFW2::Device kinect;
@@ -72,7 +73,7 @@ protected:
 	ofParameter<bool>   bDrawRects;
 	ofParameter<bool>   bDrawGhosts;
 	ofParameter<bool>   bDrawDebug;
-
+	ofParameter<unsigned int> offsetLabels;
 	ofParameter<float> polySimplify;
 
 	void trackerPersistenceChanged(int& i);
@@ -82,7 +83,7 @@ private:
 
 #ifdef ASTANA_USE_THREAD
 	
-	AstanaBlobGroup& getBlobs(AstanaBlobType type);
+	//AstanaBlobGroup& getBlobs(AstanaBlobType type);
 
 	void threadedFunction();
 	//thread channels para traspasar info entre un thread y otro de manera mas sencilla
@@ -101,7 +102,7 @@ private:
 #endif
 	ofMutex mutex;
 	bool bIsSetup = false;
-	AstanaBlobGroup dummyBlobs;
+	//AstanaBlobGroup dummyBlobs;
 	ofEventListener trackerMxDListener, trackerPerst;
 	map<int, int>labelIndex, prevLabelIndex;
 };

@@ -17,9 +17,15 @@ void AstanaOSCBlobReceiver::setup() {
 	}
 }
 //--------------------------------------------------------------
+AstanaBlobCollection& AstanaOSCBlobReceiver::getBlobsCollection() {
+	return current;
+}
+//--------------------------------------------------------------
 void AstanaOSCBlobReceiver::update(ofEventArgs& a) {
 	previous = current;
-	AstanaBlobsOSCConvert::toBlobs(receiver, current);
+	if (AstanaBlobsOSCConvert::toBlobs(receiver, current)) {
+		ofNotifyEvent(anyBlobEvent);
+	}
 }
 //--------------------------------------------------------------
 void AstanaOSCBlobReceiver::draw() {

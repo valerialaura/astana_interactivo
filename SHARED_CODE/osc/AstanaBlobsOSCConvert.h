@@ -81,40 +81,15 @@ public:
 	// 10 FloatArg(a->vel.y);
 	// 11 BlobArg(buffer);// vector<glm::vec3>
 
-	static void toBlobs(ofxOscReceiver& receiver, AstanaBlobCollection& blobs) {
-		/*
-		bool bFirst = true;
-//		cout << "==================================================================" << endl;
-		while (receiver.hasWaitingMessages()) {
-			if (bFirst) {
-				cout << "------------------------------------------------------------------" << endl;
-				bFirst = false;
-			}
-			ofxOscMessage m;
-			receiver.getNextMessage(m);
-			//cout << "........................." << endl;
-			cout << m.getAddress() << endl;
-			//auto address = ofSplitString(m.getAddress(), "/");
+	static bool toBlobs(ofxOscReceiver& receiver, AstanaBlobCollection& blobs) {
 
-			for(auto& z: address){
-				cout << z << endl;
-			}
-			//for (int i = 0; i < m.getNumArgs(); i++) {
-			//	cout << m.getAddress() << "  "  << m.getArgTypeName(i) << endl ;
-			//}
-	}
-	//*/
-	//*
 		map<AstanaBlobType, vector<unsigned int> >referencias;
 		while (receiver.hasWaitingMessages()) {
 			ofxOscMessage m;
 			receiver.getNextMessage(m);
-			//auto address = ofSplitString(m.getAddress(), "/", true, true);
-			//if (address.size() > 1) {
 			auto address = m.getAddress();
 			if (address == "/sync") {
 				blobs.clear();
-				//cout << "blobs.clear" << endl;
 			}
 			else {
 				if (m.getNumArgs()) {
@@ -217,5 +192,6 @@ public:
 				}
 			}
 		}
-	}
+		return (blobs[ASTANA_ALL_BLOBS].size() || blobs[ASTANA_GHOST_BLOBS].size() || blobs[ASTANA_KILLED_BLOBS].size());
+	} 
 };

@@ -4,11 +4,11 @@
 #include "ofxOsc.h"
 #include "ofxGui.h"
 #include "AstanaBlobsOSCConvert.h"
-
+#include "AstanaBaseHasBlobs.h"
 #define PORT 12345
 #define NUM_MSG_STRINGS 20
 
-class AstanaOSCBlobReceiver {
+class AstanaOSCBlobReceiver: public AstanaBaseHasBlobs {
 public:
 
 	void setup();
@@ -16,9 +16,10 @@ public:
 	void drawGui();
 
 	ofxOscReceiver receiver;
-	AstanaBlobCollection current, previous;
-	
+	ofEvent<void> anyBlobEvent;
+	AstanaBlobCollection& getBlobsCollection();
 private:
+	AstanaBlobCollection current, previous;
 	void update(ofEventArgs& a);
 	ofxPanel gui;
 	ofParameter<unsigned int> port;

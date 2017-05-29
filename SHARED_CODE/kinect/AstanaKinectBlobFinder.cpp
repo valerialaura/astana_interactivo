@@ -20,7 +20,7 @@ AstanaKinectBlobFinder::~AstanaKinectBlobFinder() {
 #endif
 }
 //--------------------------------------------------------------
-void AstanaKinectBlobFinder::setup(int width, int height) {
+void AstanaKinectBlobFinder::setup(){//int width, int height) {
 
 	kinect.open();
 	kinect.initDepthSource();
@@ -51,6 +51,8 @@ void AstanaKinectBlobFinder::setup(int width, int height) {
 
 	ofParameterGroup trackerParams;
 	trackerParams.setName("Blob Tracker");
+	trackerParams.add(offsetLabels.set("Offset Labels", 0, 0, std::numeric_limits<unsigned int>::max()));
+
 	trackerParams.add(trackerPersistence.set("Tracker Persistance", 15, 0, 100));
 	trackerParams.add(trackerMaxDist.set("Tracker Max Dist", 32, 0, 500));
 	parameters.add(trackerParams);
@@ -216,7 +218,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 		allBlobs.back()->boundingRect = ofxCv::toOf(contourFinder.getBoundingRect(i));
 		allBlobs.back()->center = ofxCv::toOf(contourFinder.getCenter(i));
 		allBlobs.back()->area = contourFinder.getContourArea(i);
-		allBlobs.back()->label = label;
+		allBlobs.back()->label = label + offsetLabels;
 		allBlobs.back()->age = contourFinder.getTracker().getAge(label);
 	}
 	// objetos solo con blobs nuevos
@@ -239,7 +241,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			ghostBlobs.push_back(make_shared<AstanaBlob>());
 			ghostBlobs.back()->boundingRect = ofxCv::toOf(tracker.getCurrent(label));
 			ghostBlobs.back()->center = ghostBlobs.back()->boundingRect.getCenter().xy();
-			ghostBlobs.back()->label = label;
+			ghostBlobs.back()->label = label + offsetLabels;
 			ghostBlobs.back()->age = tracker.getAge(label);
 		}
 	}
@@ -337,42 +339,42 @@ void AstanaKinectBlobFinder::drawRects() {
 void AstanaKinectBlobFinder::drawPolylines() {
 	if (bDrawPolylines) AstanaDraw::drawPolylines(currentBlobsFront);
 }
-
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getBlobs(AstanaBlobType type) {
-	if (currentBlobsFront.count(type)) {
-		return currentBlobsFront[type];
-	}
-	return dummyBlobs;
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getAllBlobs() {
-	return getBlobs(ASTANA_ALL_BLOBS);
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getNewBlobs() {
-	return getBlobs(ASTANA_NEW_BLOBS);
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getMovedBlobs() {
-	return getBlobs(ASTANA_MOVED_BLOBS);
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getScaledBlobs() {
-	return getBlobs(ASTANA_SCALED_BLOBS);
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getMergedBlobs() {
-	return getBlobs(ASTANA_MERGED_BLOBS);
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getKilledBlobs() {
-	return getBlobs(ASTANA_KILLED_BLOBS);
-}
-//--------------------------------------------------------------
-vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getGhostBlobs() {
-	return getBlobs(ASTANA_GHOST_BLOBS);
-}
+//
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getBlobs(AstanaBlobType type) {
+//	if (currentBlobsFront.count(type)) {
+//		return currentBlobsFront[type];
+//	}
+//	return dummyBlobs;
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getAllBlobs() {
+//	return getBlobs(ASTANA_ALL_BLOBS);
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getNewBlobs() {
+//	return getBlobs(ASTANA_NEW_BLOBS);
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getMovedBlobs() {
+//	return getBlobs(ASTANA_MOVED_BLOBS);
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getScaledBlobs() {
+//	return getBlobs(ASTANA_SCALED_BLOBS);
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getMergedBlobs() {
+//	return getBlobs(ASTANA_MERGED_BLOBS);
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getKilledBlobs() {
+//	return getBlobs(ASTANA_KILLED_BLOBS);
+//}
+////--------------------------------------------------------------
+//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getGhostBlobs() {
+//	return getBlobs(ASTANA_GHOST_BLOBS);
+//}
 //--------------------------------------------------------------
 AstanaBlobCollection& AstanaKinectBlobFinder::getBlobsCollection() {
 	return currentBlobsFront;

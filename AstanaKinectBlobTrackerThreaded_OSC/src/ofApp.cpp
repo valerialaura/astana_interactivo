@@ -2,14 +2,13 @@
 
 #define DEPTH_WIDTH 512
 #define DEPTH_HEIGHT 424
-#define DEPTH_SIZE DEPTH_WIDTH * DEPTH_HEIGHT
 
 
 //--------------------------------------------------------------
 void ofApp::setup() {
 
 	blobFinder = make_shared<AstanaKinectBlobFinder>();
-	blobFinder->setup(DEPTH_WIDTH, DEPTH_HEIGHT);
+	blobFinder->setup();//DEPTH_WIDTH, DEPTH_HEIGHT);
 	string bfXml = "blobFinder_settings.xml";
 	gui.setup("BlobFinder", bfXml);
 	gui.add(bDrawBlobFinder.set("Draw Blob Finder", true));
