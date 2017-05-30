@@ -1,0 +1,5 @@
+ofxCv
+ofxDelaunay
+ofxGui
+ofxKinectForWindows2
+ofxOsc
