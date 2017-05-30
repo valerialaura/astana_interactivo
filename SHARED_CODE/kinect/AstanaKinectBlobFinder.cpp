@@ -4,20 +4,14 @@
 #define DEPTH_HEIGHT 424
 #define DEPTH_SIZE DEPTH_WIDTH * DEPTH_HEIGHT
 //--------------------------------------------------------------
-#ifdef ASTANA_USE_THREAD
 AstanaKinectBlobFinder::AstanaKinectBlobFinder():bNewFrame(true) {
 	startThread();
 }
-#else 
-AstanaKinectBlobFinder::AstanaKinectBlobFinder(){}
-#endif // ASTANA_USE_THREAD
 //--------------------------------------------------------------
 AstanaKinectBlobFinder::~AstanaKinectBlobFinder() {
-#ifdef ASTANA_USE_THREAD
 	toAnalyze.close();
 	analyzed.close();
 	waitForThread(true);
-#endif
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::setup(){//int width, int height) {
@@ -93,13 +87,8 @@ void AstanaKinectBlobFinder::update() {
 
 	if (kinect.isFrameNew()) {
 		auto p = kinect.getDepthSource()->getPixels();
-#ifdef ASTANA_USE_THREAD
 		toAnalyze.send(p);
-#else
-		analyze(p);
-#endif
 	}
-#ifdef ASTANA_USE_THREAD
 	bNewFrame = false;
 	while (analyzed.tryReceive(currentBlobsMiddle) ){
 		bNewFrame = true;
@@ -107,7 +96,6 @@ void AstanaKinectBlobFinder::update() {
 		currentBlobsMiddle.swap(currentBlobsFront);
 		mutex.unlock();
 	}
-	//*
 	if (bNewFrame) {
 		mutex.lock();
 		if (!thresholdedTex.isAllocated()) {
@@ -115,12 +103,11 @@ void AstanaKinectBlobFinder::update() {
 		}
 		thresholdedTex.loadData(thresholdedPix);
 		mutex.unlock();
-	}//*/
-#endif
+		notifyEvents();
+	}
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
-	
 	if (!bIsSetup)return;
 
 	if (p.getWidth() != thresholdedPix.getWidth() || p.getHeight() != thresholdedPix.getHeight()) {
@@ -292,16 +279,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 	}
 	
 	mutex.unlock();
-	
-	if(newLabels.size()) ofNotifyEvent(newBlobEvent);
-	if(killedBlobs.size())  ofNotifyEvent(killedBlobEvent);
-	if(movedBlobs.size()) ofNotifyEvent(onMoveBlobEvent);
-	if (scaledBlobs.size()) ofNotifyEvent(onScaleBlobEvent);
-	if(mergedBlobs.size()) ofNotifyEvent(onMergeBlobEvent);
 
-	if (allBlobs.size() > 0 || killedBlobs.size() > 0 ) {
-		ofNotifyEvent(anyBlobEvent);
-	}
 }
 //--------------------------------------------------------------
 void AstanaKinectBlobFinder::threadedFunction() {
@@ -339,42 +317,6 @@ void AstanaKinectBlobFinder::drawRects() {
 void AstanaKinectBlobFinder::drawPolylines() {
 	if (bDrawPolylines) AstanaDraw::drawPolylines(currentBlobsFront);
 }
-//
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getBlobs(AstanaBlobType type) {
-//	if (currentBlobsFront.count(type)) {
-//		return currentBlobsFront[type];
-//	}
-//	return dummyBlobs;
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getAllBlobs() {
-//	return getBlobs(ASTANA_ALL_BLOBS);
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getNewBlobs() {
-//	return getBlobs(ASTANA_NEW_BLOBS);
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getMovedBlobs() {
-//	return getBlobs(ASTANA_MOVED_BLOBS);
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getScaledBlobs() {
-//	return getBlobs(ASTANA_SCALED_BLOBS);
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getMergedBlobs() {
-//	return getBlobs(ASTANA_MERGED_BLOBS);
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getKilledBlobs() {
-//	return getBlobs(ASTANA_KILLED_BLOBS);
-//}
-////--------------------------------------------------------------
-//vector< shared_ptr<AstanaBlob> >& AstanaKinectBlobFinder::getGhostBlobs() {
-//	return getBlobs(ASTANA_GHOST_BLOBS);
-//}
 //--------------------------------------------------------------
 AstanaBlobCollection& AstanaKinectBlobFinder::getBlobsCollection() {
 	return currentBlobsFront;

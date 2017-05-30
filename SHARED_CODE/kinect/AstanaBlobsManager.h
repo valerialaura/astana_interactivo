@@ -3,35 +3,34 @@
 #include "AstanaOSCBlobReceiver.h"
 #include "AstanaBaseHasBlobs.h"
 #include "ofxGui.h"
-class AstanaBlobsManager: public AstanaBaseHasBlobs {
+class AstanaBlobsManager: public AstanaBaseHasBlobs, public ofThread {
 public:
-	AstanaKinectBlobFinder blobFinder;
-	AstanaOSCBlobReceiver receiver;
+	AstanaBlobsManager();
+	~AstanaBlobsManager();
 
 	void setup();
-	void update();
+	
 	void draw();
 	void drawGui();
 
-	ofEvent<void> newBlobEvent;
-	ofEvent<void> killedBlobEvent;
-	ofEvent<void> onMoveBlobEvent;
-	ofEvent<void> onScaleBlobEvent;
-	ofEvent<void> onMergeBlobEvent;
-	ofEvent<void> anyBlobEvent;
 	AstanaBlobCollection& getBlobsCollection();
 	
 protected:
+	AstanaKinectBlobFinder blobFinder;
+	AstanaOSCBlobReceiver receiver;
+	void update(ofEventArgs&);
 	void onFinderAnyBlob();
 	void onReceiverAnyBlob();
 	ofxPanel gui;
-	ofParameter<glm::vec2>receiverOffset;
-	
-	void mergeBlobs();
+	ofParameter<glm::vec2>receiverOffset;	
 private:
+	void mergeBlobs();
+	void threadedFunction();
+	ofThreadChannel<AstanaBlobCollection> toMerge, fromMerge;
 	bool bFinderBlobsReady = false;
 	bool bReceiverBlobsReady = false;
 	vector<ofEventListener> listeners;
-	AstanaBlobCollection blobs;
+	AstanaBlobCollection blobsFront, blobsMiddle, blobsBack;
+
 
 };

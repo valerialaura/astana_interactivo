@@ -2,7 +2,26 @@
 #include "AstanaBlobFinderTypes.h"
 class AstanaBaseHasBlobs {
 public:
+	ofEvent<void> newBlobEvent;
+	ofEvent<void> killedBlobEvent;
+	ofEvent<void> onMoveBlobEvent;
+	ofEvent<void> onScaleBlobEvent;
+	ofEvent<void> onMergeBlobEvent;
+	ofEvent<void> anyBlobEvent;
+
 	virtual AstanaBlobCollection& getBlobsCollection() = 0;
+	
+	bool notifyEvents() {
+		bool n = false;
+		if (getNewBlobs().size()) { ofNotifyEvent(newBlobEvent); n = true; }
+		if (getMovedBlobs().size()) { ofNotifyEvent(onMoveBlobEvent);  n = true;}
+		if (getScaledBlobs().size()) { ofNotifyEvent(onScaleBlobEvent);  n = true;}
+		if (getMergedBlobs().size()) { ofNotifyEvent(onMergeBlobEvent);  n = true;}
+		if (getKilledBlobs().size()) { ofNotifyEvent(killedBlobEvent);  n = true;}
+
+		if (getAllBlobs().size() || getKilledBlobs().size()) { ofNotifyEvent(anyBlobEvent);  n = true;}
+		return n;
+	}
 	//--------------------------------------------------------------
 	vector< shared_ptr<AstanaBlob> >& getBlobs(AstanaBlobType type) {
 		if (getBlobsCollection().count(type)) {

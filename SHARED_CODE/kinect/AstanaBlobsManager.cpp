@@ -1,5 +1,14 @@
 #include "AstanaBlobsManager.h"
-
+AstanaBlobsManager::AstanaBlobsManager() {
+	startThread();
+}
+//--------------------------------------------------------------
+AstanaBlobsManager::~AstanaBlobsManager() {
+	toMerge.close();
+	fromMerge.close();
+	waitForThread(true);
+}
+//--------------------------------------------------------------
 void AstanaBlobsManager::setup() {
 	blobFinder.setup();
 	string bfXml = "blob_manager_settings.xml";
@@ -15,30 +24,29 @@ void AstanaBlobsManager::setup() {
 	listeners.clear();
 	listeners.push_back(blobFinder.anyBlobEvent.newListener(this, &AstanaBlobsManager::onFinderAnyBlob));
 	listeners.push_back(receiver.anyBlobEvent.newListener(this, &AstanaBlobsManager::onReceiverAnyBlob));
-
+	listeners.push_back(ofEvents().update.newListener(this, &AstanaBlobsManager::update));
 }
+//--------------------------------------------------------------
 void AstanaBlobsManager::onFinderAnyBlob() {
 	bFinderBlobsReady = true;
-	mergeBlobs();
 }
+//--------------------------------------------------------------
 void AstanaBlobsManager::onReceiverAnyBlob() {
 	bReceiverBlobsReady = true;
-	mergeBlobs();
 }
+//--------------------------------------------------------------
 void AstanaBlobsManager::mergeBlobs(){
-	if (bReceiverBlobsReady && bFinderBlobsReady) {
-		bReceiverBlobsReady = false;
-		bFinderBlobsReady = false;
-		blobs.clear();
+	
+		blobsBack.clear();
 		auto addBlobGroups = [&](AstanaBlobType t) {
 			if (blobFinder.getBlobsCollection().count(t)) {
 				for (auto&b : blobFinder.getBlobs(t)) {
-					blobs[t].push_back(b);
+					blobsBack[t].push_back(b);
 				}
 			}
 			if (receiver.getBlobsCollection().count(t)) {
 				for (auto&b : receiver.getBlobs(t)) {
-					blobs[t].push_back(b);
+					blobsBack[t].push_back(b);
 				}
 			}
 		};
@@ -50,18 +58,39 @@ void AstanaBlobsManager::mergeBlobs(){
 		addBlobGroups(ASTANA_MERGED_BLOBS);
 		addBlobGroups(ASTANA_GHOST_BLOBS);
 		addBlobGroups(ASTANA_KILLED_BLOBS);
-		if (blobs[ASTANA_NEW_BLOBS].size()) { ofNotifyEvent(newBlobEvent); }
-		if (blobs[ASTANA_MOVED_BLOBS].size()) { ofNotifyEvent(onMoveBlobEvent); }
-		if (blobs[ASTANA_SCALED_BLOBS].size()) { ofNotifyEvent(onScaleBlobEvent); }
-		if (blobs[ASTANA_MERGED_BLOBS].size()) { ofNotifyEvent(onMergeBlobEvent); }
-		if (blobs[ASTANA_KILLED_BLOBS].size()) { ofNotifyEvent(killedBlobEvent); }
+	
+}
+//--------------------------------------------------------------
+void AstanaBlobsManager::threadedFunction() {
 
-		if (blobs[ASTANA_ALL_BLOBS].size() || blobs[ASTANA_KILLED_BLOBS].size()) { ofNotifyEvent(anyBlobEvent); }
+	AstanaBlobCollection b;
+	while (toMerge.receive(b)) {
+		mergeBlobs();
+		fromMerge.send(std::move(blobsBack));
 	}
 }
-void AstanaBlobsManager::update() {
+//--------------------------------------------------------------
+void AstanaBlobsManager::update(ofEventArgs&) {
 	blobFinder.update();
+	if (bReceiverBlobsReady && bFinderBlobsReady) {
+		AstanaBlobCollection b;
+		bReceiverBlobsReady = false;
+		bFinderBlobsReady = false;
+		toMerge.send(b);
+	}
+	bool bNewBlobs = false;
+	while (fromMerge.tryReceive(blobsMiddle)) {
+		bNewBlobs = true;
+		mutex.lock();
+		blobsMiddle.swap(blobsFront);
+		mutex.unlock();
+	}
+	if (bNewBlobs) {
+		notifyEvents();
+	}
+
 }
+//--------------------------------------------------------------
 void AstanaBlobsManager::draw() {
 	blobFinder.draw();
 	ofPushMatrix();
@@ -69,10 +98,14 @@ void AstanaBlobsManager::draw() {
 	receiver.draw();
 	ofPopMatrix();
 }
+//--------------------------------------------------------------
 void AstanaBlobsManager::drawGui() {
 	gui.draw();
 	receiver.drawGui();
 }
+//--------------------------------------------------------------
 AstanaBlobCollection& AstanaBlobsManager::getBlobsCollection() {
-	return blobs;
+	return blobsFront;
 }
+//--------------------------------------------------------------
+
