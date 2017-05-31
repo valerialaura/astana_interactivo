@@ -87,6 +87,7 @@ public:
 		while (receiver.hasWaitingMessages()) {
 			ofxOscMessage m;
 			receiver.getNextMessage(m);
+
 			auto address = m.getAddress();
 			if (address == "/sync") {
 				blobs.clear();
@@ -125,6 +126,25 @@ public:
 						bTypeFound = true;
 					}
 					if (bTypeFound) {
+						auto nArgs = m.getNumArgs();
+						if (type == ASTANA_ALL_BLOBS){
+							if (nArgs != 12) {
+								cout << "ASTANA_ALL_BLOBS numArgs " << nArgs << " debieran ser 12." << endl;
+							}
+						}else if (type == ASTANA_GHOST_BLOBS){
+							if (nArgs != 6) {
+								cout << "ASTANA_ALL_BLOBS numArgs " << nArgs << " debieran ser 6." << endl;
+							}
+						}else if (type == ASTANA_KILLED_BLOBS){
+							if (nArgs != 12) {
+								cout << "ASTANA_KILLED_BLOBS numArgs " << nArgs << " debieran ser 12." << endl;
+							}
+						}
+						else {
+							if (nArgs != 1) {
+								cout << "ASTANA_REFERENCIAS_BLOBS numArgs " << nArgs << " debiera ser 1." << endl;
+							}
+						}
 						if (type == ASTANA_ALL_BLOBS || type == ASTANA_GHOST_BLOBS || type == ASTANA_KILLED_BLOBS) {
 							auto& allBlobs = blobs[type];
 							allBlobs.push_back(make_shared<AstanaBlob>());
@@ -135,6 +155,7 @@ public:
 								allBlobs.back()->boundingRect.y = m.getArgAsFloat(3);
 								allBlobs.back()->boundingRect.width = m.getArgAsFloat(4);
 								allBlobs.back()->boundingRect.height = m.getArgAsFloat(5);
+								allBlobs.back()->center = allBlobs.back()->boundingRect.getCenter().xy();
 								if (m.getNumArgs() > 11) { // not dead
 									allBlobs.back()->area = m.getArgAsDouble(6);
 									allBlobs.back()->areaDiff = m.getArgAsDouble(7);
@@ -172,7 +193,7 @@ public:
 			}
 		}
 		auto findLabel = [&](ofIndexType& label, const AstanaBlobType& t, shared_ptr<AstanaBlob>& ptr) -> bool {
-			if (blobs.count(ASTANA_ALL_BLOBS)) {
+			if (blobs.count(t)) {
 				for (auto& r : blobs[t]) {
 					if (r) {
 						if (r->label == label) {
@@ -192,6 +213,18 @@ public:
 				}
 			}
 		}
+		shared_ptr<AstanaBlob> ptr = nullptr;
+		auto checkLabels = [&](AstanaBlobType labelsToCheck, AstanaBlobType in1) {
+			for (auto& b : blobs[labelsToCheck]) {
+				if (findLabel(b->label, in1, ptr)) {
+					cout << "OSCtoBlobs, encontrado label duplicado!" << endl;
+				}
+			}
+		};
+		checkLabels(ASTANA_ALL_BLOBS, ASTANA_GHOST_BLOBS);
+		checkLabels(ASTANA_ALL_BLOBS, ASTANA_KILLED_BLOBS);
+		checkLabels(ASTANA_KILLED_BLOBS, ASTANA_GHOST_BLOBS);
+		//cout << "000";
 		return (blobs[ASTANA_ALL_BLOBS].size() || blobs[ASTANA_GHOST_BLOBS].size() || blobs[ASTANA_KILLED_BLOBS].size());
 	} 
 };

@@ -2,18 +2,29 @@
 #include "AstanaDraw.h"
 //--------------------------------------------------------------
 void AstanaOSCBlobReceiver::setup() {
-	gui.setup("Astana OSC Receiver", "osc_receiver_settings.xml");
-	gui.add(port.set("Port", PORT, 10000, 20000));
-	gui.add(bDrawDebug.set("Draw Debug", true));
-	gui.add(bDrawGhost.set("Draw Ghosts", true));
-	gui.add(bDrawRects.set("Draw Rects", true));
-	gui.add(bDrawPolylines.set("Draw Polylines", true));
-	gui.add(bDrawLabels.set("Draw Labels", true));
-	gui.add(bEnableDraw.set("Enable Draw", true));
-	bIsSetup = receiver.setup(PORT);
+	string xml = "osc_receiver_settings.xml";
+	gui.setup("Astana OSC Receiver", xml);
+	gui.add(hostIp.set("Host IP", "localhost"));
+	gui.add(port.set("Port", 12345, 10000, 20000));
+	setupParams();//"OSC Blob Finder");
+	gui.add(parameters);
 
+	gui.loadFromFile(xml);
+
+	bIsSetup = receiver.setup(PORT);
 	if (bIsSetup) {
 		updateListener = ofEvents().update.newListener(this, &AstanaOSCBlobReceiver::update);
+	}
+	string s;
+	hostIpChanged(s);
+}
+//--------------------------------------------------------------
+void AstanaOSCBlobReceiver::hostIpChanged(string&) {
+	if (bIsSetup) {
+		sync.setup(parameters, 6666, hostIp, 7777);
+		bIsSyncSetup = true;
+	}else {
+		cout << "No se pudo setear OSC blob sender" << endl;
 	}
 }
 //--------------------------------------------------------------
@@ -26,15 +37,18 @@ void AstanaOSCBlobReceiver::update(ofEventArgs& a) {
 	if (AstanaBlobsOSCConvert::toBlobs(receiver, current)) {
 		ofNotifyEvent(anyBlobEvent);
 	}
+	if (bIsSyncSetup) {
+		sync.update();
+	}
 }
 //--------------------------------------------------------------
 void AstanaOSCBlobReceiver::draw() {
 	if (bEnableDraw && current.size() > 0) {
 		if (bDrawDebug) AstanaDraw::drawDebug(current);
-		if (bDrawGhost) AstanaDraw::drawGhosts(current);
+		if (bDrawGhosts) AstanaDraw::drawGhosts(current);
 		if (bDrawRects) AstanaDraw::drawRects(current);
 		if (bDrawPolylines) AstanaDraw::drawPolylines(current);
-		if (bDrawLabels) AstanaDraw::drawLabels(current);
+		if (bDrawTrackerLabels) AstanaDraw::drawLabels(current);
 	}
 }
 //--------------------------------------------------------------

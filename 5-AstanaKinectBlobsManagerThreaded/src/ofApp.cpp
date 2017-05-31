@@ -8,9 +8,9 @@ void ofApp::setup() {
 
 	blobManager.setup();
 
-	newBlobSound.load("Glass.aiff");
-	killBlobSound.load("Morse.aiff");
-	movedBlobSound.load("Frog.aiff");
+	//newBlobSound.load("Glass.aiff");
+	//killBlobSound.load("Morse.aiff");
+	//movedBlobSound.load("Frog.aiff");
 
 	ofAddListener(blobManager.newBlobEvent, this, &ofApp::onNewBlobs);
 	ofAddListener(blobManager.killedBlobEvent, this, &ofApp::onKillBlobs);
@@ -28,19 +28,18 @@ void ofApp::onScaledBlobs() {}
 void ofApp::onMergedBlobs() {}
 //--------------------------------------------------------------
 void ofApp::onNewBlobs() {
-	newBlobSound.play();
+	//newBlobSound.play();
 }
 //--------------------------------------------------------------
 void ofApp::onKillBlobs() {
-	killBlobSound.play();
+	//killBlobSound.play();
 }
 //--------------------------------------------------------------
 void ofApp::onMovedBlobs() {
-	movedBlobSound.play();
+	//movedBlobSound.play();
 }
 //--------------------------------------------------------------
 void ofApp::draw() {
-	AstanaDraw::draw(blobManager.getBlobsCollection());
 	blobManager.draw();
 	blobManager.drawGui();
 	stringstream ss;

@@ -1604,6 +1604,9 @@
     <ClInclude Include="..\SHARED_CODE\kinect\AstanaBaseHasBlobs.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\osc\AstanaBlobFinderParams.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

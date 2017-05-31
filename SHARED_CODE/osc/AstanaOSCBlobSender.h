@@ -5,7 +5,7 @@
 #include "ofxGui.h"
 
 #include "AstanaKinectBlobFinder.h"
-
+#include "ofxOscParameterSync.h"
 
 class AstanaOSCBlobSender {
 
@@ -21,8 +21,11 @@ protected:
 	shared_ptr<AstanaKinectBlobFinder> blobFinder;
 	void onAnyBlobsEvent();
 	ofxOscSender sender;
-
+	ofxOscParameterSync sync;
+	void update(ofEventArgs&);
 private:
+	void hostIpChanged(string&);
 	bool bIsSetup = false;
 	vector<ofEventListener> listeners;
+
 };

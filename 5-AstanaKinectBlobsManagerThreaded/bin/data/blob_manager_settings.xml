@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Blobs_Manager>
+	<Offset_Blobs_OSC>520, 0</Offset_Blobs_OSC>
+	<Draw_Merged_blobs>1</Draw_Merged_blobs>
+	<Blob_Finder>
+		<CV_Contour_Finder>
+			<Find_Blobs>1</Find_Blobs>
+			<Find_Holes>0</Find_Holes>
+			<Invert_Blob_Finder>0</Invert_Blob_Finder>
+			<maxArea>144725</maxArea>
+			<minArea>1041</minArea>
+		</CV_Contour_Finder>
+		<Pre_procesos>
+			<farThreshold>975</farThreshold>
+			<nearThreshold>0</nearThreshold>
+			<Activar_Blur>0</Activar_Blur>
+			<blurAmount>2</blurAmount>
+			<nErode0>1</nErode0>
+			<nDilate0>1</nDilate0>
+			<nErode1>1</nErode1>
+			<nDilate1>1</nDilate1>
+			<Blob_Simplify>0.3</Blob_Simplify>
+		</Pre_procesos>
+		<Blob_Tracker>
+			<Offset_Labels>0</Offset_Labels>
+			<Tracker_Persistance>15</Tracker_Persistance>
+			<Tracker_Max_Dist>32</Tracker_Max_Dist>
+		</Blob_Tracker>
+		<Event_trigger>
+			<Blobs_Min_Vel>1</Blobs_Min_Vel>
+			<Blobs_Min_Area_Diff>2</Blobs_Min_Area_Diff>
+		</Event_trigger>
+		<DRAW>
+			<Draw_Labels>1</Draw_Labels>
+			<Draw_Polylines>1</Draw_Polylines>
+			<Draw_Rects>1</Draw_Rects>
+			<Draw_Ghosts>1</Draw_Ghosts>
+			<Draw_Debug>1</Draw_Debug>
+			<Enable_Draw>1</Enable_Draw>
+		</DRAW>
+	</Blob_Finder>
+</Blobs_Manager>

@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "AstanaSoundManager.h"
+#include "AstanaKinectBlobFinder.h"
 
 class ofApp : public ofBaseApp{
 
@@ -23,7 +24,5 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
         AstanaSoundManager sndMngr;
-		//ofxBasicSoundPlayer player;
-		//ofSoundStream stream;
-		//ofxSoundMixer mixer;
+		shared_ptr<AstanaBlobsManager> blobsMngr;
 };

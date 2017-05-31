@@ -206,7 +206,7 @@ void AstanaSoundGroup::fadeOutAll(std::function< void() > callback){
                 fadeListeners.push_back(p.fadeEndEvent.newListener(this, &AstanaSoundGroup::fadeOutAllEnd));
                 float fadeDuration = 1;
                 if (manager) {
-                    fadeDuration = manager->fadeEscenaDuration;
+                    fadeDuration = manager->getFadeEscenaDuration();
                 }
                 p.fadeOut(fadeDuration);
             }

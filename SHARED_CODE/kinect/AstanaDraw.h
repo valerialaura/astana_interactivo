@@ -17,15 +17,15 @@ public:
 	static void drawDebug(AstanaBlobCollection& blobs) {
 		string s;
 		auto f = [&](AstanaBlobType type, const string& prefix) {
+			stringstream ss;
 			if (blobs.count(type)) {
-				stringstream ss;
 				ss << prefix << " [" << blobs[type].size() << "] : ";
 				for (auto& a : blobs[type]) {
 					ss << a->label << ", ";
 				}
-				ss << endl;
-				s += ss.str();//getBlobsAsString(prefix, blobs[type]);
 			}
+			ss << endl;
+			s += ss.str();//getBlobsAsString(prefix, blobs[type]);
 		};
 		f(ASTANA_ALL_BLOBS,   "ALL   ");
 		f(ASTANA_NEW_BLOBS,   "NEW   ");
@@ -49,6 +49,27 @@ public:
 		drawDebug(blobs);
 	}
 	//--------------------------------------------------------------
+	static void drawGroup(AstanaBlobType type, AstanaBlobCollection& blobs, const ofColor& rectColor = ofColor(120), const ofColor& polyColor = ofColor::red) {
+		if (blobs.count(type)) {
+			ofPushStyle();
+			ofSetColor(rectColor);
+			ofSetLineWidth(1);
+			ofNoFill();
+			for (auto& b : blobs[type]) {
+				if (b) {
+					ofDrawRectangle(b->boundingRect);
+				}
+			}
+			ofSetColor(polyColor);
+			ofSetLineWidth(2);
+			for (auto& b : blobs[type]) {
+				if (b) {
+					b->polyline.draw();
+				}
+			}
+			ofPopStyle();
+		}
+	}
 	static void drawGhosts(AstanaBlobCollection& blobs) {
 		if (blobs.count(ASTANA_GHOST_BLOBS)) {
 			ofPushStyle();

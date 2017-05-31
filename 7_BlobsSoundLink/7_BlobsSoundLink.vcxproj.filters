@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\ETF.cpp">
+      <Filter>addons\ofxCv\libs\CLD\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\CLD\src\fdog.cpp">
+      <Filter>addons\ofxCv\libs\CLD\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Calibration.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\ContourFinder.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Distance.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Flow.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Helpers.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Kalman.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\ObjectFinder.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\RunningBackground.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Tracker.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Utilities.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxCv\libs\ofxCv\src\Wrappers.cpp">
+      <Filter>addons\ofxCv\libs\ofxCv\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxColorPicker.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxInputField.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSoundObjects\src\ofxBasicSoundPlayer.cpp">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundFile.cpp">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundMixer.cpp">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundObject.cpp">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTween2\src\ofxTween2.cpp">
+      <Filter>addons\ofxTween2\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\kinect\AstanaBlobsManager.cpp">
+      <Filter>src\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\kinect\AstanaKinectBlobFinder.cpp">
+      <Filter>src\kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\sound\AstanaSoundGroup.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\sound\AstanaSoundIntervencion.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\sound\AstanaSoundManager.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\sound\AstanaSoundPlayer.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\sound\AstanaSoundSecuencia.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\sound\AstanaSoundTextura.cpp">
+      <Filter>src\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\osc\AstanaOSCBlobReceiver.cpp">
+      <Filter>src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SHARED_CODE\osc\AstanaOSCBlobSender.cpp">
+      <Filter>src\osc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv">
+      <UniqueIdentifier>{A9C1150B-C1CB-2BC0-0F32-ED3B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\src">
+      <UniqueIdentifier>{6B661273-844D-D754-F98D-C3B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs">
+      <UniqueIdentifier>{2D63E874-134A-C540-1157-C931}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\CLD">
+      <UniqueIdentifier>{6E254616-00D9-D1AD-2976-B475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\CLD\include">
+      <UniqueIdentifier>{127D6EBD-127A-D8C0-AE83-D8F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\CLD\include\CLD">
+      <UniqueIdentifier>{8B905DF6-4298-B52E-6BAD-BD9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\CLD\src">
+      <UniqueIdentifier>{988C5DE1-0A28-4035-7625-48D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\ofxCv">
+      <UniqueIdentifier>{9104DB86-FB76-46B8-7315-E1A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\ofxCv\include">
+      <UniqueIdentifier>{80CEBD8F-DC90-1D69-BBF7-093D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\ofxCv\include\ofxCv">
+      <UniqueIdentifier>{76E26063-B359-0A22-CC92-6F5B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxCv\libs\ofxCv\src">
+      <UniqueIdentifier>{D4F40DFE-7BFE-9E37-3B94-006C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxEasing">
+      <UniqueIdentifier>{CAD580FB-01DB-F456-F00B-7791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxEasing\src">
+      <UniqueIdentifier>{59A6BD40-DCB3-8A98-B41B-1BA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui">
+      <UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui\src">
+      <UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2">
+      <UniqueIdentifier>{79EE9CEE-5877-E1B3-C373-D5C8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src">
+      <UniqueIdentifier>{BBA641E3-A9C6-8646-2A06-7A9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2">
+      <UniqueIdentifier>{849A6419-451E-EB51-E82D-5D04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data">
+      <UniqueIdentifier>{D3FA8E7E-7250-B64E-BCC8-522E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source">
+      <UniqueIdentifier>{D8ABF3AE-C83C-4B28-80F0-8B6D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc">
+      <UniqueIdentifier>{D91DCA33-6E5D-4481-2AEC-9FBB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\src">
+      <UniqueIdentifier>{B9DD339A-D93D-92A1-0A2F-4B41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs">
+      <UniqueIdentifier>{99ECA1D9-873F-4622-8FC0-FC7B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack">
+      <UniqueIdentifier>{D3A98534-1602-4FEF-57A6-6593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src">
+      <UniqueIdentifier>{BFB5BB47-98C8-BBCB-3066-1046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src\ip">
+      <UniqueIdentifier>{5A029128-EB41-95C5-CBC0-CDED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src\ip\win32">
+      <UniqueIdentifier>{79DFDFE2-400B-8654-3675-01A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src\osc">
+      <UniqueIdentifier>{EDACB89C-9768-9551-4D41-B590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSoundObjects">
+      <UniqueIdentifier>{A1DEA472-3243-C85B-12C4-7080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSoundObjects\src">
+      <UniqueIdentifier>{F49E5818-5434-4299-95C1-2A8C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSoundObjects\src\SoundObjects">
+      <UniqueIdentifier>{7D005C6E-D3DD-315D-EF0E-E12B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSoundObjects\libs">
+      <UniqueIdentifier>{CA257C88-51C5-C10C-1BE0-4E5F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSoundObjects\libs\libsndfile">
+      <UniqueIdentifier>{53910C6B-CFE4-A25E-6FFC-3244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSoundObjects\libs\libsndfile\include">
+      <UniqueIdentifier>{5120E882-8370-1D4E-CA16-3BD0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTween2">
+      <UniqueIdentifier>{056A69C9-3DCF-9F20-CAFA-BC51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTween2\src">
+      <UniqueIdentifier>{6154DC40-B294-735D-3433-C942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\osc">
+      <UniqueIdentifier>{63bce6e2-ff3e-49b9-8dcf-9b75b209dacb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\kinect">
+      <UniqueIdentifier>{180023c3-01dc-408c-a8f8-2937c2edbfaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sound">
+      <UniqueIdentifier>{f9462c32-cdfc-4385-8278-f4e333341203}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\src\ofxCv.h">
+      <Filter>addons\ofxCv\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\ETF.h">
+      <Filter>addons\ofxCv\libs\CLD\include\CLD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\fdog.h">
+      <Filter>addons\ofxCv\libs\CLD\include\CLD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\imatrix.h">
+      <Filter>addons\ofxCv\libs\CLD\include\CLD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\CLD\include\CLD\myvec.h">
+      <Filter>addons\ofxCv\libs\CLD\include\CLD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Calibration.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\ContourFinder.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Distance.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Flow.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Helpers.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Kalman.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\ObjectFinder.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\RunningBackground.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Tracker.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Utilities.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxCv\libs\ofxCv\include\ofxCv\Wrappers.h">
+      <Filter>addons\ofxCv\libs\ofxCv\include\ofxCv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxEasing\src\easing_terms_of_use.html">
+      <Filter>addons\ofxEasing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxEasing\src\ofxEasing.h">
+      <Filter>addons\ofxEasing\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxColorPicker.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxInputField.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Base.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h">
+      <Filter>addons\ofxKinectForWindows2\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h">
+      <Filter>addons\ofxOsc\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\ofxBasicSoundPlayer.h">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundFile.h">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundMixer.h">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundObject.h">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\ofxSoundObjects.h">
+      <Filter>addons\ofxSoundObjects\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\SoundObjects\DigitalDelay.h">
+      <Filter>addons\ofxSoundObjects\src\SoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\SoundObjects\LowPassFilter.h">
+      <Filter>addons\ofxSoundObjects\src\SoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\SoundObjects\NoiseGenerator.h">
+      <Filter>addons\ofxSoundObjects\src\SoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\SoundObjects\SineWaveGenerator.h">
+      <Filter>addons\ofxSoundObjects\src\SoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\src\SoundObjects\waveformDraw.h">
+      <Filter>addons\ofxSoundObjects\src\SoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSoundObjects\libs\libsndfile\include\sndfile.h">
+      <Filter>addons\ofxSoundObjects\libs\libsndfile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTween2\src\ofxTween2.h">
+      <Filter>addons\ofxTween2\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaBaseHasBlobs.h">
+      <Filter>src\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaBlob.h">
+      <Filter>src\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaBlobFinderTypes.h">
+      <Filter>src\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaBlobsManager.h">
+      <Filter>src\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaDraw.h">
+      <Filter>src\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\kinect\AstanaKinectBlobFinder.h">
+      <Filter>src\kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaDigitalDelay.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaSoundGroup.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaSoundIntervencion.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaSoundManager.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaSoundPlayer.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaSoundSecuencia.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\sound\AstanaSoundTextura.h">
+      <Filter>src\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\osc\AstanaBlobFinderParams.h">
+      <Filter>src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\osc\AstanaBlobsOSCConvert.h">
+      <Filter>src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\osc\AstanaOSCBlobReceiver.h">
+      <Filter>src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SHARED_CODE\osc\AstanaOSCBlobSender.h">
+      <Filter>src\osc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

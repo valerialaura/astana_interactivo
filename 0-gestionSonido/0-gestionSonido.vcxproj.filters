@@ -128,6 +128,9 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxEasing\src\easing_terms_of_use.html">
+      <Filter>addons\ofxEasing\src</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxEasing\src\ofxEasing.h">
       <Filter>addons\ofxEasing\src</Filter>
     </ClInclude>

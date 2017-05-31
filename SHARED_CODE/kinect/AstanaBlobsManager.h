@@ -23,6 +23,8 @@ protected:
 	void onReceiverAnyBlob();
 	ofxPanel gui;
 	ofParameter<glm::vec2>receiverOffset;	
+	ofParameter<bool>bDrawMerged;
+	ofParameter<bool> bDrawActive, bDrawKilled, bDrawGhosts, bDrawMoved, bDrawScaled, bDrawNew;
 private:
 	void mergeBlobs();
 	void threadedFunction();

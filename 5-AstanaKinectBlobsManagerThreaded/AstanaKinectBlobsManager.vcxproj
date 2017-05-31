@@ -244,6 +244,7 @@
     <ClInclude Include="..\SHARED_CODE\kinect\AstanaBlobsManager.h" />
     <ClInclude Include="..\SHARED_CODE\kinect\AstanaDraw.h" />
     <ClInclude Include="..\SHARED_CODE\kinect\AstanaKinectBlobFinder.h" />
+    <ClInclude Include="..\SHARED_CODE\osc\AstanaBlobFinderParams.h" />
     <ClInclude Include="..\SHARED_CODE\osc\AstanaBlobsOSCConvert.h" />
     <ClInclude Include="..\SHARED_CODE\osc\AstanaOSCBlobReceiver.h" />
     <ClInclude Include="..\SHARED_CODE\osc\AstanaOSCBlobSender.h" />

@@ -18,10 +18,8 @@ public:
 	shared_ptr<AstanaKinectBlobFinder >blobFinder;
 
 	AstanaOSCBlobSender sender;
-	ofxPanel gui;
     
     bool bAllocatedImgs;
   
-	ofParameter<bool> bDrawBlobFinder;
 
 };

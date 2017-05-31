@@ -5,28 +5,16 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	//ofFileDialogResult r = ofSystemLoadDialog("Cargar carpeta audios");
-	//if (r.bSuccess) {
-	//	player.load(r.getPath());
-	//	//player.connectTo(mixer);
-	//	ofSoundStreamSettings settings;
-	//	settings.numInputChannels = 0;
-	//	settings.numOutputChannels = 2;
-	//	settings.numBuffers = 1;
-	//	settings.bufferSize = 512;
-	//	settings.sampleRate = 48000;
-	//	settings.setOutListener(&mixer);
-	//	stream.setup(settings);
-	//	stream.setOutput(&player);
-	//	player.play();
-	//}
+	blobsMngr = make_shared<AstanaBlobsManager>();
+	blobsMngr->setup();
 	ofFileDialogResult r = ofSystemLoadDialog("Cargar carpeta audios", true);
     if (r.bSuccess) {
         cout << "path audios relative: " << ofFilePath::makeRelative(ofToDataPath("",true), r.getPath()) << endl;
-      sndMngr.setup(r.getPath());
+      sndMngr.setup(r.getPath(), blobsMngr);
     }
 //    sndMngr.setup(PATH_AUDIOS);
 	sndMngr.enableGui();
+	
 }
 
 //--------------------------------------------------------------
@@ -36,6 +24,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	if (!sndMngr.isGuiEnabled()) {
+		blobsMngr->draw();
+		blobsMngr->drawGui();
+	}
         
 }
 
@@ -46,6 +38,9 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+	if (key == ' ') {
+		sndMngr.toggleGui();
+	}
 }
 
 //--------------------------------------------------------------
