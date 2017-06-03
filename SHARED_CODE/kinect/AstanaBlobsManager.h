@@ -11,6 +11,7 @@ public:
 	void setup();
 	
 	void draw();
+	void drawDebug();
 	void drawGui();
 
 	AstanaBlobCollection& getBlobsCollection();
