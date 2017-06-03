@@ -233,6 +233,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 		}	
 	}
 	
+	notifyEvents();
 	mutex.unlock();
 
 }

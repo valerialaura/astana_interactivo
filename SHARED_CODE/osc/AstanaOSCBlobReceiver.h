@@ -28,10 +28,20 @@ private:
 	ofxPanel gui;
 	ofParameter<unsigned int> port;
 	ofParameter<string> hostIp;
+	ofParameter<glm::vec2> blobTranslation;
+	ofParameter<bool> bTransformBlobs;
+	ofParameter<float>blobRotation;
+	void transformBlobs(AstanaBlobType type, bool bHasPolyline);
 	//ofParameter<bool> bDrawDebug, bDrawGhost, bDrawRects, bDrawPolylines, bDrawLabels, bEnableDraw;
 	ofxOscParameterSync sync;
 	bool bIsSyncSetup = false;
 	bool bIsSetup = false;
 	ofEventListener updateListener;
 	string senderIp ="";
+	void receive();
+	map<AstanaBlobType, vector<unsigned int> >referencias;
+
+	shared_ptr<AstanaBlob> AstanaOSCBlobReceiver::findLabel(ofIndexType& label, const AstanaBlobType& type);
+	void checkLabels(AstanaBlobType labelsToCheck, AstanaBlobType in1);
+
 };

@@ -14,7 +14,7 @@
 #include "AstanaSoundIntervencion.h"
 #include "ofxSoundMixer.h"
 #include "AstanaBlobsManager.h"
-class AstanaSoundManager {
+class AstanaSoundManager :public AstanaBaseHasBlobs {
 public:
     AstanaSoundManager();
     virtual ~AstanaSoundManager();
@@ -26,16 +26,19 @@ public:
 	void disableGui();
 	void toggleGui();
 	bool isGuiEnabled() { return bGuiEnabled; }
-	shared_ptr<AstanaSoundTextura> getTexturas(){return texturas;}
+
     void playNextInGroup(string groupName);
     void playNextTrack();
     void stopAll();
     void setActiveGroup(string groupName);
-	
-	float getFadeEscenaDuration() { return fadeEscenaDuration; }
+	void playSample(const string& folderName, const string& sampleName);
 
-	void setBlobManager(shared_ptr<AstanaBlobsManager>mng);
+
+	float getFadeEscenaDuration() { return fadeEscenaDuration; }
+	shared_ptr<AstanaSoundTextura> getTexturas(){return texturas;}
+	virtual AstanaBlobCollection& getBlobsCollection() { return blobs; }
 protected:
+	void setBlobManager(shared_ptr<AstanaBlobsManager>mng);
 	void onNewBlobs();
 	void onKillBlobs();
 	void onMovedBlobs();
@@ -48,7 +51,7 @@ protected:
 	void keyReleased(ofKeyEventArgs& k);
 	void drawGui(ofEventArgs&);
 
-	ofxPanel gui;
+	ofxPanel gui, blobMappingGui;
 	ofParameter<float>fadeEscenaDuration;
     string activeGroup;
     map<string, shared_ptr<AstanaSoundGroup> > groups;
@@ -68,14 +71,29 @@ protected:
 	shared_ptr<AstanaBlobsManager>blobManager;
 	
 	struct AstanaSoundBlobLink {
-		string soundParam;
-		//unsigned int blobLabel;
+		ofParameter<float> soundParam;
 		AstanaBlobParam blobParam;
 	};
 
-	//map<string, shared_ptr<AstanaSoundBlobLink> >linkSoundParamMap;
-	//map<unsigned int, shared_ptr<AstanaSoundBlobLink> >linkBlobLabelMap;
-	map<unsigned int, AstanaSoundBlobLink> soundBlobLinks;
-	//int findSoundBlobLinkByLabel(unsigned int label);
+	map<unsigned int, map<string, AstanaSoundBlobLink> > soundBlobLinks;
+	// label blob, map<soundParamName, link>
 
+	void updateSoundBlobLinks(AstanaBlobType t);
+
+	void setAvailableSoundParams();
+	void setAvailableParamUse(const string& paramName, bool bUse);
+	string getNextAvailableParamName();
+	bool hasNextAvailableParamName();
+
+	bool addLink(unsigned int label, AstanaBlobParam blobParam);
+	bool removeLink(unsigned int label);//, AstanaBlobParam blobParam);
+	//int findSoundBlobLinkByLabel(unsigned int label);
+	map<AstanaBlobParam, ofParameter<float> > mapMinVals, mapMaxVals;
+	map<string, bool> availableParams;
+
+	ofMutex mutex;
+
+	ofParameter<float>dummyFloatParam;
+
+	AstanaBlobCollection blobs;
 };

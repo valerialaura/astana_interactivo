@@ -10,14 +10,13 @@ class AstanaKinectBlobFinder:public ofThread, public AstanaBaseHasBlobs, public 
 public:
 	AstanaKinectBlobFinder();
 	virtual ~AstanaKinectBlobFinder();
-	void setup();//int width, int height);
+	void setup();
 	void draw();
 	void drawDebug();
 	void drawTracker();
 	void update();
 	void drawPolylines();
 	void drawRects();
-	//ofParameterGroup	parameters;
 	
 	AstanaBlobCollection& getBlobsCollection();
 	
@@ -29,33 +28,6 @@ protected:
 	ofPixels thresholdedPix;
 	ofTexture thresholdedTex;
 	ofxCv::ContourFinder contourFinder;
-
-	//ofParameter<bool>	holes;
-	//ofParameter<bool>	invert;
-	//ofParameter<int>	minArea;
-	//ofParameter<int>	maxArea;
-	//ofParameter<int>	blurAmount;
-	//
-	//ofParameter<int>	nDilate0;
-	//ofParameter<int>	nErode0;
-	//ofParameter<int>	nDilate1;
-	//ofParameter<int>	nErode1;
-	//ofParameter<int>	nearThreshold;
-	//ofParameter<int>	farThreshold;
-	//ofParameter<bool>   bFindBlobs;
-	//ofParameter<int>    trackerPersistence;
-	//ofParameter<int>	trackerMaxDist;
-	//ofParameter<float>  blobMinVel;
-	//ofParameter<double>  blobMinAreaDiff;
-	//ofParameter<bool>   bBlur;
-	//ofParameter<unsigned int> offsetLabels;
-	//ofParameter<float> polySimplify;
-	
-	/*ofParameter<bool>   bDrawTrackerLabels;
-	ofParameter<bool>   bDrawPolylines;
-	ofParameter<bool>   bDrawRects;
-	ofParameter<bool>   bDrawGhosts;
-	ofParameter<bool>   bDrawDebug;*/
 
 	void trackerPersistenceChanged(int& i);
 	void trackerMaxDistChanged(int& i);

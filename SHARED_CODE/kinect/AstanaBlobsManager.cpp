@@ -14,7 +14,6 @@ void AstanaBlobsManager::setup() {
 	blobFinder.setup();
 	string bfXml = "blob_manager_settings.xml";
 	gui.setup("Blobs Manager", bfXml);
-	gui.add(receiverOffset.set("Offset Blobs OSC", { 520,0 }, { -1000,-1000 }, { 1000,1000 }));
 	gui.add(bDrawMerged.set("Draw Merged blobs", false));
 	gui.add(bDrawActive.set("bDrawActive", true));
 	gui.add(bDrawKilled .set("bDrawKilled",true));
@@ -22,8 +21,7 @@ void AstanaBlobsManager::setup() {
 	gui.add(bDrawMoved  .set("bDrawMoved" ,true));
 	gui.add(bDrawScaled .set("bDrawScaled",true));
 	gui.add(bDrawNew    .set("bDrawNew"	  ,true));
-	
-		gui.add(blobFinder.parameters);
+	gui.add(blobFinder.parameters);
 	gui.setSize(300, 400);
 	gui.setPosition(ofGetWidth() - 340, 40);
 	gui.setWidthElements(300);
@@ -85,10 +83,11 @@ void AstanaBlobsManager::mergeBlobs() {
 	//addOffset(ASTANA_KILLED_BLOBS);
 
 	mutex.lock();
-	glm::vec2 offset = receiverOffset.get();
+//	glm::vec2 offset = receiverOffset.get();
 	mutex.unlock();
 	blobsBack.clear();
-	auto addBlobGroups = [&](AstanaBlobType t, bool bAddOffset = false) {
+	auto addBlobGroups = [&](AstanaBlobType t){// bool bAddOffset = false) {
+		blobsBack[t] = AstanaBlobGroup();
 		if (blobFinder.getBlobsCollection().count(t)) {
 			for (auto&b : blobFinder.getBlobs(t)) {
 				blobsBack[t].push_back(b);
@@ -97,32 +96,32 @@ void AstanaBlobsManager::mergeBlobs() {
 		if (receiver.getBlobsCollection().count(t)) {
 			for (auto&b : receiver.getBlobs(t)) {
 				blobsBack[t].push_back(b);
-				auto bb = blobsBack[t].back();
-				if (bAddOffset){
-					if (!bb->bIsTranslated) {
-						bb->bIsTranslated = true;
-						for (auto&v : bb->polyline.getVertices()) {
-							v.x += offset.x;
-							v.y += offset.y;
-						}
-						bb->boundingRect.translate(offset);
-						bb->center += offset;
-					}
+				//auto bb = blobsBack[t].back();
+				//if (bAddOffset){
+					//if (!bb->bIsTranslated) {
+					//	bb->bIsTranslated = true;
+					//	for (auto&v : bb->polyline.getVertices()) {
+					//		v.x += offset.x;
+					//		v.y += offset.y;
+					//	}
+					//	bb->boundingRect.translate(offset);
+					//	bb->center += offset;
+					//}
 					/*else {
 						cout << bb->label << " ya estaba offsetiado!" << AstanaToString(t) << endl;
 					}*/
-				}
+				//}
 			}
 		}
 	};
 
-	addBlobGroups(ASTANA_ALL_BLOBS,true);
+	addBlobGroups(ASTANA_ALL_BLOBS);//, true);
 	addBlobGroups(ASTANA_NEW_BLOBS);
 	addBlobGroups(ASTANA_MOVED_BLOBS);
 	addBlobGroups(ASTANA_SCALED_BLOBS);
 	addBlobGroups(ASTANA_MERGED_BLOBS);
-	addBlobGroups(ASTANA_GHOST_BLOBS, true);
-	addBlobGroups(ASTANA_KILLED_BLOBS, true);
+	addBlobGroups(ASTANA_GHOST_BLOBS);//, true);
+	addBlobGroups(ASTANA_KILLED_BLOBS);//, true);
 
 }
 //--------------------------------------------------------------
@@ -154,6 +153,7 @@ void AstanaBlobsManager::update(ofEventArgs&) {
 		mutex.unlock();
 	}
 	if (bNewBlobs) {
+		//cout << "Notify events " << endl;
 		notifyEvents();
 	}
 

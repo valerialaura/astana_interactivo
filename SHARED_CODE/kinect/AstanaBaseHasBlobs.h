@@ -24,8 +24,10 @@ public:
 	}
 	//--------------------------------------------------------------
 	vector< shared_ptr<AstanaBlob> >& getBlobs(AstanaBlobType type) {
-		if (getBlobsCollection().count(type)) {
-			return getBlobsCollection()[type];
+		if (getBlobsCollection().size()) {
+			if (getBlobsCollection().count(type)) {
+				return getBlobsCollection()[type];
+			}
 		}
 		return dummyBlobs;
 	}
