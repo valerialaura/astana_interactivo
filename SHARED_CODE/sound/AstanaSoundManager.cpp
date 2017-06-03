@@ -72,7 +72,7 @@ ofParameter<float>* getParamFromRoute(ofParameterGroup& g, string route) {
 AstanaSoundManager::AstanaSoundManager():activeGroup(""){}
 //---------------------------------------------------
 AstanaSoundManager::~AstanaSoundManager(){
-    soundStream.close();
+    close();
 }
 //---------------------------------------------------
 void AstanaSoundManager::drawGui(ofEventArgs&){
@@ -82,19 +82,19 @@ void AstanaSoundManager::drawGui(ofEventArgs&){
     gui.draw();
 	blobMappingGui.draw();
 	
-	stringstream s;
-	s << "Tecla 1 : activa CumparsitaCOmbo\n";
-	s << "Tecla 2 : activa ElDiaQueMeQuieras\n";
-	s << "Tecla 3 : activa Nonino\n";
-	s << "Tecla 4 : activa Sueltos\n";
-	s << "[ flecha derecha -> ]  trigger siguiente del grupo actual.\n";
-	s << endl;
-	s << "Al activar un grupo se apagara el que este andando y \nse iniciaran las texturas correspondientes.\n";
-	s << "Todos los parametros que se ven el la GUI pueden ser\nanclados dinamicamente a OSC.";
+	//stringstream s;
+	//s << "Tecla 1 : activa CumparsitaCOmbo\n";
+	//s << "Tecla 2 : activa ElDiaQueMeQuieras\n";
+	//s << "Tecla 3 : activa Nonino\n";
+	//s << "Tecla 4 : activa Sueltos\n";
+	//s << "[ flecha derecha -> ]  trigger siguiente del grupo actual.\n";
+	//s << endl;
+	//s << "Al activar un grupo se apagara el que este andando y \nse iniciaran las texturas correspondientes.\n";
+	//s << "Todos los parametros que se ven el la GUI pueden ser\nanclados dinamicamente a OSC.";
 
 	ofBitmapFont f;
-	auto r = f.getBoundingBox(s.str(), 0, 0);
-	ofDrawBitmapStringHighlight(s.str(), 0.5 * (ofGetWidth() - r.width), ofGetHeight() - r.height - 20);
+	//auto r = f.getBoundingBox(s.str(), 0, 0);
+	//ofDrawBitmapStringHighlight(s.str(), 0.5 * (ofGetWidth() - r.width), ofGetHeight() - r.height - 20);
 
 	stringstream ss;
 	for (auto& sb : soundBlobLinks) {
@@ -103,12 +103,18 @@ void AstanaSoundManager::drawGui(ofEventArgs&){
 			ss << "    " << l.first << "  " << AstanaToString(l.second.blobParam) << endl;
 		}
 	}
-	ss << "Available Params: " << endl;
-	for (auto& a : availableParams) {
-		ss << a.first << " " << (a.second ? "TRUE" : "FALSE") << endl;
+	//ss << "Available Params: " << endl;
+	//
+	//for (auto& a : availableParams) {
+	//	ss << a.first << " " << (a.second ? "TRUE" : "FALSE") << endl;
+	//}
+	auto r = f.getBoundingBox(ss.str(), 0, 0);
+	ofDrawBitmapStringHighlight(ss.str(), 0.5 * (ofGetWidth() - r.width), ofGetHeight() - r.height - 20);
+	//ofDrawBitmapStringHighlight(ss.str(), ofGetWidth() - r.width - 20, ofGetHeight() - r.height - 20);
+	if (blobManager) {
+		blobManager->drawDebug();
+
 	}
-	r = f.getBoundingBox(ss.str(), 0, 0);
-	ofDrawBitmapStringHighlight(ss.str(), ofGetWidth() - r.width - 20, ofGetHeight() - r.height - 20);
 
 }
 //---------------------------------------------------
@@ -347,16 +353,23 @@ void AstanaSoundManager::onNewBlobs() {
 		addLink(b->label, ASTANA_BLOB_CENTER_Y);
 	}
 }
+	//---------------------------------------------------
+void AstanaSoundManager::threadedFunction(){
+
+}
 //---------------------------------------------------
 void AstanaSoundManager::onKillBlobs() {
-	//cout << "killed blobs" << endl;
+	cout << "killed blobs" << endl;
 //
 	mutex.lock();
 	getBlobsCollection()[ASTANA_KILLED_BLOBS] = blobManager->getKilledBlobs();
 	mutex.unlock();
-	for (auto& b : getKilledBlobs()) {
-		removeLink(b->label);
-		removeLink(b->label);
+	cout << "--------------------" << endl;
+	for (auto& b : getBlobsCollection()[ASTANA_KILLED_BLOBS]) {
+//		cout << b->label << endl;
+		if(!removeLink(b->label)){
+			cout << "No se elimino el blob " << b->label << endl;
+		}
 	}
 }
 //---------------------------------------------------
@@ -402,27 +415,25 @@ bool AstanaSoundManager::hasNextAvailableParamName() {
 }
 //---------------------------------------------------
 bool AstanaSoundManager::addLink(unsigned int label, AstanaBlobParam blobParam) {
-		if (hasNextAvailableParamName()) {
-			bool bFound = false;
-			if (soundBlobLinks.count(label)) {
-				for (auto& p : soundBlobLinks[label]) {
-					if (p.second.blobParam == blobParam) {
-						bFound = true;
-						break;
-					}
-				}
+	if (hasNextAvailableParamName()) {
+		string name = getNextAvailableParamName();
+		bool bValid = true;
+		if (soundBlobLinks.count(label)) {
+			if (soundBlobLinks[label].count(name)) {
+				bValid = false;
 			}
-			if (!bFound) {
-				string n = getNextAvailableParamName();
-				auto p = getParamFromRoute(texturas->gui.getParameter().castGroup(), n);
+		}
+		if(bValid){
+				auto p = getParamFromRoute(texturas->gui.getParameter().castGroup(), name);
 				if (p) {
-					soundBlobLinks[label][n].blobParam = blobParam;
-					soundBlobLinks[label][n].soundParam.makeReferenceTo( *p);
-					setAvailableParamUse(n, false);
+					soundBlobLinks[label][name].blobParam = blobParam;
+					soundBlobLinks[label][name].soundParam.makeReferenceTo(*p);
+					setAvailableParamUse(name, false);
 					return true;
 				}
 			}
-		}
+		
+	}
 	return false;
 }
 //---------------------------------------------------

@@ -14,7 +14,7 @@
 #include "AstanaSoundIntervencion.h"
 #include "ofxSoundMixer.h"
 #include "AstanaBlobsManager.h"
-class AstanaSoundManager :public AstanaBaseHasBlobs {
+class AstanaSoundManager :public AstanaBaseHasBlobs, public ofThread {
 public:
     AstanaSoundManager();
     virtual ~AstanaSoundManager();
@@ -36,8 +36,11 @@ public:
 
 	float getFadeEscenaDuration() { return fadeEscenaDuration; }
 	shared_ptr<AstanaSoundTextura> getTexturas(){return texturas;}
-	virtual AstanaBlobCollection& getBlobsCollection() { return blobs; }
+	virtual AstanaBlobCollection& getBlobsCollection() { return blobsFront; }
 protected:
+	void threadedFunction();
+	ofThreadChannel<AstanaBlobCollection> blobsUpdated;
+
 	void setBlobManager(shared_ptr<AstanaBlobsManager>mng);
 	void onNewBlobs();
 	void onKillBlobs();
@@ -95,5 +98,5 @@ protected:
 
 	ofParameter<float>dummyFloatParam;
 
-	AstanaBlobCollection blobs;
+	AstanaBlobCollection blobsFront, blobsMiddle, blobsBack;
 };
