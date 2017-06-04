@@ -83,6 +83,8 @@ protected:
 		AstanaBlobParam blobParam;
 	};
 
+	vector<AstanaBlobParam> availableBlobParams;
+	AstanaBlobParam getNextAvailableBlobParam();
 	map<unsigned int, map<string, AstanaSoundBlobLink> > soundBlobLinks;
 	// label blob, map<soundParamName, link>
 

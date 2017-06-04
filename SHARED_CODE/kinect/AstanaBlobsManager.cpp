@@ -89,20 +89,24 @@ void AstanaBlobsManager::update(ofEventArgs&) {
 		toMerge.send(b);
 		mutex.unlock();
 	}
-//	bool bNewBlobs = false;
+	bool bNewBlobs = false;
 	while (fromMerge.tryReceive(blobsMiddle)) {
-	//	bNewBlobs = true;
 		mutex.lock();
-		blobsFront.clear();
+		if(blobsMiddle.size()){
+		bNewBlobs = true;
+//		blobsFront.clear();
 		blobsMiddle.swap(blobsFront);
-		notifyEvents();
+		//blobsFront = blobsMiddle;
+		}
  		mutex.unlock();
 	}
-	//if (bNewBlobs) {
+	if (bNewBlobs) {
+		mutex.lock();
+		notifyEvents();
+		mutex.unlock();
+	}
 		//cout << "Notify events " << endl;
-//		mutex.lock();
 //		notifyEvents();
-	//	mutex.unlock();
 	//}
 
 }

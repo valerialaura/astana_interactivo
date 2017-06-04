@@ -49,7 +49,8 @@ void AstanaKinectBlobFinder::update() {
 	while (analyzed.tryReceive(currentBlobsMiddle) ){
 		bNewFrame = true;
 		mutex.lock();
-		currentBlobsMiddle.swap(currentBlobsFront);
+//		currentBlobsMiddle.swap(currentBlobsFront);
+		currentBlobsFront = currentBlobsMiddle;
 		mutex.unlock();
 	}
 	if (bNewFrame) {
