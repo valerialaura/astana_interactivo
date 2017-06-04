@@ -51,4 +51,6 @@ private:
 	bool bIsSetup = false;
 	ofEventListener trackerMxDListener, trackerPerst;
 	map<int, int>labelIndex, prevLabelIndex;
+
+	//ofBuffer fileBuffer;
 };

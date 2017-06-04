@@ -19,7 +19,6 @@ public:
 	void drawGui();
 
 	ofxOscReceiver receiver;
-	ofEvent<void> anyBlobEvent;
 	AstanaBlobCollection& getBlobsCollection();
 private:
 	void hostIpChanged(string&);

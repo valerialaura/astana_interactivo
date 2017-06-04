@@ -14,6 +14,8 @@
 #include "AstanaSoundIntervencion.h"
 #include "ofxSoundMixer.h"
 #include "AstanaBlobsManager.h"
+
+//#define ASTANA_PRINT_DEBUG
 class AstanaSoundManager :public AstanaBaseHasBlobs, public ofThread {
 public:
     AstanaSoundManager();
@@ -37,16 +39,19 @@ public:
 	float getFadeEscenaDuration() { return fadeEscenaDuration; }
 	shared_ptr<AstanaSoundTextura> getTexturas(){return texturas;}
 	virtual AstanaBlobCollection& getBlobsCollection() { return blobsFront; }
-protected:
 	void threadedFunction();
-	ofThreadChannel<AstanaBlobCollection> blobsUpdated;
+protected:
+	void update(ofEventArgs&);
+	void updateBlobs();
+	ofThreadChannel<AstanaBlobCollection> toBlobsUpdate, fromBlobsUpdate;
 
 	void setBlobManager(shared_ptr<AstanaBlobsManager>mng);
-	void onNewBlobs();
-	void onKillBlobs();
-	void onMovedBlobs();
-	void onScaledBlobs();
-	void onMergedBlobs();
+	void onAnyBlobs();
+	//void onNewBlobs();
+	//void onKillBlobs();
+	//void onMovedBlobs();
+	//void onScaledBlobs();
+	//void onMergedBlobs();
 	virtual void startActiveGroup();
     void setupGui();
     void load(string folderPath);
@@ -99,4 +104,8 @@ protected:
 	ofParameter<float>dummyFloatParam;
 
 	AstanaBlobCollection blobsFront, blobsMiddle, blobsBack;
+
+#ifdef ASTANA_PRINT_DEBUG
+	ofBuffer fileBuffer;
+#endif
 };

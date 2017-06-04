@@ -19,7 +19,7 @@ public:
 		if (getMergedBlobs().size()) { ofNotifyEvent(onMergeBlobEvent);  n = true;}
 		if (getKilledBlobs().size()) { ofNotifyEvent(killedBlobEvent);  n = true;}
 
-		if (getAllBlobs().size() || getKilledBlobs().size()) { ofNotifyEvent(anyBlobEvent);  n = true;}
+		if (getAllBlobs().size() || getKilledBlobs().size() || getGhostBlobs().size()) { ofNotifyEvent(anyBlobEvent);  n = true;}
 		return n;
 	}
 	//--------------------------------------------------------------

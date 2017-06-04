@@ -85,7 +85,9 @@ void AstanaBlobsManager::update(ofEventArgs&) {
 		AstanaBlobCollection b;
 		bReceiverBlobsReady = false;
 		bFinderBlobsReady = false;
+		mutex.lock();
 		toMerge.send(b);
+		mutex.unlock();
 	}
 //	bool bNewBlobs = false;
 	while (fromMerge.tryReceive(blobsMiddle)) {
@@ -94,7 +96,7 @@ void AstanaBlobsManager::update(ofEventArgs&) {
 		blobsFront.clear();
 		blobsMiddle.swap(blobsFront);
 		notifyEvents();
-		mutex.unlock();
+ 		mutex.unlock();
 	}
 	//if (bNewBlobs) {
 		//cout << "Notify events " << endl;

@@ -7,6 +7,7 @@ AstanaKinectBlobFinder::AstanaKinectBlobFinder():bNewFrame(true) {
 }
 //--------------------------------------------------------------
 AstanaKinectBlobFinder::~AstanaKinectBlobFinder() {
+	//ofBufferToFile("filebuffer.txt", fileBuffer);
 	toAnalyze.close();
 	analyzed.close();
 	waitForThread(true);
@@ -183,7 +184,7 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			ghostBlobs.push_back(make_shared<AstanaBlob>());
 			ghostBlobs.back()->boundingRect = ofxCv::toOf(tracker.getCurrent(label));
 			ghostBlobs.back()->center = ghostBlobs.back()->boundingRect.getCenter().xy();
-			ghostBlobs.back()->label = label + offsetLabels;
+			ghostBlobs.back()->label = label +offsetLabels;
 			ghostBlobs.back()->age = tracker.getAge(label);
 		}
 	}
@@ -232,7 +233,16 @@ void AstanaKinectBlobFinder::analyze(ofShortPixels& p) {
 			}
 		}	
 	}
-	
+	//stringstream ss;
+	//ss << "=================================================" << endl;
+	//for(auto&g : currentBlobsBack){
+	//	ss << "------------" << AstanaToString(g.first) << endl;
+	//	for(auto& a: g.second){
+	//		ss << a->label << endl;
+	//	}
+	//}
+	//fileBuffer.append(ss.str());
+
 	notifyEvents();
 	mutex.unlock();
 
