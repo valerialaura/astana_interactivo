@@ -4,6 +4,13 @@
 SHARED_DATA/
 GPPKinectBlobSender/
 ofxKinectBlobTrackerExample/
+7_BlobsSoundLink_edit/
+7_BlobsSoundLink_edit2/
+SHARED_DATA_JOSE/
+_jose/
+7_BlobsSoundLink/bin/data/path_carpeta_audio.xml
+guiParamaRecursiveNameTest/
+test3-oscReceiveExample/
 
 ###########################
 # ignore generated binaries
