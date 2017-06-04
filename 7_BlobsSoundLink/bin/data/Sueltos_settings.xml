@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Sueltos>
+	<Master_Grupo>1</Master_Grupo>
+	<Pistas_Loopeables>
+		<ColorOrchestal1>0</ColorOrchestal1>
+		<ColorOrchestal2>0</ColorOrchestal2>
+		<Final_5to1ero>0</Final_5to1ero>
+		<VolverBando>0</VolverBando>
+	</Pistas_Loopeables>
+	<Volumen_Pistas>
+		<ColorOrchestal1>1</ColorOrchestal1>
+		<ColorOrchestal2>1</ColorOrchestal2>
+		<Final_5to1ero>1</Final_5to1ero>
+		<VolverBando>1</VolverBando>
+	</Volumen_Pistas>
+	<Pan_Pistas>
+		<ColorOrchestal1>0</ColorOrchestal1>
+		<ColorOrchestal2>0</ColorOrchestal2>
+		<Final_5to1ero>0</Final_5to1ero>
+		<VolverBando>0</VolverBando>
+	</Pan_Pistas>
+	<Texturas_Validas>
+		<Tetura1>1</Tetura1>
+		<Textura2a>1</Textura2a>
+		<Textura2b>0</Textura2b>
+		<Textura3>0</Textura3>
+		<Textura4>1</Textura4>
+		<Textura5>1</Textura5>
+		<Textura6>0</Textura6>
+	</Texturas_Validas>
+</Sueltos>

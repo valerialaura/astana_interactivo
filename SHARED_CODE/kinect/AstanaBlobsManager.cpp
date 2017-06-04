@@ -15,12 +15,13 @@ void AstanaBlobsManager::setup() {
 	string bfXml = "blob_manager_settings.xml";
 	gui.setup("Blobs Manager", bfXml);
 	gui.add(bDrawMerged.set("Draw Merged blobs", false));
-	gui.add(bDrawActive.set("bDrawActive", true));
-	gui.add(bDrawKilled .set("bDrawKilled",true));
-	gui.add(bDrawGhosts .set("bDrawGhosts",true));
-	gui.add(bDrawMoved  .set("bDrawMoved" ,true));
-	gui.add(bDrawScaled .set("bDrawScaled",true));
-	gui.add(bDrawNew    .set("bDrawNew"	  ,true));
+	//gui.add(bDrawActive.set("bDrawActive", true));
+	//gui.add(bDrawKilled .set("bDrawKilled",true));
+	//gui.add(bDrawGhosts .set("bDrawGhosts",true));
+	//gui.add(bDrawMoved  .set("bDrawMoved" ,true));
+	//gui.add(bDrawScaled .set("bDrawScaled",true));
+	//gui.add(bDrawNew    .set("bDrawNew"	  ,true));
+	gui.add(bUseOsc    .set("Usar OSC"	  ,true));
 	gui.add(blobFinder.parameters);
 	gui.setSize(300, 400);
 	gui.setPosition(ofGetWidth() - 340, 40);
@@ -44,28 +45,32 @@ void AstanaBlobsManager::onReceiverAnyBlob() {
 //--------------------------------------------------------------
 void AstanaBlobsManager::mergeBlobs() {
 	blobsBack.clear();
-	auto addBlobGroups = [&](AstanaBlobType t){// bool bAddOffset = false) {
-		blobsBack[t] = AstanaBlobGroup();
-		if (blobFinder.getBlobsCollection().count(t)) {
-			for (auto&b : blobFinder.getBlobs(t)) {
-				blobsBack[t].push_back(b);
+	if (bUseOsc) {
+		auto addBlobGroups = [&](AstanaBlobType t) {// bool bAddOffset = false) {
+			blobsBack[t] = AstanaBlobGroup();
+			if (blobFinder.getBlobsCollection().count(t)) {
+				for (auto&b : blobFinder.getBlobs(t)) {
+					blobsBack[t].push_back(b);
+				}
 			}
-		}
-		if (receiver.getBlobsCollection().count(t)) {
-			for (auto&b : receiver.getBlobs(t)) {
-				blobsBack[t].push_back(b);
+			if (receiver.getBlobsCollection().count(t)) {
+				for (auto&b : receiver.getBlobs(t)) {
+					blobsBack[t].push_back(b);
+				}
 			}
-		}
-	};
+		};
 
-	addBlobGroups(ASTANA_ALL_BLOBS);
-	addBlobGroups(ASTANA_NEW_BLOBS);
-	addBlobGroups(ASTANA_MOVED_BLOBS);
-	addBlobGroups(ASTANA_SCALED_BLOBS);
-	addBlobGroups(ASTANA_MERGED_BLOBS);
-	addBlobGroups(ASTANA_GHOST_BLOBS);
-	addBlobGroups(ASTANA_KILLED_BLOBS);
-
+		addBlobGroups(ASTANA_ALL_BLOBS);
+		addBlobGroups(ASTANA_NEW_BLOBS);
+		addBlobGroups(ASTANA_MOVED_BLOBS);
+		addBlobGroups(ASTANA_SCALED_BLOBS);
+		addBlobGroups(ASTANA_MERGED_BLOBS);
+		addBlobGroups(ASTANA_GHOST_BLOBS);
+		addBlobGroups(ASTANA_KILLED_BLOBS);
+	}
+	else {
+		blobsBack = blobFinder.getBlobsCollection();
+	}
 }
 //--------------------------------------------------------------
 void AstanaBlobsManager::threadedFunction() {
@@ -81,7 +86,7 @@ void AstanaBlobsManager::threadedFunction() {
 //--------------------------------------------------------------
 void AstanaBlobsManager::update(ofEventArgs&) {
 	blobFinder.update();
-	if (bReceiverBlobsReady && bFinderBlobsReady) {
+	if ((bReceiverBlobsReady && bFinderBlobsReady) || (!bUseOsc && bFinderBlobsReady)) {
 		AstanaBlobCollection b;
 		bReceiverBlobsReady = false;
 		bFinderBlobsReady = false;
@@ -117,12 +122,20 @@ void AstanaBlobsManager::drawDebug(){
 //--------------------------------------------------------------
 void AstanaBlobsManager::draw() {
 	if (bDrawMerged) {
-		if (bDrawActive)AstanaDraw::drawGroup(ASTANA_ALL_BLOBS,    getBlobsCollection(), ofColor(120), ofColor::red);
-		if (bDrawKilled)AstanaDraw::drawGroup(ASTANA_KILLED_BLOBS, getBlobsCollection(), ofColor(120), ofColor::white);
-		if (bDrawGhosts)AstanaDraw::drawGroup(ASTANA_GHOST_BLOBS,  getBlobsCollection(), ofColor(120), ofColor::blue);
-		if (bDrawMoved) AstanaDraw::drawGroup(ASTANA_MOVED_BLOBS,  getBlobsCollection(), ofColor(120), ofColor::purple);
-		if (bDrawScaled)AstanaDraw::drawGroup(ASTANA_SCALED_BLOBS, getBlobsCollection(), ofColor(120), ofColor::yellow);
-		if (bDrawNew)   AstanaDraw::drawGroup(ASTANA_NEW_BLOBS,    getBlobsCollection(), ofColor(120), ofColor::black);
+		//if (bDrawActive)AstanaDraw::drawGroup(ASTANA_ALL_BLOBS,    getBlobsCollection(), ofColor(120), ofColor::red);
+		//if (bDrawKilled)AstanaDraw::drawGroup(ASTANA_KILLED_BLOBS, getBlobsCollection(), ofColor(120), ofColor::white);
+		//if (bDrawGhosts)AstanaDraw::drawGroup(ASTANA_GHOST_BLOBS,  getBlobsCollection(), ofColor(120), ofColor::blue);
+		//if (bDrawMoved) AstanaDraw::drawGroup(ASTANA_MOVED_BLOBS,  getBlobsCollection(), ofColor(120), ofColor::purple);
+		//if (bDrawScaled)AstanaDraw::drawGroup(ASTANA_SCALED_BLOBS, getBlobsCollection(), ofColor(120), ofColor::yellow);
+		//if (bDrawNew)   AstanaDraw::drawGroup(ASTANA_NEW_BLOBS,    getBlobsCollection(), ofColor(120), ofColor::black);
+		//AstanaDraw::drawDebug(getBlobsCollection());
+
+		AstanaDraw::drawGroup(ASTANA_ALL_BLOBS,    getBlobsCollection(), ofColor(120), ofColor::red);
+		AstanaDraw::drawGroup(ASTANA_KILLED_BLOBS, getBlobsCollection(), ofColor(120), ofColor::white);
+		AstanaDraw::drawGroup(ASTANA_GHOST_BLOBS,  getBlobsCollection(), ofColor(120), ofColor::blue);
+		AstanaDraw::drawGroup(ASTANA_MOVED_BLOBS,  getBlobsCollection(), ofColor(120), ofColor::purple);
+		AstanaDraw::drawGroup(ASTANA_SCALED_BLOBS, getBlobsCollection(), ofColor(120), ofColor::yellow);
+		AstanaDraw::drawGroup(ASTANA_NEW_BLOBS,    getBlobsCollection(), ofColor(120), ofColor::black);
 		AstanaDraw::drawDebug(getBlobsCollection());
 
 	}

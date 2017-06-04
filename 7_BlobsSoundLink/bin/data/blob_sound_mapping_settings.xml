@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Mapping_Blob_a_Sonido>
+	<Blob_Center_X>
+		<min>0</min>
+		<max>2000</max>
+	</Blob_Center_X>
+	<Blob_Center_Y>
+		<min>0</min>
+		<max>2000</max>
+	</Blob_Center_Y>
+	<Blob_Area>
+		<min>0</min>
+		<max>2000</max>
+	</Blob_Area>
+	<Blob_Vel_X>
+		<min>0</min>
+		<max>200</max>
+	</Blob_Vel_X>
+	<Blob_Vel_Y>
+		<min>0</min>
+		<max>200</max>
+	</Blob_Vel_Y>
+	<Propiedades_blobs_a_mapear>
+		<Usar_Centro_X>1</Usar_Centro_X>
+		<Usar_Centro_Y>1</Usar_Centro_Y>
+		<Usar_Area>0</Usar_Area>
+		<Usar_Vel_X>0</Usar_Vel_X>
+		<Usar_Vel_Y>0</Usar_Vel_Y>
+	</Propiedades_blobs_a_mapear>
+</Mapping_Blob_a_Sonido>

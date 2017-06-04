@@ -45,4 +45,5 @@
 			<Enable_Draw>1</Enable_Draw>
 		</DRAW>
 	</Blob_Finder>
+	<Usar_OSC>0</Usar_OSC>
 </Blobs_Manager>

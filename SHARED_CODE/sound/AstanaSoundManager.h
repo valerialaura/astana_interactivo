@@ -16,12 +16,12 @@
 #include "AstanaBlobsManager.h"
 
 //#define ASTANA_PRINT_DEBUG
-class AstanaSoundManager :public AstanaBaseHasBlobs, public ofThread {
+class AstanaSoundManager :protected AstanaBaseHasBlobs, public ofThread {
 public:
     AstanaSoundManager();
     virtual ~AstanaSoundManager();
     
-    void setup(string folderPath, shared_ptr<AstanaBlobsManager>mng = nullptr);
+    void setup( shared_ptr<AstanaBlobsManager>mng = nullptr);
 	void close();
 
 	void enableGui(bool e = true);
@@ -47,11 +47,7 @@ protected:
 
 	void setBlobManager(shared_ptr<AstanaBlobsManager>mng);
 	void onAnyBlobs();
-	//void onNewBlobs();
-	//void onKillBlobs();
-	//void onMovedBlobs();
-	//void onScaledBlobs();
-	//void onMergedBlobs();
+
 	virtual void startActiveGroup();
     void setupGui();
     void load(string folderPath);
@@ -101,11 +97,19 @@ protected:
 	map<AstanaBlobParam, ofParameter<float> > mapMinVals, mapMaxVals;
 	map<string, bool> availableParams;
 
+	bool isTexturaValida(string tex);
+
 	ofMutex mutex;
 
 	ofParameter<float>dummyFloatParam;
 
 	AstanaBlobCollection blobsFront, blobsMiddle, blobsBack;
+
+	void clearSoundBlobLinks();
+
+	ofParameter<bool>bUsarCentroX, bUsarCentroY, bUsarArea, bUsarVelX, bUsarVelY;
+	ofParameter<void>vResetearLinks;
+
 
 #ifdef ASTANA_PRINT_DEBUG
 	ofBuffer fileBuffer;

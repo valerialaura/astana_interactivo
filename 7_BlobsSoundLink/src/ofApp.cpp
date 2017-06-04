@@ -7,12 +7,7 @@ void ofApp::setup(){
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	blobsMngr = make_shared<AstanaBlobsManager>();
 	blobsMngr->setup();
-	ofFileDialogResult r = ofSystemLoadDialog("Cargar carpeta audios", true);
-    if (r.bSuccess) {
-        cout << "path audios relative: " << ofFilePath::makeRelative(ofToDataPath("",true), r.getPath()) << endl;
-      sndMngr.setup(r.getPath(), blobsMngr);
-    }
-//    sndMngr.setup(PATH_AUDIOS);
+    sndMngr.setup( blobsMngr);
 	sndMngr.enableGui();
 	
 }
