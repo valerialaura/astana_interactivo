@@ -150,7 +150,7 @@ void AstanaBlobsManager::draw() {
 //--------------------------------------------------------------
 void AstanaBlobsManager::drawGui() {
 	gui.draw();
-	receiver.drawGui();
+	if(bUseOsc) receiver.drawGui();
 }
 //--------------------------------------------------------------
 AstanaBlobCollection& AstanaBlobsManager::getBlobsCollection() {

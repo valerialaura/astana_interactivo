@@ -1,4 +1,5 @@
 #pragma once
+
 #include "AstanaKinectBlobFinder.h"
 #include "AstanaOSCBlobReceiver.h"
 #include "AstanaBaseHasBlobs.h"
