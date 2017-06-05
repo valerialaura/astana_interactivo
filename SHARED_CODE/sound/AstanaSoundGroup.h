@@ -10,10 +10,8 @@
 #include "ofMain.h"
 #include "AstanaSoundPlayer.h"
 #include "ofxGui.h"
-#include "ofxSoundMixer.h"
-#include "AstanaDigitalDelay.h"
 class AstanaSoundManager;
-class AstanaSoundGroup{//:public ofxSoundObject{
+class AstanaSoundGroup{
 public:
     AstanaSoundGroup();
     void setManager(AstanaSoundManager* mngr);
@@ -36,9 +34,9 @@ public:
     ofParameterGroup loopeablesGroup, volumeGroup, panGroup, texturasValidasGroup, speedGroup;
     ofxPanel gui;
     bool isTextura(){return bIsTextura;}
-    ofxSoundMixer& getMixer(){return mixer;}
+    //ofxSoundMixer& getMixer(){return mixer;}
 	//ofxSoundObject* getOutput() { return output; }
-    virtual void setListeners(bool e = true);
+   // virtual void setListeners(bool e = true);
     void highlightGui(bool hl);
     bool isPlaying();
 	void stopAll();
@@ -55,7 +53,7 @@ protected:
     ofEventListener currentListener;
     bool bIsTextura = false;
     bool bFolderLoaded = false;
-    ofxSoundMixer mixer;
+    //ofxSoundMixer mixer;
     vector <ofEventListener>listeners;
     bool bListenersEnabled = false;
     vector<ofEventListener> fadeListeners;

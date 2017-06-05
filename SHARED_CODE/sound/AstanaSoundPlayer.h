@@ -7,36 +7,22 @@
 //
 
 #pragma once
-//#define ASTANA_USAR_DEFAULT_SOUND_PLAYER
 
 #include "ofMain.h"
-#ifdef ASTANA_USAR_DEFAULT_SOUND_PLAYER
-#define ASTANA_SOUND_PLAYER ofSoundPlayer
-#else
-#include "ofxSoundObjects.h"
-#define ASTANA_SOUND_PLAYER ofxBasicSoundPlayer
-#endif
 #include "ofxTween2.h"
-class AstanaSoundPlayer: public ASTANA_SOUND_PLAYER{
+class AstanaSoundPlayer{
 public:
     AstanaSoundPlayer();
     virtual ~AstanaSoundPlayer();
     bool load(std::filesystem::path filePath, bool stream = false);
     
     ofParameter<bool> loopeable;
-    //ofParameter<float> volume, pan, speed;
-    
- //   void play();
-	//void stop();
-	//void setPaused(bool bP);
     
     string getName(){return name;}
     bool isLoaded(){return bIsLoaded;}
     void fadeOut(size_t index , float duration = 1);
     void fadeIn(size_t index , float duration = 1);
     void updateFade(ofEventArgs& a);
-    //void enableGuiListeners(bool e =true);
-    //ofEvent<void> guiNeedUpdateEvent;
     ofEvent<void> fadeEndEvent;
 protected:
     bool bIsLoaded = false;
@@ -56,4 +42,44 @@ private:
 	// player instance id, tween    
 	void stopFade(size_t index);
     void fadeEnd(size_t & i);
+public:
+	void unload();
+	size_t play();// when play is called and multiplay enabled a new playing instance is setup and it's index returned;
+	void stop(int index = -1);
+	
+	void setVolume(float vol, size_t index =0 );
+	void setPan(float vol, size_t index =0 ); // -1 = left, 1 = right
+	void setSpeed(float spd, size_t index =0 );
+	void setPaused(bool bP, int index = -1);
+	void setLoop(bool bLp);
+	void setMultiPlay(bool bMp);
+	void setPosition(float pct, size_t index =0 ); // 0 = start, 1 = end;
+
+	float getPosition(size_t index =0) const;
+	bool isPlaying() const;
+	bool isPlaying(size_t index) const;
+	float getSpeed(size_t index =0) const;
+	float getPan(size_t index =0) const;
+	bool isLoaded() const;
+	float getVolume(size_t index =0) const;
+	bool getIsLooping() const;
+
+  
+	bool canPlayInstance();
+	size_t getNumInstances() { return instances.size(); }
+private:
+	
+	static int maxSoundsTotal;
+	static int maxSoundsPerPlayer;
+	int maxSounds;
+	bool bIsLooping = false;
+	bool bStreaming = false;
+	bool bMultiplay = false;
+	vector<ofSoundPlayer> instances;
+	
+
+
+
+
 };
+

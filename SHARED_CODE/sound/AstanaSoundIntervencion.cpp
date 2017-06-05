@@ -54,24 +54,24 @@ void AstanaSoundIntervencion::loadFolder(string folderPath){
     AstanaSoundGroup::loadFolder(folderPath);
 }
 //---------------------------------------------------
-void AstanaSoundIntervencion::setListeners(bool e){
-    if(bListenersEnabled != e){
-        AstanaSoundGroup::setListeners(e);
-        if (bListenersEnabled) {
-            for(int i = 0; i < players.size(); i++){
-                if(ofStringTimesInString(ofToLower(players[i].getName()), "loop")){
-                    loopIndex = i;
-                    listeners.push_back(players[i].endEvent.newListener(this, &AstanaSoundIntervencion::onLoopEnd));
-                //    cout << "AstanaSoundIntervencion loop: " << players[i].getName() << " index: " << loopIndex << endl;
-                }else{
-                    listeners.push_back(players[i].endEvent.newListener(this, &AstanaSoundIntervencion::onIntervencionEnd));
-                    intervencionesIndices.push_back(i);
-                  //  cout << "AstanaSoundIntervencion intervencion: " << players[i].getName() << " index: " << i << endl;
-                }
-            }
-        }
-    }
-}
+//void AstanaSoundIntervencion::setListeners(bool e){
+//    if(bListenersEnabled != e){
+//        AstanaSoundGroup::setListeners(e);
+//        if (bListenersEnabled) {
+//            for(int i = 0; i < players.size(); i++){
+//                if(ofStringTimesInString(ofToLower(players[i].getName()), "loop")){
+//                    loopIndex = i;
+//   ///                 listeners.push_back(players[i].endEvent.newListener(this, &AstanaSoundIntervencion::onLoopEnd));
+//                //    cout << "AstanaSoundIntervencion loop: " << players[i].getName() << " index: " << loopIndex << endl;
+//                }else{
+/////                    listeners.push_back(players[i].endEvent.newListener(this, &AstanaSoundIntervencion::onIntervencionEnd));
+//                    intervencionesIndices.push_back(i);
+//                  //  cout << "AstanaSoundIntervencion intervencion: " << players[i].getName() << " index: " << i << endl;
+//                }
+//            }
+//        }
+//    }
+//}
 //---------------------------------------------------
 bool AstanaSoundIntervencion::isNextAllowed(){
     bool bIntPlay = isIntervencionPlaying();

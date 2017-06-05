@@ -13,7 +13,7 @@ AstanaSoundSecuencia::AstanaSoundSecuencia():AstanaSoundGroup(){}
 bool AstanaSoundSecuencia::play(){
     if (AstanaSoundGroup::play()) {
 		if(current > -1 && current < players.size()){
-			currentListener = players[current].endEvent.newListener(this, &AstanaSoundSecuencia::onCurrentEnd);
+//			currentListener = players[current].endEvent.newListener(this, &AstanaSoundSecuencia::onCurrentEnd);
 			return true;
 		}
     }
@@ -48,7 +48,7 @@ void AstanaSoundSecuencia::loadFolder(string folderPath){
 void AstanaSoundSecuencia::onCurrentEnd(size_t&){
     lastEndTime = ofGetElapsedTimef();
 	if(current > -1 && current < players.size()){
-    players[current].setPositionMS(0);
+    players[current].setPosition(0);
     if (players[current].loopeable) {
         players[current].play();
     }else{

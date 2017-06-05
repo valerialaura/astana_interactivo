@@ -12,7 +12,7 @@
 #include "AstanaSoundTextura.h"
 #include "AstanaSoundSecuencia.h"
 #include "AstanaSoundIntervencion.h"
-#include "ofxSoundMixer.h"
+//#include "ofxSoundMixer.h"
 #include "AstanaBlobsManager.h"
 
 //#define ASTANA_PRINT_DEBUG
@@ -69,7 +69,7 @@ protected:
 
 	shared_ptr<AstanaSoundTextura> texturas;
     ofSoundStream soundStream;
-    ofxSoundMixer mixer;
+    //ofxSoundMixer mixer;
     string folderPath;
 	bool bGuiEnabled = false;
 

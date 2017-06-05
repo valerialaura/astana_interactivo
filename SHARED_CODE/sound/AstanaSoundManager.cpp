@@ -164,7 +164,7 @@ void AstanaSoundManager::setupGui() {
 	string xmlName = "astana_sound_manager_settings.xml";
 	gui.setup("OPCIONES GLOBALES", xmlName);
 	gui.setHeaderBackgroundColor(ofColor::blue);
-	gui.add(mixer.masterVol);
+	//gui.add(mixer.masterVol);
 	gui.add(fadeEscenaDuration.set("duracion fade escenas. segs.", 1, 0, 10));
 	gui.add(smoothingParams.set("Smooth cambio sonidos", 0.8, 0, 1));
 
@@ -336,7 +336,7 @@ void AstanaSoundManager::load(string folderPath) {
 	settings.bufferSize = 256;
 	settings.sampleRate = 48000;
 	soundStream.setup(settings);
-	soundStream.setOutput(&mixer);
+	//soundStream.setOutput(&mixer);
 }
 //---------------------------------------------------
 void AstanaSoundManager::close() {
@@ -570,7 +570,7 @@ shared_ptr<T> AstanaSoundManager::addGroup(string groupFolder) {
 		p->setName(groupName);
 		p->setManager(this);
 		p->setup(f.getAbsolutePath());
-		p->getMixer().connectTo(mixer);
+//		p->getMixer().connectTo(mixer);
 		return p;
 	}
 	else {

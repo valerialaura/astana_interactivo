@@ -16,22 +16,7 @@ AstanaSoundGroup::AstanaSoundGroup(){
 void AstanaSoundGroup::setup(string folderPath){
     this->loadFolder(folderPath);
     this->setupParameters();
-    setListeners();
-//    auto names = gui.getControlNames();
-//        cout << getName() <<endl;
-//    for(auto& n: names){
-//        cout << "    " << n << endl;
-//    }
-#ifndef ASTANA_USAR_DEFAULT_SOUND_PLAYER
-	for (auto& p : players) {
-		p.connectTo(mixer);
-	}
-#endif
-	//output = &mixer;
-	//if (mixer.getNumChannels()) {
-		//mixer.connectTo(delayFx);
-	//	output = &delayFx;
-	//}
+//    setListeners();
     gui.getGroup("Pistas Loopeables").minimize();
     if(!bIsTextura){
         gui.getGroup("Texturas Validas").minimize();
@@ -53,19 +38,17 @@ void AstanaSoundGroup::loadFolder(string folderPath){
     players.clear();
     for (auto& f: dir.getFiles()) {
         players.push_back(AstanaSoundPlayer());
+		players.back().setMultiPlay(bIsTextura);
 		players.back().load(f.getAbsolutePath());
     }
     bFolderLoaded = true;
-  //  this->setupParameters();
 }
 //---------------------------------------------------
 void AstanaSoundGroup::setupParameters(){
 //    cout << __PRETTY_FUNCTION__ << endl;
     if(bFolderLoaded){
-		mixer.masterVol.setName("Master Grupo");
-		parameters.add(mixer.masterVol);
         addParameterGroup(loopeablesGroup,"Pistas Loopeables");
-        addParameterGroup(volumeGroup,"Volumen Pistas");
+//        addParameterGroup(volumeGroup,"Volumen Pistas");
 //        addParameterGroup(panGroup,"Pan Pistas");
         //parameters.add(delayFx.parameters);
 
@@ -74,7 +57,7 @@ void AstanaSoundGroup::setupParameters(){
 		for(auto& p: players){
             if(p.isLoaded()){
                 loopeablesGroup.add(p.loopeable);
-                volumeGroup.add(p.volume);
+                //volumeGroup.add(p.volume);
                 //panGroup.add(p.pan);
 				//speedGroup.add(p.speed);
             }
@@ -94,23 +77,6 @@ void AstanaSoundGroup::setupParameters(){
         gui.setup(parameters, getName()+"_settings.xml");
         gui.setName(getName());
         gui.loadFromFile(getName()+"_settings.xml");
-    }
-}
-//---------------------------------------------------
-void AstanaSoundGroup::setListeners(bool e ){
-    if(bListenersEnabled != e){
-        bListenersEnabled = e;
-        for (auto& p: players) {
-            if(e){
-                //listeners.push_back(p.guiNeedUpdateEvent.newListener(this, &AstanaSoundGroup::updateGui));
-#ifndef ASTANA_USAR_DEFAULT_SOUND_PLAYER
-                listeners.push_back(p.endEvent.newListener(this, &AstanaSoundSecuencia::updateGui));
-#endif
-            }
-        }
-        if(!e){
-            listeners.clear();
-        }
     }
 }
 //---------------------------------------------------
@@ -206,7 +172,7 @@ void AstanaSoundGroup::reset(){
     current = -1;
     if(players.size() > 0){
         for (auto& p: players) {
-              p.setPositionMS(0);
+              p.setPosition(0);
         }
     }
 }
