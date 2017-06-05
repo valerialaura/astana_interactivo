@@ -7,7 +7,13 @@
 //
 
 #include "AstanaSoundTextura.h"
-
+void AstanaSoundTextura::loadFolder(string folderPath){
+	AstanaSoundGroup::loadFolder(folderPath);
+	for (auto& p : players) {
+		//p.setMultiPlay(true);
+	}
+}
+//-------------------------------------------------------------------------
 void AstanaSoundTextura::playAll(){
     for(auto& p: players){
         p.play();

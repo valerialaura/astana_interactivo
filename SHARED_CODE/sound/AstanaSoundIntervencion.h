@@ -20,8 +20,8 @@ public:
     size_t getLoopIndex(){return loopIndex;}
     vector<size_t>intervencionesIndices;
     virtual void setListeners(bool e = true);
-    void onLoopEnd();
-    void onIntervencionEnd();
+    void onLoopEnd(size_t&);
+    void onIntervencionEnd(size_t&);
     virtual void loadFolder(string folderPath);
     
     ofParameter<float>probabilidadLoopIntervencion;

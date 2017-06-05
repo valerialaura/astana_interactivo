@@ -33,7 +33,7 @@ public:
     void setName(string name){this->name = name;}
     
     ofParameterGroup parameters;
-    ofParameterGroup loopeablesGroup, volumeGroup, panGroup, texturasValidasGroup;
+    ofParameterGroup loopeablesGroup, volumeGroup, panGroup, texturasValidasGroup, speedGroup;
     ofxPanel gui;
     bool isTextura(){return bIsTextura;}
     ofxSoundMixer& getMixer(){return mixer;}
@@ -41,24 +41,24 @@ public:
     virtual void setListeners(bool e = true);
     void highlightGui(bool hl);
     bool isPlaying();
-    
+	void stopAll();
     //AstanaDigitalDelay delayFx;
     
 protected:
 	//ofxSoundObject* output = nullptr;
-    void updateGui();
+    void updateGui(size_t&);
     virtual void setupParameters();
     virtual void loadFolder(string folderPath);
     
     AstanaSoundManager* manager = nullptr;
-    size_t current =0;
+    int current =-1;
     ofEventListener currentListener;
     bool bIsTextura = false;
     bool bFolderLoaded = false;
     ofxSoundMixer mixer;
     vector <ofEventListener>listeners;
     bool bListenersEnabled = false;
-        vector<ofEventListener> fadeListeners;
+    vector<ofEventListener> fadeListeners;
 private:
     string name;
     void addParameterGroup(ofParameterGroup& pg, string name);

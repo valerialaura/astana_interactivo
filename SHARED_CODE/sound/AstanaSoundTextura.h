@@ -13,7 +13,7 @@ public:
     AstanaSoundTextura():AstanaSoundGroup(){
         bIsTextura = true;
     }
-
+	virtual void loadFolder(string folderPath);
     void playAll();
 
     void printVols(){

@@ -98,17 +98,25 @@ void AstanaSoundManager::drawGui(ofEventArgs&) {
 	s << "[ flecha derecha -> ]  trigger siguiente del grupo actual.\n";
 	s << endl;
 	s << "Al activar un grupo se apagara el que este andando y \nse iniciaran las texturas correspondientes.\n";
+	s << "Estas teclas solo haran esto cuando se vea esta GUI. Son para debuguear principalmente\n";
 	//s << "Todos los parametros que se ven el la GUI pueden ser\nanclados dinamicamente a OSC.";
 
 	ofBitmapFont f;
 	auto r = f.getBoundingBox(s.str(), 0, 0);
-	ofDrawBitmapStringHighlight(s.str(), 0.5 * (ofGetWidth() - r.width), ofGetHeight() - r.height - 20, ofColor::fromHex(0xec008c), ofColor::black);
+	ofDrawBitmapStringHighlight(s.str(), 20, gui.getShape().getY() - r.height - 20, ofColor::fromHex(0xec008c), ofColor::black);
 
 	stringstream ss;
 	for (auto& sb : soundBlobLinks) {
 		ss << sb.first << endl;
 		for (auto& l : sb.second) {
-			ss << "    " << l.first << "  " << AstanaToString(l.second.blobParam) << endl;
+			ss << "    " << l.first << " I: " << l.second;
+			auto p = texturas->getPlayer(l.first);
+			if(p){
+				ss << " V: " << p->getVolume(l.second);
+				ss << " P: " << p->getPan(l.second);
+				ss << " S: " << p->getSpeed(l.second);
+			}
+			ss << endl;
 		}
 	}
 	//ss << "Available Params: " << endl;
@@ -117,8 +125,8 @@ void AstanaSoundManager::drawGui(ofEventArgs&) {
 	//	ss << a.first << " " << (a.second ? "TRUE" : "FALSE") << endl;
 	//}
 	r = f.getBoundingBox(ss.str(), 0, 0);
-	//ofDrawBitmapStringHighlight(ss.str(), 0.5 * (ofGetWidth() - r.width), ofGetHeight() - r.height - 20);
-	ofDrawBitmapStringHighlight(ss.str(), ofGetWidth() - r.width - 20, ofGetHeight() - r.height - 20);
+	ofDrawBitmapStringHighlight(ss.str(), 0.5 * (ofGetWidth() - r.width), ofGetHeight() - r.height - 20);
+	//ofDrawBitmapStringHighlight(ss.str(), ofGetWidth() - r.width - 20, ofGetHeight() - r.height - 20);
 	if (blobManager) {
 		blobManager->drawDebug();
 
@@ -148,7 +156,7 @@ void AstanaSoundManager::setup(shared_ptr<AstanaBlobsManager>mng) {
 	setupGui();
 
 	setBlobManager(mng);
-	setAvailableSoundParams();
+//	setAvailableSoundParams();
 }
 //---------------------------------------------------
 void AstanaSoundManager::setupGui() {
@@ -158,6 +166,9 @@ void AstanaSoundManager::setupGui() {
 	gui.setHeaderBackgroundColor(ofColor::blue);
 	gui.add(mixer.masterVol);
 	gui.add(fadeEscenaDuration.set("duracion fade escenas. segs.", 1, 0, 10));
+	gui.add(smoothingParams.set("Smooth cambio sonidos", 0.8, 0, 1));
+
+
 	ofParameter<void> stopAllP("STOP ALL");
 	gui.add(stopAllP);
 	listeners.push_back(stopAllP.newListener(this, &AstanaSoundManager::stopAll));
@@ -181,18 +192,18 @@ void AstanaSoundManager::setupGui() {
 	blobMappingGui.add(makeMinMaxParamGroup("Blob Center X", ASTANA_BLOB_CENTER_X, 0, 2000));
 	blobMappingGui.add(makeMinMaxParamGroup("Blob Center Y", ASTANA_BLOB_CENTER_Y, 0, 2000));
 	blobMappingGui.add(makeMinMaxParamGroup("Blob Area", ASTANA_BLOB_AREA, 0, 2000));
-	blobMappingGui.add(makeMinMaxParamGroup("Blob Vel X", ASTANA_BLOB_VEL_X, 0, 200));
-	blobMappingGui.add(makeMinMaxParamGroup("Blob Vel Y", ASTANA_BLOB_VEL_Y, 0, 200));
+//	blobMappingGui.add(makeMinMaxParamGroup("Blob Vel X", ASTANA_BLOB_VEL_X, 0, 200));
+	//blobMappingGui.add(makeMinMaxParamGroup("Blob Vel Y", ASTANA_BLOB_VEL_Y, 0, 200));
 
 	ofParameterGroup usarGroup;
 	usarGroup.setName("Propiedades blobs a mapear");
 	usarGroup.add(bUsarCentroX.set("Usar Centro X", true));
 	usarGroup.add(bUsarCentroY.set("Usar Centro Y", true));
 	usarGroup.add(bUsarArea.set(   "Usar Area", true));
-	usarGroup.add(bUsarVelX.set(   "Usar Vel X", true));
-	usarGroup.add(bUsarVelY.set(   "Usar Vel Y", true));
-	usarGroup.add(vResetearLinks.set("Resetear Enlace Sonido a Blob"));
-	listeners.push_back(vResetearLinks.newListener(this, &AstanaSoundManager::clearSoundBlobLinks));
+	//usarGroup.add(bUsarVelX.set(   "Usar Vel X", true));
+	//usarGroup.add(bUsarVelY.set(   "Usar Vel Y", true));
+	//usarGroup.add(vResetearLinks.set("Resetear Enlace Sonido a Blob"));
+	//listeners.push_back(vResetearLinks.newListener(this, &AstanaSoundManager::clearSoundBlobLinks));
 
 	blobMappingGui.add(usarGroup);
 	blobMappingGui.loadFromFile(bmgXml);
@@ -251,7 +262,9 @@ void AstanaSoundManager::stopAll() {
 //---------------------------------------------------
 void AstanaSoundManager::playNextTrack() {
 	if (groups.count(activeGroup)) {
-		groups[activeGroup]->playNext();
+		if(!groups[activeGroup]->playNext()){
+			cout << "No se puede dar play a next!" << endl;
+		}
 	}
 }
 //---------------------------------------------------
@@ -268,7 +281,8 @@ void AstanaSoundManager::setActiveGroup(string groupName) {
 		if (groups.count(tempGroup)) {
 			groups[tempGroup]->highlightGui(false);
 			if (groups[tempGroup]->isPlaying()) {
-				groups[tempGroup]->fadeOutAll([this]() {startActiveGroup();});
+				groups[tempGroup]->stopAll();
+//				groups[tempGroup]->fadeOutAll([this]() {startActiveGroup();});
 			}
 			else {
 				startActiveGroup();
@@ -287,28 +301,23 @@ void AstanaSoundManager::startActiveGroup() {
 		if (typeid(*(groups[activeGroup].get())).name() == typeid(AstanaSoundIntervencion).name()) {
 			groups[activeGroup]->play();
 		}
-		else {
-			ofParameterGroup& texGrp = groups[activeGroup]->texturasValidasGroup;
-			for (int i = 0; i < texGrp.size();i++) {
-				auto p = texturas->getPlayer(texGrp.getName(i));
-				if (p) {
-					if (texGrp.getBool(i)) {
-						p->play();
-					}
-					else {
-						p->fadeOut();
-					}
-				}
-			}
-		}
+		//else {
+		//	ofParameterGroup& texGrp = groups[activeGroup]->texturasValidasGroup;
+		//	for (int i = 0; i < texGrp.size();i++) {
+		//		auto p = texturas->getPlayer(texGrp.getName(i));
+		//		if (p) {
+		//			if (texGrp.getBool(i)) {
+		//		//		p->play();
+		//			}
+		//			else {
+		//				p->fadeOut();
+		//			}
+		//		}
+		//	}
+		//}
 	}
 }
-//---------------------------------------------------
-void AstanaSoundManager::playNextInGroup(string groupName) {
-	if (groups.count(groupName)) {
-		groups[groupName]->playNext();
-	}
-}
+
 //---------------------------------------------------
 void AstanaSoundManager::load(string folderPath) {
 	this->folderPath = folderPath;
@@ -352,14 +361,14 @@ void AstanaSoundManager::onAnyBlobs() {
 	toBlobsUpdate.send(c);//blobManager->getBlobsCollection());
 }
 //---------------------------------------------------
-AstanaBlobParam AstanaSoundManager::getNextAvailableBlobParam() {
-
-	std::random_device random_device;
-	std::mt19937 engine{ random_device() };
-	std::uniform_int_distribution<int> dist(0, availableBlobParams.size() - 1);
-
-	return availableBlobParams[dist(engine)];
-}
+//AstanaBlobParam AstanaSoundManager::getNextAvailableBlobParam() {
+//
+//	std::random_device random_device;
+//	std::mt19937 engine{ random_device() };
+//	std::uniform_int_distribution<int> dist(0, availableBlobParams.size() - 1);
+//
+//	return availableBlobParams[dist(engine)];
+//}
 //---------------------------------------------------
 void AstanaSoundManager::updateBlobs() {
 
@@ -367,8 +376,8 @@ void AstanaSoundManager::updateBlobs() {
 		if (blobsBack.count(ASTANA_ALL_BLOBS)) {
 			for (auto& b : blobsBack[ASTANA_ALL_BLOBS]) {//blobManager->getNewBlobs()) {
 				if (!soundBlobLinks.count(b->label)) {
-					addLink(b->label, getNextAvailableBlobParam());
-					addLink(b->label, getNextAvailableBlobParam());
+					addLink(b->label);//, getNextAvailableBlobParam());
+//					addLink(b->label, getNextAvailableBlobParam());
 				}
 			}
 		}
@@ -437,57 +446,62 @@ void AstanaSoundManager::threadedFunction() {
 	}
 }
 //---------------------------------------------------
-bool AstanaSoundManager::addLink(unsigned int label, AstanaBlobParam blobParam) {
-	if (hasNextAvailableParamName()) {
-		string name = getNextAvailableParamName();
-		bool bValid = true;
-		if (soundBlobLinks.count(label)) {
-			if (soundBlobLinks[label].count(name)) {
-				bValid = false;
+string AstanaSoundManager::getNextTextura(){
+	if(texturas){
+	//for (int i = 0; i < texturas->players.size(); i++) {
+		for(auto& p: texturas->players){
+		if(currentTextura != p.getName()){
+			if(isTexturaValida(p.getName())){
+				currentTextura = p.getName();
+				return currentTextura;
+				break;
 			}
 		}
-		if (bValid) {
-			auto p = getParamFromRoute(texturas->gui.getParameter().castGroup(), name);
-			if (p) {
-				soundBlobLinks[label][name].blobParam = blobParam;
-				soundBlobLinks[label][name].soundParam.makeReferenceTo(*p);
-				setAvailableParamUse(name, false);
-				return true;
-			}
-		}
-
 	}
+	}
+	return 	"";	
+
+}
+//---------------------------------------------------
+bool AstanaSoundManager::addLink(unsigned int label){//, AstanaBlobParam blobParam) {
+	if(texturas){
+		if (soundBlobLinks.count(label) == 0) {
+				auto indexTextura = getNextTextura();
+				auto player = texturas->getPlayer(indexTextura);
+				if(player){
+					if(player->canPlayInstance()){
+						cout << "link added " << endl;
+						auto index =player->play();
+							soundBlobLinks[label][indexTextura] = index;
+	//						player->fadeIn(index);
+					//soundBlobLinks[label][indexTextura].soundParam.makeReferenceTo(*p);
+		//			setAvailableParamUse(name, false);
+					return true;
+					}
+				}
+			}
+		}
 	return false;
 }
 //---------------------------------------------------
 bool AstanaSoundManager::removeLink(unsigned int label) {// AstanaBlobParam blobParam) {
+	if(texturas){
 	if (soundBlobLinks.count(label)) {
-		for (auto& b : soundBlobLinks[label]) {
-			setAvailableParamUse(b.first, true);
+		//for (auto& b : soundBlobLinks[label]) {
+		//	setAvailableParamUse(b.first, true);
+		//}
+		for (auto& l: soundBlobLinks[label]) {
+			auto p = texturas->getPlayer(l.first);
+			if(p){
+				p->stop(l.second);
+			}
 		}
 		soundBlobLinks.erase(label);
+
 		return true;
 	}
+	}
 	return false;
-}
-//---------------------------------------------------
-void AstanaSoundManager::setAvailableParamUse(const string& paramName, bool bUse) {
-	if (availableParams.count(paramName)) {
-		availableParams[paramName] = bUse;
-	}
-}
-//---------------------------------------------------
-string AstanaSoundManager::getNextAvailableParamName() {
-	for (auto& p : availableParams) {
-		if (p.second) {
-			return p.first;
-		}
-	}
-	return "";
-}
-//---------------------------------------------------
-bool AstanaSoundManager::hasNextAvailableParamName() {
-	return getNextAvailableParamName() != "";
 }
 //---------------------------------------------------
 bool AstanaSoundManager::isTexturaValida(string tex){
@@ -500,53 +514,49 @@ bool AstanaSoundManager::isTexturaValida(string tex){
 	return false;
 }
 //---------------------------------------------------
-void AstanaSoundManager::setAvailableSoundParams() {
 
-	auto addParamGroup = [&](ofParameterGroup& g) {
-		auto gr = getGroupRoutes(g);
-		for (auto&r : gr) {
-			cout << r << endl;
-			if (availableParams.count(r) == 0 && isTexturaValida(ofFilePath::getBaseName(r))) {
-				availableParams[r] = true;
-			}
-		}
-	};
-	if (texturas) {
-		availableParams.clear();
-//		addParamGroup(texturas->panGroup);
-		addParamGroup(texturas->volumeGroup);
-	}
 
-	if(bUsarCentroX) availableBlobParams.push_back(ASTANA_BLOB_CENTER_X);
-	if(bUsarCentroY) availableBlobParams.push_back(ASTANA_BLOB_CENTER_Y);
-	if(bUsarArea) availableBlobParams.push_back(ASTANA_BLOB_AREA);
-	if(bUsarVelX) availableBlobParams.push_back(ASTANA_BLOB_VEL_X);
-	if(bUsarVelY) availableBlobParams.push_back(ASTANA_BLOB_VEL_Y);
+	//if(bUsarCentroX) availableBlobParams.push_back(ASTANA_BLOB_CENTER_X);
+	//if(bUsarCentroY) availableBlobParams.push_back(ASTANA_BLOB_CENTER_Y);
+	//if(bUsarArea) availableBlobParams.push_back(ASTANA_BLOB_AREA);
+	//if(bUsarVelX) availableBlobParams.push_back(ASTANA_BLOB_VEL_X);
+	//if(bUsarVelY) availableBlobParams.push_back(ASTANA_BLOB_VEL_Y);
 
-}
+//}
 //---------------------------------------------------
 void AstanaSoundManager::clearSoundBlobLinks(){
 	soundBlobLinks.clear();
-	setAvailableSoundParams();
-			
-
+//	setAvailableSoundParams();
 }
 //---------------------------------------------------
 void AstanaSoundManager::updateSoundBlobLinks(AstanaBlobType t) {
-	auto mapParam = [&](float val, AstanaBlobParam& p)->float {
+	auto mapParam = [&](float val, const AstanaBlobParam& p, float mn, float mx)->float {
 		if (mapMinVals.count(p) > 0 && mapMaxVals.count(p)) {
-			return ofMap(val, mapMinVals[p], mapMaxVals[p], 0, 1);
+			return ofMap(val, mapMinVals[p], mapMaxVals[p], mn, mx, true);
 		}
 		return val;
 	};
+	auto smooth = [&](const float& prev, const float& current)->float {
+		return prev*(1 - smoothingParams) + current*smoothingParams;
+	};
+	if(texturas){
 	if (blobsBack.count(t)) {
 		for (auto& b : blobsBack[t]) {
 			if (soundBlobLinks.count(b->label)) {
 				for (auto& l : soundBlobLinks[b->label]) {
-					l.second.soundParam = mapParam(b->getParam(l.second.blobParam), l.second.blobParam);
+					auto p = texturas->getPlayer(l.first);
+					if(p){
+						if(bUsarCentroX) p->setVolume(smooth(p->getVolume(l.second), mapParam(b->center.x, ASTANA_BLOB_CENTER_X,  0, 1)), l.second);
+						if(bUsarCentroY) p->setPan(   smooth(p->getPan(   l.second), mapParam(b->center.y, ASTANA_BLOB_CENTER_Y, -1, 1)), l.second);
+						if(bUsarArea) p->setSpeed( smooth(p->getSpeed( l.second), mapParam(b->area,     ASTANA_BLOB_AREA,      0.6, 1.5)), l.second);
+					//texturas->getPlayer(l.)
+					//l.second
+					//	= smooth(l.second.soundParam.get() ,mapParam(b->getParam(l.second.blobParam), l.second.blobParam), smoothingParams);
+					}
 				}
 			}
 		}
+	}
 	}
 }
 //---------------------------------------------------
@@ -568,10 +578,15 @@ shared_ptr<T> AstanaSoundManager::addGroup(string groupFolder) {
 	}
 	return nullptr;
 }
-
+//---------------------------------------------------
 void AstanaSoundManager::keyReleased(ofKeyEventArgs& k) {
 	if (k.key == OF_KEY_RIGHT) {
 		playNextTrack();
+	}
+	else if (k.key == OF_KEY_RETURN) {
+		if(texturas){
+			texturas->playAll();
+		}
 	}
 	else if (k.key == '1') {
 		setActiveGroup("CumparsitaCOmbo");
@@ -585,4 +600,20 @@ void AstanaSoundManager::keyReleased(ofKeyEventArgs& k) {
 	else if (k.key == '4') {
 		setActiveGroup("Sueltos");
 	}
+}
+//---------------------------------------------------
+void AstanaSoundManager::activarCumparsita() {
+	setActiveGroup("CumparsitaCOmbo");
+}
+//---------------------------------------------------
+void AstanaSoundManager::activarElDiaQueMeQuieras() {
+	setActiveGroup("ElDiaQueMeQuieras");
+}
+//---------------------------------------------------
+void AstanaSoundManager::activarNonino() {
+	setActiveGroup("Nonino");
+}
+//---------------------------------------------------
+void AstanaSoundManager::activarSueltos() {
+	setActiveGroup("Sueltos");
 }

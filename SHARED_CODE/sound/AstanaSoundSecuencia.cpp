@@ -12,8 +12,10 @@ AstanaSoundSecuencia::AstanaSoundSecuencia():AstanaSoundGroup(){}
 //---------------------------------------------------
 bool AstanaSoundSecuencia::play(){
     if (AstanaSoundGroup::play()) {
-        currentListener = players[current].endEvent.newListener(this, &AstanaSoundSecuencia::onCurrentEnd);
-		return true;
+		if(current > -1 && current < players.size()){
+			currentListener = players[current].endEvent.newListener(this, &AstanaSoundSecuencia::onCurrentEnd);
+			return true;
+		}
     }
 	return false;
 }
@@ -24,7 +26,9 @@ bool AstanaSoundSecuencia::isNextAllowed(){
         bFirstPlay = false;
         return true;
     }
-    if(players[current].isPlaying())return false;
+	if(current > -1 && current < players.size()){
+		if(players[current].isPlaying())return false;
+	}
     return (ofGetElapsedTimef() - lastEndTime) >= gapFraseMin;
 }
 //---------------------------------------------------
@@ -36,13 +40,14 @@ void AstanaSoundSecuencia::setupParameters(){
 //---------------------------------------------------
 void AstanaSoundSecuencia::loadFolder(string folderPath){
     AstanaSoundGroup::loadFolder(folderPath);
-    if (players.size()) {
-        current = 0;
-    }
+    //if (players.size()) {
+    //    current = 0;
+    //}
 }
 //---------------------------------------------------
-void AstanaSoundSecuencia::onCurrentEnd(){
+void AstanaSoundSecuencia::onCurrentEnd(size_t&){
     lastEndTime = ofGetElapsedTimef();
+	if(current > -1 && current < players.size()){
     players[current].setPositionMS(0);
     if (players[current].loopeable) {
         players[current].play();
@@ -50,4 +55,5 @@ void AstanaSoundSecuencia::onCurrentEnd(){
         players[current].setPaused(true);
         currentListener.unsubscribe();
     }
+	}
 }

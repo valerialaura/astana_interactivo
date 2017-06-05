@@ -22,9 +22,11 @@ void AstanaSoundGroup::setup(string folderPath){
 //    for(auto& n: names){
 //        cout << "    " << n << endl;
 //    }
+#ifndef ASTANA_USAR_DEFAULT_SOUND_PLAYER
 	for (auto& p : players) {
 		p.connectTo(mixer);
 	}
+#endif
 	//output = &mixer;
 	//if (mixer.getNumChannels()) {
 		//mixer.connectTo(delayFx);
@@ -64,14 +66,17 @@ void AstanaSoundGroup::setupParameters(){
 		parameters.add(mixer.masterVol);
         addParameterGroup(loopeablesGroup,"Pistas Loopeables");
         addParameterGroup(volumeGroup,"Volumen Pistas");
-        addParameterGroup(panGroup,"Pan Pistas");
+//        addParameterGroup(panGroup,"Pan Pistas");
         //parameters.add(delayFx.parameters);
+
+		speedGroup.setName("Speed");
 
 		for(auto& p: players){
             if(p.isLoaded()){
                 loopeablesGroup.add(p.loopeable);
                 volumeGroup.add(p.volume);
-                panGroup.add(p.pan);
+                //panGroup.add(p.pan);
+				//speedGroup.add(p.speed);
             }
         }
         if(!isTextura() && manager != nullptr){
@@ -96,10 +101,11 @@ void AstanaSoundGroup::setListeners(bool e ){
     if(bListenersEnabled != e){
         bListenersEnabled = e;
         for (auto& p: players) {
-            p.enableGuiListeners(e);
             if(e){
-                listeners.push_back(p.guiNeedUpdateEvent.newListener(this, &AstanaSoundGroup::updateGui));
+                //listeners.push_back(p.guiNeedUpdateEvent.newListener(this, &AstanaSoundGroup::updateGui));
+#ifndef ASTANA_USAR_DEFAULT_SOUND_PLAYER
                 listeners.push_back(p.endEvent.newListener(this, &AstanaSoundSecuencia::updateGui));
+#endif
             }
         }
         if(!e){
@@ -108,7 +114,7 @@ void AstanaSoundGroup::setListeners(bool e ){
     }
 }
 //---------------------------------------------------
-void AstanaSoundGroup::updateGui(){
+void AstanaSoundGroup::updateGui(size_t&){
     for(auto& p: players){
         auto gr = gui.getGroup("Volumen Pistas");
         auto vc = gr.getControl(p.getName());
@@ -116,6 +122,12 @@ void AstanaSoundGroup::updateGui(){
             vc->setFillColor(p.isPlaying()?ofColor::red:ofColor(128));
         }
     }
+}
+//---------------------------------------------------
+void AstanaSoundGroup::stopAll(){
+	for(auto& p: players){
+		p.stop(p.getNumInstances());
+	}
 }
 //---------------------------------------------------
 void AstanaSoundGroup::addParameterGroup(ofParameterGroup& pg, string name){
@@ -146,21 +158,35 @@ bool AstanaSoundGroup::isNextAllowed(){
 }
 //---------------------------------------------------
 bool AstanaSoundGroup::playNext(){
-    if (current < players.size()) {
-        if(this->isNextAllowed()){
-            players[current].fadeOut();
-            current++;
-            current %= players.size();
-            players[current].play();
-            return true;
-        }
-    }
+	if (players.size() > 0) {
+		if (current < (int)players.size()) {
+			if (this->isNextAllowed()) {
+				if (current >= 0) {
+					players[current].fadeOut(0);
+				}
+				current++;
+				current %= players.size();
+				players[current].play();
+				return true;
+			}else{
+				cout << "playNext next ! allowed" << endl;
+			}
+		}else{
+		cout << "playNext current >= players.size  current: " << current << "  playerssize: " << players.size()<< endl;
+		}
+	}
+	else {
+		cout << "playNext players.size<0" << endl;
+	}
     return false;
 }
 //---------------------------------------------------
 bool AstanaSoundGroup::play(){
     pause();
     if(players.size() > 0){
+		if (current < 0) {
+			current = 0;
+		}
         if(current < players.size()){
             players[current].play();
             return true;
@@ -177,7 +203,7 @@ void AstanaSoundGroup::pause(){
 //---------------------------------------------------
 void AstanaSoundGroup::reset(){
     pause();
-    current = 0;
+    current = -1;
     if(players.size() > 0){
         for (auto& p: players) {
               p.setPositionMS(0);

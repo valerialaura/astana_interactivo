@@ -19,7 +19,7 @@ public:
     virtual bool isNextAllowed();
     virtual void setupParameters();
 protected:
-    void onCurrentEnd();
+    void onCurrentEnd(size_t&);
     float lastEndTime= 0.0;
     bool bFirstPlay =true;
 };

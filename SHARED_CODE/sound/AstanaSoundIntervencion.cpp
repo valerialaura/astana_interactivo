@@ -28,13 +28,13 @@ bool AstanaSoundIntervencion::isIntervencionPlaying(){
     return false;
 }
 //---------------------------------------------------
-void AstanaSoundIntervencion::onLoopEnd(){
+void AstanaSoundIntervencion::onLoopEnd(size_t&){
     bFirstLoop = false;
     play();
 }
 //---------------------------------------------------
-void AstanaSoundIntervencion::onIntervencionEnd(){
-    if (current < intervencionesIndices.size()) {
+void AstanaSoundIntervencion::onIntervencionEnd(size_t&){
+    if (current > -1 && current < intervencionesIndices.size()) {
         if (intervencionesIndices[current] < players.size()) {
             if (players[intervencionesIndices[current]].loopeable) {
                 if(ofRandomuf() < probabilidadLoopIntervencion ){
@@ -88,11 +88,15 @@ bool AstanaSoundIntervencion::isNextAllowed(){
 bool AstanaSoundIntervencion::playNext(){
     if(this->isNextAllowed()){
             cout << "current " << current <<" intervencionesIndices: " << intervencionesIndices.size()<<endl;
-        if (current < intervencionesIndices.size()) {
+
+			if (current  < 0 ){
+				current = 0;
+			}
+			if(current < intervencionesIndices.size()) {
 
             if (intervencionesIndices[current] < players.size()) {
             cout << "intervencionesIndices[current] < players.size()"<<endl;
-                players[intervencionesIndices[current]].fadeOut();
+                players[intervencionesIndices[current]].fadeOut(0);
                 current++;
                 current %= intervencionesIndices.size();
                 players[intervencionesIndices[current]].setPosition(0);
@@ -107,17 +111,6 @@ bool AstanaSoundIntervencion::playNext(){
 }
 //---------------------------------------------------
 bool AstanaSoundIntervencion::play(){
-    //    pause();
-    //    if(players.size() > 0){
-    //        if(current < intervencionesIndices.size()){
-    //            if (intervencionesIndices[current] < players.size()) {
-    //                players[intervencionesIndices[current]].setPosition(0);
-    //                players[intervencionesIndices[current]].play();
-    //                return true;
-    //            }
-    //        }
-    //    }
-    //    return false;
     if(loopIndex < players.size()){
         players[loopIndex].loopeable = true;
         players[loopIndex].setMultiPlay(false);

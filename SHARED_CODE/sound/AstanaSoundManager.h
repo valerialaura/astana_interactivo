@@ -29,7 +29,6 @@ public:
 	void toggleGui();
 	bool isGuiEnabled() { return bGuiEnabled; }
 
-    void playNextInGroup(string groupName);
     void playNextTrack();
     void stopAll();
     void setActiveGroup(string groupName);
@@ -40,6 +39,12 @@ public:
 	shared_ptr<AstanaSoundTextura> getTexturas(){return texturas;}
 	virtual AstanaBlobCollection& getBlobsCollection() { return blobsFront; }
 	void threadedFunction();
+
+	void activarCumparsita();
+	void activarElDiaQueMeQuieras();
+	void activarNonino();
+	void activarSueltos();
+
 protected:
 	void update(ofEventArgs&);
 	void updateBlobs();
@@ -79,23 +84,27 @@ protected:
 		AstanaBlobParam blobParam;
 	};
 
-	vector<AstanaBlobParam> availableBlobParams;
-	AstanaBlobParam getNextAvailableBlobParam();
-	map<unsigned int, map<string, AstanaSoundBlobLink> > soundBlobLinks;
+	//vector<AstanaBlobParam> availableBlobParams;
+	//AstanaBlobParam getNextAvailableBlobParam();
+	//map<unsigned int, map<string, AstanaSoundBlobLink> > soundBlobLinks;
 	// label blob, map<soundParamName, link>
 
+	map<unsigned int, map<string, size_t> > soundBlobLinks;
+	// blob label, indexTextura, playerInstanceId
+	string getNextTextura();
+	string currentTextura;
 	void updateSoundBlobLinks(AstanaBlobType t);
 
-	void setAvailableSoundParams();
-	void setAvailableParamUse(const string& paramName, bool bUse);
-	string getNextAvailableParamName();
-	bool hasNextAvailableParamName();
+	//void setAvailableSoundParams();
+	//void setAvailableParamUse(const string& paramName, bool bUse);
+	//string getNextAvailableParamName();
+	//bool hasNextAvailableParamName();
 
-	bool addLink(unsigned int label, AstanaBlobParam blobParam);
+	bool addLink(unsigned int label);//, AstanaBlobParam blobParam);
 	bool removeLink(unsigned int label);//, AstanaBlobParam blobParam);
 	//int findSoundBlobLinkByLabel(unsigned int label);
 	map<AstanaBlobParam, ofParameter<float> > mapMinVals, mapMaxVals;
-	map<string, bool> availableParams;
+	//map<string, bool> availableParams;
 
 	bool isTexturaValida(string tex);
 
@@ -107,9 +116,11 @@ protected:
 
 	void clearSoundBlobLinks();
 
-	ofParameter<bool>bUsarCentroX, bUsarCentroY, bUsarArea, bUsarVelX, bUsarVelY;
-	ofParameter<void>vResetearLinks;
+	ofParameter<bool>bUsarCentroX, bUsarCentroY, bUsarArea;//, bUsarVelX, bUsarVelY;
+	//ofParameter<void>vResetearLinks;
 
+
+	ofParameter<float> smoothingParams;
 
 #ifdef ASTANA_PRINT_DEBUG
 	ofBuffer fileBuffer;
